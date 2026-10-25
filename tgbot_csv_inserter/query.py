@@ -91,20 +91,20 @@ def list_head(engine: Engine, db_stucture: dict, table: str, limit: int = 3) -> 
             query = text(q)
             result = connection.execute(query)
 
-            result_list = [
-                [db_stucture[table]['columns'][i]['name'] for i in range(len(db_stucture[table]['columns']))]
-            ]
-            for row in result:
-                result_list.append(row)
+        result_list = [
+            [db_stucture[table]['columns'][i]['name'] for i in range(len(db_stucture[table]['columns']))]
+        ]
+        for row in result:
+            result_list.append(row)
     except Exception as e:
         raise Exception(f"{q} query failure: {e}")
     
     return result_list
 
-def insert_csv(csv_bytes: bytes, table: str, engine: Engine) -> None:
+def insert_csv(csv_bytes: bytes, delimiter: str, table: str, engine: Engine) -> None:
     "Decodes file bytes and inserts them into connected database"
-    df = pd.read_csv(BytesIO(csv_bytes), encoding='utf-8')
+    df = pd.read_csv(BytesIO(csv_bytes), sep=delimiter, encoding='utf-8')
     try:
         df.to_sql(table, con=engine, if_exists='append', index=False, chunksize=500)
     except Exception as e:
-        print(f"Import failed: {e}")
+        raise Exception(f"Import failed: {e}")

@@ -40,11 +40,9 @@ def _update_lists(message: Message,
                  visitors: list[int], access_list: list[int], current_list: list[int] = None) -> None:
     "Flushes provided lists into config."
     user_id = message.from_user.id
-
     if user_id not in visitors:
         visitors.append(user_id)
     config['visited_users'] = visitors
-    visitors.clear()
 
     if current_list is not None:
         access_list.extend(current_list)
@@ -103,7 +101,7 @@ def validate_config(absolute_path: PathLike, config: dict[str, str | int | bool 
 
                     print("New password is too simple.")
             else:
-                config['PASSWORD_CHECK'] = False
+                pwcheck = False
                 print("This reminder will not appear again.")
 
     

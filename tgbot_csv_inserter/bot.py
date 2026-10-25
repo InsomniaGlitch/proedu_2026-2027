@@ -80,6 +80,7 @@ def ask_csv(message):
     bot.register_next_step_handler(sent_msg, ask_table, is_insert=True)
 
 @bot.message_handler(commands=['structure'], func=is_allowed)
+@cooldown(bot, 10)
 def send_db_structure(message):
     update(message, config, config_path, ACCESS_TYPE, VISITORS, ACCESS_LIST)
     bot.send_message(message.chat.id, str(db_structure))
@@ -203,7 +204,7 @@ def ask_limit(message, table):
         bot.send_message(chat_id, "Number of rows is set to 3")
 
     try:
-        limit = int(message.text)
+        limit = int(limit)
     except Exception:
         err_warn = f"Can't convert {message.text} to integer"
         print(err_warn)
@@ -224,7 +225,7 @@ def ask_limit(message, table):
 def get_csv(message, table):
     chat_id = message.chat.id
 
-    if message.text and message == '/cancel':
+    if message.text and message.text == '/cancel':
         bot.send_message(chat_id, 'Cancelled')
         return
 
@@ -235,25 +236,46 @@ def get_csv(message, table):
         return
 
     if not is_csv(message):
-        sent_msg = bot.send_message(chat_id, f"Send CSV or /cancel")
-        bot.register_next_step_handler(chat_id, get_csv, table=table)
+        sent_msg = bot.send_message(chat_id, "Send CSV or /cancel")
+        bot.register_next_step_handler(sent_msg, get_csv, table=table)
         return
 
     file_name = message.document.file_name
-    bot.send_message(chat_id, f"Received: {file_name}")
-
     file_info = bot.get_file(message.document.file_id)
+
+    sent_msg = bot.send_message(chat_id, f"Received: {file_name}. Send delimiter in one message without quotes (default=','). /skip if delimiter is defauit")
+    bot.register_next_step_handler(sent_msg, get_delimiter, file_name=file_name, file_info=file_info, table=table)
+
+def get_delimiter(message, file_name, file_info, table):
+    chat_id = message.chat.id
+
+    if message.content_type != 'text':
+        sent_msg = bot.send_message(chat_id, "Send text or /cancel")
+        bot.register_next_step_handler(sent_msg, get_delimiter, file_name=file_name, table=table)
+        return
+
+    delimiter = message.text
+
+    if delimiter == '/skip':
+        delimiter = ','
+        bot.send_message(chat_id, 'Set to default')
+
+    if delimiter == '/cancel':
+        bot.send_message(chat_id, 'Cancelled')
+        return
+
     downloaded_bytes = bot.download_file(file_info.file_path)
 
     try:
-        insert_csv(downloaded_bytes, table, ENGINE)
+        insert_csv(downloaded_bytes, delimiter, table, ENGINE)
     except Exception as e:
         exception = f"Failed on insertion: {e}"
-        bot.send_message(chat_id, exception)
+        bot.send_message(chat_id, f"{exception[:250]}..")
         print(exception)
+        return
 
     print("Waiting for file insertion...")
-    sleep(5)
+    sleep(3)
     bot.send_message(chat_id, f"Insertion of {file_name} is completed")
 
 print("Starting bot...")
