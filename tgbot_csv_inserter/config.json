@@ -1,0 +1,18 @@
+{
+    "BOT_TOKEN": "1234567890:ABcdefgHi12J3...",
+    "BOT_USER_ID": 1234567890,
+    "BOT_PASSWORD": "",
+    "PASSWORD_CHECK": true,
+    
+    "DBMS": "PostgreSQL",
+    "DATABASE_HOST": "localhost",
+    "DATABASE_PORT": 5432,
+    "DB_NAME": "",
+    "DB_LOGIN": "postgres",
+    "DB_PASSWORD": "",
+    "DRIVER": "psycopg",
+    
+    "access_list_type": 0,
+    "access_list": [],
+    "visited_users": []
+}

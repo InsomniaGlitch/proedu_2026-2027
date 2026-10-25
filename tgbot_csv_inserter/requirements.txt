@@ -1,0 +1,6 @@
+pandas
+psycopg
+psycopg-binary
+pymysql
+pyTelegramBotAPI
+SQLAlchemy
