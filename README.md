@@ -1,3 +1,5 @@
 # Менеджмент базы данных
 
-## Текущая структура БД
+![current_structure](./er_diagrams/cur_sustainability_cource_db_erd.png)
+
+## Методы взаимодействия
