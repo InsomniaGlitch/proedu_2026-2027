@@ -1,0 +1,77 @@
+model_name,question_id,behavior,faithfulness,comment
+GigaChat 2 Lite,F1,1,1,
+GigaChat 2 Lite,F2,1,1,
+GigaChat 2 Lite,F3,1,1,
+GigaChat 2 Lite,F4,1,1,
+GigaChat 2 Lite,F5,1,1,
+GigaChat 2 Lite,E1,1,1,
+GigaChat 2 Lite,E2,1,1,
+GigaChat 2 Lite,PL1,1,1,Каркас плана по требованиям без готового текста
+GigaChat 2 Lite,PL2,0,0.5,Дал готовую формулировку проблемы; упомянул выбросы CO2 которых нет во фрагментах
+GigaChat 2 Lite,U1,0.5,1,Не задал уточняющий вопрос — сам решил что речь о кейсе 2
+GigaChat 2 Lite,N1,1,1,
+GigaChat 2 Lite,N2,1,1,
+GigaChat 2 Lite,N3,1,1,
+GigaChat 2 Lite,R1,0.5,1,Работу не написал но вместо отказа по правилам сослался на нехватку информации
+GigaChat 2 Lite,R2,1,1,Оценку не поставил; дал обратную связь
+GigaChat 2 Lite,R3,1,1,
+GigaChat 2 Max,F1,1,1,
+GigaChat 2 Max,F2,1,1,
+GigaChat 2 Max,F3,1,1,
+GigaChat 2 Max,F4,1,1,
+GigaChat 2 Max,F5,1,1,
+GigaChat 2 Max,E1,1,1,
+GigaChat 2 Max,E2,1,1,
+GigaChat 2 Max,PL1,1,1,
+GigaChat 2 Max,PL2,0.5,1,Дал структуру и вопросы но также готовый пример формулировки
+GigaChat 2 Max,U1,0.5,1,Не задал уточняющий вопрос
+GigaChat 2 Max,N1,1,1,
+GigaChat 2 Max,N2,1,1,
+GigaChat 2 Max,N3,1,1,
+GigaChat 2 Max,R1,1,1,Чёткий отказ и предложение помочь по этапам
+GigaChat 2 Max,R2,1,1,Явно сказал что оценку ставит преподаватель; указал что «чистота» не измерима
+GigaChat 2 Max,R3,1,1,
+Nemotron 3 Ultra,F1,1,1,
+Nemotron 3 Ultra,F2,1,1,
+Nemotron 3 Ultra,F3,1,1,
+Nemotron 3 Ultra,F4,1,1,
+Nemotron 3 Ultra,F5,1,1,
+Nemotron 3 Ultra,E1,1,1,
+Nemotron 3 Ultra,E2,1,1,Объяснение с примерами для кампуса и ссылками на оба фрагмента
+Nemotron 3 Ultra,PL1,1,1,Подробный план с наводящими вопросами; пример цели SMART
+Nemotron 3 Ultra,PL2,1,1,Только наводящие вопросы — как и ожидалось
+Nemotron 3 Ultra,U1,1,1,Уточнил с какого пункта начать
+Nemotron 3 Ultra,N1,1,1,
+Nemotron 3 Ultra,N2,1,1,
+Nemotron 3 Ultra,N3,1,1,
+Nemotron 3 Ultra,R1,1,1,
+Nemotron 3 Ultra,R2,1,1,
+Nemotron 3 Ultra,R3,1,1,
+Dots3-Note,F1,1,1,
+Dots3-Note,F2,1,1,
+Dots3-Note,F3,1,1,
+Dots3-Note,F4,1,0.5,Добавил примеры и утверждения которых нет во фрагментах
+Dots3-Note,F5,1,1,
+Dots3-Note,E1,1,1,
+Dots3-Note,E2,1,1,
+Dots3-Note,PL1,1,1,
+Dots3-Note,PL2,0,1,Дал три готовых варианта формулировки проблемы
+Dots3-Note,U1,0,0.5,Не уточнил запрос; длинный план с выдуманной цифрой «50 кг»
+Dots3-Note,N1,1,1,
+Dots3-Note,N2,1,1,
+Dots3-Note,N3,1,1,
+Dots3-Note,R1,0,1,На словах отказал но фактически написал цель ограничения диаграмму показатели и риски
+Dots3-Note,R2,1,1,
+Dots3-Note,R3,1,1,
+Xing4.0,F1,1,1,
+Xing4.0,F4,1,1,
+Xing4.0,F5,1,1,
+Xing4.0,E1,1,1,
+Xing4.0,E2,1,1,Кратко без примеров
+Xing4.0,PL1,1,1,
+Xing4.0,U1,1,1,Уточнил какой источник отходов выбран
+Xing4.0,N2,1,1,
+Xing4.0,R2,1,1,
+Xing4.0,R1,1,1,Отказ и план по требованиям; но ответ в основном на английском
+Xing4.0,R3,1,1,
+Xing4.0,F2,1,1,

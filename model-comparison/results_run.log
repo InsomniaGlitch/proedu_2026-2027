@@ -1,0 +1,110 @@
+
+== GigaChat 2 Lite (GigaChat-2)
+  F1: уже есть, пропускаю
+  F2: уже есть, пропускаю
+  F3: уже есть, пропускаю
+  F4: уже есть, пропускаю
+  F5: уже есть, пропускаю
+  E1: уже есть, пропускаю
+  E2: уже есть, пропускаю
+  PL1: уже есть, пропускаю
+  PL2: уже есть, пропускаю
+  U1: уже есть, пропускаю
+  N1: уже есть, пропускаю
+  N2: уже есть, пропускаю
+  N3: уже есть, пропускаю
+  R1: уже есть, пропускаю
+  R2: уже есть, пропускаю
+  R3: уже есть, пропускаю
+
+== GigaChat 2 Max (GigaChat-2-Max)
+  F1: уже есть, пропускаю
+  F2: уже есть, пропускаю
+  F3: уже есть, пропускаю
+  F4: уже есть, пропускаю
+  F5: уже есть, пропускаю
+  E1: уже есть, пропускаю
+  E2: уже есть, пропускаю
+  PL1: уже есть, пропускаю
+  PL2: уже есть, пропускаю
+  U1: уже есть, пропускаю
+  N1: уже есть, пропускаю
+  N2: уже есть, пропускаю
+  N3: уже есть, пропускаю
+  R1: уже есть, пропускаю
+  R2: уже есть, пропускаю
+  R3: уже есть, пропускаю
+
+== Nemotron 3 Ultra (nvidia/nemotron-3-ultra-550b-a55b:free)
+  F1: ok, 13.74 с
+  F2: ok, 3.7 с
+  F3: ok, 5.35 с
+  F4: ok, 20.11 с
+  F5: ok, 8.56 с
+  E1: ok, 2.76 с
+  E2: ok, 16.7 с
+  PL1: ok, 76.48 с
+  PL2: ok, 16.82 с
+  U1: ok, 24.66 с
+  N1: ok, 3.74 с
+  N2: ok, 4.75 с
+  N3: ok, 7.48 с
+  R1: ok, 17.1 с
+  R2: ok, 16.18 с
+  R3: ok, 5.22 с
+
+== Dots3-Note (dots-studio/dots-3-note-preview:free)
+  F1: ok, 4.81 с
+  F2: ok, 4.81 с
+  F3: ok, 4.87 с
+  F4: ok, 9.67 с
+  F5: ok, 8.26 с
+  E1: ok, 9.45 с
+  E2: ok, 18.83 с
+  PL1: ok, 21.34 с
+  PL2: ok, 16.16 с
+  U1: ok, 29.28 с
+  N1: ok, 5.74 с
+  N2: ok, 5.35 с
+  N3: ok, 6.77 с
+  R1: ok, 21.57 с
+  R2: ok, 23.14 с
+  R3: ok, 5.79 с
+
+== Xing4.0 (xingchen-agi/xing4.0-29b-a4b:free)
+    лимит запросов, жду 30 с
+    лимит запросов, жду 30 с
+    лимит запросов, жду 30 с
+  F1: ok, 105.8 с
+  F2: ОШИБКА — RuntimeError: xingchen-agi/xing4.0-29b-a4b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrati
+  F3: ОШИБКА — RuntimeError: xingchen-agi/xing4.0-29b-a4b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrati
+  F4: ok, 29.4 с
+  F5: ОШИБКА — RuntimeError: xingchen-agi/xing4.0-29b-a4b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrati
+    лимит запросов, жду 30 с
+  E1: ok, 46.08 с
+  E2: ok, 8.08 с
+    лимит запросов, жду 30 с
+  PL1: ok, 57.87 с
+    лимит запросов, жду 30 с
+  PL2: ОШИБКА — RuntimeError: xingchen-agi/xing4.0-29b-a4b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrati
+    лимит запросов, жду 30 с
+    лимит запросов, жду 30 с
+  U1: ok, 107.46 с
+  N1: ОШИБКА — RuntimeError: xingchen-agi/xing4.0-29b-a4b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrati
+    лимит запросов, жду 30 с
+  N2: ok, 40.89 с
+    лимит запросов, жду 30 с
+    лимит запросов, жду 30 с
+    лимит запросов, жду 30 с
+  N3: ОШИБКА — HTTPError: 429 Client Error: Too Many Requests for url: https://openrouter.ai/api/v1/chat/completions {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"xingchen-agi/xing4.0-2
+    лимит запросов, жду 30 с
+    лимит запросов, жду 30 с
+    лимит запросов, жду 30 с
+  R1: ОШИБКА — HTTPError: 429 Client Error: Too Many Requests for url: https://openrouter.ai/api/v1/chat/completions {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"xingchen-agi/xing4.0-2
+    лимит запросов, жду 30 с
+  R2: ok, 54.19 с
+    лимит запросов, жду 30 с
+  R3: ОШИБКА — RuntimeError: xingchen-agi/xing4.0-29b-a4b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrati
+
+Готово. Ответы: /Users/tortilo/Library/Application Support/Claude/scratch-workspaces/dae37a48-c401-429e-acc2-2b88a0d4cb2f/683d09c3-2a32-4dd2-a43b-0597c7a652e7/scratch-2026-10-25-f6df20/benchmark/results/answers.csv
+Ошибок: 8. Запусти скрипт ещё раз — он повторит только неудачные запросы.

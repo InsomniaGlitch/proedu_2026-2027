@@ -1,0 +1,29 @@
+
+== Xing4.0 (xingchen-agi/xing4.0-29b-a4b:free)
+  F1: уже есть, пропускаю
+    лимит запросов, жду 30 с
+  F2: ОШИБКА — RuntimeError: xingchen-agi/xing4.0-29b-a4b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrati
+  F3: ОШИБКА — RuntimeError: xingchen-agi/xing4.0-29b-a4b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrati
+  F4: уже есть, пропускаю
+  F5: ok, 22.42 с
+  E1: уже есть, пропускаю
+  E2: уже есть, пропускаю
+  PL1: уже есть, пропускаю
+    лимит запросов, жду 30 с
+  PL2: ОШИБКА — RuntimeError: xingchen-agi/xing4.0-29b-a4b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrati
+  U1: уже есть, пропускаю
+    лимит запросов, жду 30 с
+    лимит запросов, жду 30 с
+    лимит запросов, жду 30 с
+  N1: ОШИБКА — RuntimeError: xingchen-agi/xing4.0-29b-a4b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrati
+  N2: уже есть, пропускаю
+    лимит запросов, жду 30 с
+    лимит запросов, жду 30 с
+    лимит запросов, жду 30 с
+  N3: ОШИБКА — RuntimeError: xingchen-agi/xing4.0-29b-a4b:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrati
+  R1: ok, 22.11 с
+  R2: уже есть, пропускаю
+  R3: ok, 36.17 с
+
+Готово. Ответы: /Users/tortilo/Library/Application Support/Claude/scratch-workspaces/dae37a48-c401-429e-acc2-2b88a0d4cb2f/683d09c3-2a32-4dd2-a43b-0597c7a652e7/scratch-2026-10-25-f6df20/benchmark/results/answers.csv
+Ошибок: 5. Запусти скрипт ещё раз — он повторит только неудачные запросы.
