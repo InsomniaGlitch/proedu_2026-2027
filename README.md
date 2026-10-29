@@ -4,6 +4,7 @@
 
 ![current_structure](./er_diagrams/cur_sustainability_course_db_erd.png)
 
-## Методы взаимодействия
+## Инструменты
 
 - [Телеграм бот](./tgbot/README.md)
+- [Парсер](./parser/README.md)

@@ -1,0 +1,21 @@
+# VS Code служебные файлы
+.vscode/
+*.code-workspace
+
+# Кеши и временные файлы
+*.log
+*.tmp
+*.bak
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# macOS и Windows системные файлы
+.DS_Store
+Thumbs.db
+
+# Личные настройки и конфигурации
+.venv/
+*.local
