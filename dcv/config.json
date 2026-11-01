@@ -2,11 +2,13 @@
     "DATA_DIR_PATH": "",
     
     "DBMS": "PostgreSQL",
+    "DRIVER": "psycopg",
     "DATABASE_HOST": "localhost",
     "DATABASE_PORT": 5432,
-    "DB_NAME": "",
-    "DB_TABLE": "",
     "DB_LOGIN": "postgres",
     "DB_PASSWORD": "",
-    "DRIVER": "psycopg"
+
+    "DB_NAME": "",
+    "DOC_TABLE": "documents",
+    "VEC_TABLE": "document_chunks"
 }

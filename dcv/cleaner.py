@@ -21,22 +21,22 @@ class DataCleaner:
         return pd.DataFrame(data)
 
     @staticmethod
-    def get_basic_clean(df: pd.DataFrame) -> None:
-        "Cleanes DataFrame from typos and bad imports"
+    def get_basic_clean(df: pd.DataFrame) -> pd.DataFrame:
+        "Returns DataFrame cleaned of typos and bad imports"
         df['text'] = df['text'].str.lower()
         df['text'] = df['text'].str.strip()
-        df = df[df['text'].str.strip() != '']
-        df = df[df['text'].str.len() > 10]
         df['text'] = df['text'].str.replace('\n', ' ')
         df['text'] = df['text'].str.replace(r'\s+', ' ', regex=True)
+        df = df[df['text'].str.strip() != '']
+        df = df[df['text'].str.len() > 10]
         return df
 
     @staticmethod
-    def clean_arxiv_artifacts(df: pd.DataFrame) -> None:
-        "Cleanes DataFrame of arXiv artifacts"
+    def get_cleaned_arxiv_artifacts(df: pd.DataFrame) -> pd.DataFrame:
+        "Returns DataFrame cleaned of arXiv artifacts"
         mask = df['file_name'].str.contains('arxiv', na=False)
         if not mask.any():
-            return
+            return df
         
         def trim_text(row):
             text_lower = row['text'].lower()
@@ -51,16 +51,16 @@ class DataCleaner:
 
         df.loc[mask, 'category'] = 'llm' # example
         df.loc[mask, 'text'] = df.loc[mask].apply(trim_text, axis=1)
-        df.loc[mask, 'text'] = df.loc[mask, 'text'].str.replace('download pdf', '')
+        df.loc[mask, 'text'] = df.loc[mask, 'text'].str.replace('abstract download pdf contents reading mode colour theme', '')
+        return df
 
     @staticmethod
-    def clean_biblioclub_artifacts(df: pd.DataFrame) -> None:
-        "Cleanes DataFrame of BiblioClub artifacts"
+    def get_cleaned_biblioclub_artifacts(df: pd.DataFrame) -> pd.DataFrame:
+        "Returns DataFrame cleaned of BiblioClub artifacts"
 
         # Source - https://stackoverflow.com/a/1884277
         # Posted by Todd Gamblin, modified by community. See post 'Timeline' for change history
         # Retrieved 2026-11-01, License - CC BY-SA 4.0
-
         def find_nth(haystack: str, needle: str, n: int) -> int:
             start = haystack.find(needle)
             while start >= 0 and n > 1:
@@ -68,10 +68,9 @@ class DataCleaner:
                 n -= 1
             return start
 
-
         mask = df['file_name'].str.contains('biblioclub', na=False)
         if not mask.any():
-            return
+            return df
 
         i = 0
         artifact = ''
@@ -84,19 +83,17 @@ class DataCleaner:
             df.loc[mask, 'text'] = df.loc[mask, 'text'].str.replace(artifact, '')
 
         df.loc[mask, 'category'] = 'programming' # example
+        return df
 
     @staticmethod
-    def get_cleaned_duplicates(df: pd.DataFrame) -> None:
-        "Drops duplicates"
-        ###
-        df = df.drop(columns=['file_name']) # тестируется
-        ###
+    def get_cleaned_duplicates(df: pd.DataFrame) -> pd.DataFrame:
+        "Returns DataFrame cleaned of duplicates"
         df = df.drop_duplicates(subset=['text'], keep='first')
         return df
 
     @staticmethod
-    def get_cleaned_chunks(df: pd.DataFrame, splitter: RCTP) -> None:
-        "Converts DataFrame content into cleaned chunks"
+    def get_cleaned_chunks(df: pd.DataFrame, splitter: RCTP) -> pd.DataFrame:
+        "Returns DataFrame with content converted into cleaned chunks"
         df['chunks'] = df['text'].apply(lambda text: splitter.split_text(text))
         df_chunks = df.explode('chunks').reset_index(drop=True)
         df_chunks = df_chunks.rename(columns={'chunks': 'content'})

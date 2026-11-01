@@ -3,9 +3,10 @@ from json import load
 from sqlalchemy import create_engine, BigInteger, String, Text
 from sqlalchemy.engine import URL
 from pgvector.sqlalchemy import Vector
+from numpy import arange
+from time import perf_counter
 from cleaner import *
 from vectorizer import *
-from time import perf_counter
 
 st = perf_counter()
 print("Запуск")
@@ -33,51 +34,67 @@ try:
         port=config['DATABASE_PORT'],
         database=config['DB_NAME']
     ))
-    print("База данных подключена")
+    print("Подключено к базе данных")
 except Exception as e:
-    raise Exception(f"Ошибка подключения к базе данных: {e}")
+    raise Exception(f"Ошибка при подключении к базе данных: {e}")
 
-# Подготовка данных
 try:
     print("Очистка...")
     df = cleaner.get_df(config['DATA_DIR_PATH'])
     df = cleaner.get_basic_clean(df)
-    cleaner.clean_arxiv_artifacts(df)
-    cleaner.clean_biblioclub_artifacts(df)
+    df = cleaner.get_cleaned_arxiv_artifacts(df)
+    df = cleaner.get_cleaned_biblioclub_artifacts(df)
+    df = cleaner.get_basic_clean(df)
     df = cleaner.get_cleaned_duplicates(df)
     print("Очищено")
 except Exception as e:
-    raise Exception(f"Ошибка при очистке: {e}")
+    raise Exception(f"Ошибка при очистке данных: {e}")
+
+try:
+    print("Заполнение таблицы документов...")
+    df['text'].to_sql(
+        name=config['DOC_TABLE'],
+        con=engine,
+        if_exists='append',
+        index=False,
+        dtype={'text': Text()}
+    )
+    print("Готово")
+except Exception as e:
+    raise Exception(f"Ошибка при импорте документов: {e}")
+
+df = df.rename(columns={'file_name': 'document_id'})
+df['document_id'] = arange(1, len(df['document_id']) + 1)
 
 try:
     print("Векторизация...")
     df_chunks = cleaner.get_cleaned_chunks(df, vectorizer.get_splitter())
     df_embedded = vectorizer.get_embeddings(df_chunks)
     df_embedded['embedding'] = df_embedded['embedding'].apply(lambda v: str(v))
-    print("Векторизовано")
+    print("Векторизировано")
 except Exception as e:
-    raise Exception(f"Ошибка при создании эмбеддингов: {e}")
+    raise Exception(f"Ошибка при векторизации: {e}")
 
-# Импорт в базу данных
 dtype_mapping = {
     'document_id': BigInteger(),
     'content': Text(),
     'category': String(50),
-    'embedding': Vector(1024) # тестируется
+    'embedding': Vector(1024)
 }
 
 try:
-    print("Импорт ...")
+    print("Заполнение таблицы эмбеддингов...")
     df_chunks.to_sql(
-        name=config['DB_TABLE'],
+        name=config['VEC_TABLE'],
         con=engine,
         if_exists='append',
         index=False,
-        dtype=dtype_mapping
+        dtype=dtype_mapping,
+        chunksize=512
     )
-    print("Импорт завершён")
+    print("Готово")
 except Exception as e:
-    raise Exception(f"Ошибка при пополнении базы данных: {e}")
+    raise Exception(f"Ошибка при заполнении таблицы эмбеддингов: {e}")
 
 en = perf_counter()
-print(f"Готово, {en - st} сек")
+print(f"Завершено, {en - st} с")

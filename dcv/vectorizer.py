@@ -12,7 +12,7 @@ class DataVectorizer:
         return self.splitter
 
     @staticmethod
-    def get_embeddings(df_chunks: pd.DataFrame) -> None:
+    def get_embeddings(df_chunks: pd.DataFrame) -> pd.DataFrame:
         "Returns embedded DataFrame to a DataFrame"
         model = SentenceTransformer('BAAI/bge-m3')
         vectors = model.encode(df_chunks['content'].to_list(), show_progress_bar=True)
