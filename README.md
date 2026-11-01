@@ -8,3 +8,4 @@
 
 - [Телеграм бот](./tgbot/README.md)
 - [Парсер](./parser/README.md)
+- [Векторизатор](./dcv/README.md)

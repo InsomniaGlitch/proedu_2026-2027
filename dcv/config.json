@@ -1,0 +1,12 @@
+{
+    "DATA_DIR_PATH": "",
+    
+    "DBMS": "PostgreSQL",
+    "DATABASE_HOST": "localhost",
+    "DATABASE_PORT": 5432,
+    "DB_NAME": "",
+    "DB_TABLE": "",
+    "DB_LOGIN": "postgres",
+    "DB_PASSWORD": "",
+    "DRIVER": "psycopg"
+}
