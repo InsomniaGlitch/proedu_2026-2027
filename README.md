@@ -2,10 +2,10 @@
 
 ## Текущая структура
 
-![current_structure](./er_diagrams/cur_sustainability_course_db_erd.png)
+![current_structure](./database_state/er_diagrams/cur_sustainability_course_db_erd.png)
 
 ## Инструменты
 
 - [Телеграм бот](./tgbot/README.md)
 - [Парсер](./parser/README.md)
-- [Векторизатор](./dcv/README.md)
+- [DCV](./dcv/README.md)
