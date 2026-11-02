@@ -72,16 +72,17 @@ class DataCleaner:
         if not mask.any():
             return df
 
-        i = 0
-        artifact = ''
-        while 'мелко\nстандарт' not in artifact and i < len(df['text']):
-            first_str = df['text'].iloc[i]
-            artifact_idx = find_nth(first_str, ' ', 6)
-            artifact = first_str[:artifact_idx]
-            i += 1
-        if 'мелко\nстандарт' in artifact:
-            df.loc[mask, 'text'] = df.loc[mask, 'text'].str.replace(artifact, '')
+        def process_row(row):
+            row_str = row['text']
+            artifact_idx = find_nth(row_str, ' ', 6)
 
+            if artifact_idx == -1:
+                return row_str
+
+            artifact = row_str[:artifact_idx]
+            return row_str.replace(artifact, '')
+
+        df.loc[mask, 'text'] = df.loc[mask].apply(process_row, axis=1)
         df.loc[mask, 'category'] = 'programming' # example
         return df
 

@@ -1,3 +1,5 @@
+import gc
+import torch
 from os.path import dirname, abspath
 from json import load
 from sqlalchemy import create_engine, BigInteger, String, Text
@@ -9,21 +11,21 @@ from cleaner import *
 from vectorizer import *
 
 st = perf_counter()
-print("Запуск", flush=True)
+print("Started", flush=True)
 
 try:
     with open(f'{dirname(abspath(__file__))}/config.json', 'r', encoding='utf-8') as f:
         config = load(f)
 except Exception as e:
-    raise Exception(f"Ошибка чтения config.json: {e}")
+    raise Exception(f"Error reading config.json: {e}")
 
 try:
     cleaner = DataCleaner()
-    print("Клинер инициализирован", flush=True)
+    print("Cleaner initialized", flush=True)
     vectorizer = DataVectorizer()
-    print("Векторизатор инициализирован", flush=True)
+    print("Vectorizer initialized", flush=True)
 except Exception as e:
-    raise Exception(f"Ошибка инициализации модуля: {e}")
+    raise Exception(f"Module initializing error: {e}")
 
 try:
     engine = create_engine(URL.create(
@@ -34,24 +36,24 @@ try:
         port=config['DATABASE_PORT'],
         database=config['DB_NAME']
     ))
-    print("Подключено к базе данных", flush=True)
+    print("Connected to database", flush=True)
 except Exception as e:
-    raise Exception(f"Ошибка при подключении к базе данных: {e}")
+    raise Exception(f"Database connection error: {e}")
 
+print("Cleaning...", flush=True)
 try:
-    print("Очистка...", flush=True)
     df = cleaner.get_df(config['DATA_DIR_PATH'])
     df = cleaner.get_basic_clean(df)
     df = cleaner.get_cleaned_arxiv_artifacts(df)
     df = cleaner.get_cleaned_biblioclub_artifacts(df)
     df = cleaner.get_basic_clean(df)
     df = cleaner.get_cleaned_duplicates(df)
-    print("Очищено", flush=True)
+    print("Cleaned", flush=True)
 except Exception as e:
-    raise Exception(f"Ошибка при очистке данных: {e}")
+    raise Exception(f"Data cleaner failed: {e}")
 
+print("Populating documents' table...", flush=True)
 try:
-    print("Заполнение таблицы документов...", flush=True)
     df['text'].to_sql(
         name=config['DOC_TABLE'],
         con=engine,
@@ -59,42 +61,46 @@ try:
         index=False,
         dtype={'text': Text()}
     )
-    print("Готово", flush=True)
+    print("Done", flush=True)
 except Exception as e:
-    raise Exception(f"Ошибка при импорте документов: {e}")
+    raise Exception(f"Failed on documents' import: {e}")
 
 df = df.rename(columns={'file_name': 'document_id'})
 df['document_id'] = arange(1, len(df['document_id']) + 1)
 
-try:
-    print("Векторизация...", flush=True)
-    df_chunks = cleaner.get_cleaned_chunks(df, vectorizer.get_splitter())
-    df_embedded = vectorizer.get_embeddings(df_chunks)
-    df_embedded['embedding'] = df_embedded['embedding'].apply(lambda v: str(v))
-    print("Векторизировано", flush=True)
-except Exception as e:
-    raise Exception(f"Ошибка при векторизации: {e}")
+batch_rows = 10
+total_rows = len(df)
+cuda_available = torch.cuda.is_available()
 
-dtype_mapping = {
-    'document_id': BigInteger(),
-    'content': Text(),
-    'category': String(50),
-    'embedding': Vector(1024)
-}
-
+print("Vectorizing and populating databsase with chunks...", flush=True)
 try:
-    print("Заполнение таблицы эмбеддингов...", flush=True)
-    df_chunks.to_sql(
-        name=config['VEC_TABLE'],
-        con=engine,
-        if_exists='append',
-        index=False,
-        dtype=dtype_mapping,
-        chunksize=512
-    )
-    print("Готово", flush=True)
+    for i in range(0, total_rows, batch_rows):
+        print(f'{i / total_rows * 100:.1f}%', flush=True)
+        df_mini = df.iloc[i : i + batch_rows].copy()
+        df_chunks = cleaner.get_cleaned_chunks(df_mini, vectorizer.get_splitter())
+        df_embedded = vectorizer.get_embeddings(df_chunks, use_gpu=cuda_available)
+        
+        df_embedded.to_sql(
+            name=config['VEC_TABLE'],
+            con=engine,
+            if_exists='append',
+            index=False,
+            dtype={
+                'document_id': BigInteger(),
+                'content': Text(),
+                'category': String(50),
+                'embedding': Vector(1024)
+            }
+        )
+
+        del df_mini, df_chunks, df_embedded
+        gc.collect()
+        if cuda_available:
+            torch.cuda.empty_cache()
+        
+    print("Done", flush=True)
 except Exception as e:
-    raise Exception(f"Ошибка при заполнении таблицы эмбеддингов: {e}")
+    raise Exception(f"Vectorizing or populating failed: {e}")
 
 en = perf_counter()
-print(f"Завершено, {en - st} с")
+print(f"Finished, {en - st} s")
