@@ -24,16 +24,18 @@ class ArxivParser:
             urls = []
             for el in book_links:
                 href = await el.get_attribute('href')
-                if href:
+                if 'org/abs' in href:
                     urls.append(href)
+            print(f'Materials found: {len(urls)}')
             
-            tasks = [self._scrape_page(context, url) for url in urls[:1]]
+            tasks = [self._scrape_page(context, url) for url in urls]
             results = await asyncio.gather(*tasks)
 
-            c = 0
+            c = 1
             for res in results:
-                with open(f"{curdir}/parsed_data/arxiv_document_{c}.txt", 'x', encoding='utf-8') as f:
-                    f.write(res)
+                if res is not None:
+                    with open(f"{curdir}/parsed_data/arxiv_document_{c}.txt", 'x', encoding='utf-8') as f:
+                        f.write(res)
                 c += 1
 
             await browser.close()
@@ -41,10 +43,14 @@ class ArxivParser:
     @staticmethod
     async def _scrape_page(context, url):
         page = await context.new_page()
-        await page.goto(url, wait_until='domcontentloaded')
+        await page.goto(url, wait_until='domcontentloaded', timeout=60000)
         await page.wait_for_timeout(randint(900, 1100))
-        await page.get_by_text('HTML (experimental)').last.click()
-        text = await page.locator('body').inner_text()
+        text = None
+        try:
+            await page.get_by_text('HTML (experimental)').last.click()
+            text = await page.locator('body').inner_text()
+        except:
+            pass
         await page.close()
         return text
 
@@ -85,11 +91,12 @@ class BiblioclubParser:
                 href = await el.get_attribute('href')
                 if href:
                     urls.append(f'https://biblioclub.ru/{href}')
+            print(f'Materials found: {len(urls)}')
             
             tasks = [self._scrape_page(context, url) for url in urls]
             results = await asyncio.gather(*tasks)
             
-            c = 0
+            c = 1
             for res in results:
                 with open(
                     f"{curdir}/parsed_data/biblioclub_document_{c}.txt", 'x', encoding='utf-8'
