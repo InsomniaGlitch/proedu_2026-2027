@@ -9,7 +9,7 @@ from cleaner import *
 from vectorizer import *
 
 st = perf_counter()
-print("Запуск")
+print("Запуск", flush=True)
 
 try:
     with open(f'{dirname(abspath(__file__))}/config.json', 'r', encoding='utf-8') as f:
@@ -19,9 +19,9 @@ except Exception as e:
 
 try:
     cleaner = DataCleaner()
-    print("Клинер инициализирован")
+    print("Клинер инициализирован", flush=True)
     vectorizer = DataVectorizer()
-    print("Векторизатор инициализирован")
+    print("Векторизатор инициализирован", flush=True)
 except Exception as e:
     raise Exception(f"Ошибка инициализации модуля: {e}")
 
@@ -34,24 +34,24 @@ try:
         port=config['DATABASE_PORT'],
         database=config['DB_NAME']
     ))
-    print("Подключено к базе данных")
+    print("Подключено к базе данных", flush=True)
 except Exception as e:
     raise Exception(f"Ошибка при подключении к базе данных: {e}")
 
 try:
-    print("Очистка...")
+    print("Очистка...", flush=True)
     df = cleaner.get_df(config['DATA_DIR_PATH'])
     df = cleaner.get_basic_clean(df)
     df = cleaner.get_cleaned_arxiv_artifacts(df)
     df = cleaner.get_cleaned_biblioclub_artifacts(df)
     df = cleaner.get_basic_clean(df)
     df = cleaner.get_cleaned_duplicates(df)
-    print("Очищено")
+    print("Очищено", flush=True)
 except Exception as e:
     raise Exception(f"Ошибка при очистке данных: {e}")
 
 try:
-    print("Заполнение таблицы документов...")
+    print("Заполнение таблицы документов...", flush=True)
     df['text'].to_sql(
         name=config['DOC_TABLE'],
         con=engine,
@@ -59,7 +59,7 @@ try:
         index=False,
         dtype={'text': Text()}
     )
-    print("Готово")
+    print("Готово", flush=True)
 except Exception as e:
     raise Exception(f"Ошибка при импорте документов: {e}")
 
@@ -67,11 +67,11 @@ df = df.rename(columns={'file_name': 'document_id'})
 df['document_id'] = arange(1, len(df['document_id']) + 1)
 
 try:
-    print("Векторизация...")
+    print("Векторизация...", flush=True)
     df_chunks = cleaner.get_cleaned_chunks(df, vectorizer.get_splitter())
     df_embedded = vectorizer.get_embeddings(df_chunks)
     df_embedded['embedding'] = df_embedded['embedding'].apply(lambda v: str(v))
-    print("Векторизировано")
+    print("Векторизировано", flush=True)
 except Exception as e:
     raise Exception(f"Ошибка при векторизации: {e}")
 
@@ -83,7 +83,7 @@ dtype_mapping = {
 }
 
 try:
-    print("Заполнение таблицы эмбеддингов...")
+    print("Заполнение таблицы эмбеддингов...", flush=True)
     df_chunks.to_sql(
         name=config['VEC_TABLE'],
         con=engine,
@@ -92,7 +92,7 @@ try:
         dtype=dtype_mapping,
         chunksize=512
     )
-    print("Готово")
+    print("Готово", flush=True)
 except Exception as e:
     raise Exception(f"Ошибка при заполнении таблицы эмбеддингов: {e}")
 
