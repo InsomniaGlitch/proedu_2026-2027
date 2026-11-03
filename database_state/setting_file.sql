@@ -44,14 +44,22 @@ create table feedbacks(
 );
 ALTER TABLE documents DROP CONSTRAINT IF EXISTS uc_doc;
 
+create table review_runs(
+	uuid uuid not null primary key,
+ 	submission_id bigint not null constraint fk_submission_id references submissions(id) on delete cascade,
+ 	run_status text not null
+);
+create index idx_submission_id on review_runs(submission_id);
+
 create table reviews(
 	id bigint generated always as identity primary key,
-	submission_id bigint not null constraint fk_submission_id references submissions(id) on delete cascade,
+	run_uuid uuid not null constraint fk_run_uuid references review_runs(uuid) on delete cascade,
 	feedback_id bigint not null constraint fk_feedback_id references feedbacks(id) on delete cascade,
 	checklist_results jsonb not null,
-	created_at timestamptz default current_timestamp
+	created_at timestamptz default current_timestamp,
+	constraint uc_run_uuid
+		unique (run_uuid)
 );
-create index idx_submission_id on reviews(submission_id);
 create index idx_feedback_id on reviews(feedback_id);
 
 create table grades(
