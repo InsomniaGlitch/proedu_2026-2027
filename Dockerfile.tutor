@@ -1,0 +1,1 @@
+FROM langflowai/langflow:latest
