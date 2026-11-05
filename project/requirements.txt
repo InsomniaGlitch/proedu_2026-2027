@@ -1,0 +1,6 @@
+pyTelegramBotAPI
+requests
+psycopg2-binary
+python-dotenv
+PyPDF2
+python-docx
