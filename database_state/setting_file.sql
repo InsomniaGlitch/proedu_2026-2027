@@ -43,7 +43,6 @@ create table feedbacks(
 	id bigint generated always as identity primary key,
  	text text not null unique
 );
-ALTER TABLE documents DROP CONSTRAINT IF EXISTS uc_doc;
 
 create table review_runs(
 	uuid uuid not null primary key,
