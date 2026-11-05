@@ -8,7 +8,7 @@ create type status as enum ('on_check', 'needs_revision', 'approved');
 create table users(
 	id bigint generated always as identity primary key,
 	email varchar(320) not null constraint uc_email unique,
-	password varchar(20) not null,
+	password_hash varchar(64) not null, -- SHA-256
 	username varchar(255) not null,
 	role user_role not null,
 	telegram_id bigint null constraint uc_telegram_id unique
