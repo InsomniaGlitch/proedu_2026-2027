@@ -1,0 +1,14 @@
+services:
+  langflow:
+    image: tutor-langflow:local
+    build:
+      context: .
+      dockerfile: Dockerfile.tutor
+    env_file:
+      - .env.tutor
+    environment:
+      LANGFLOW_COMPONENTS_PATH: /app/langflow/custom_components
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./custom_components:/app/langflow/custom_components:ro
