@@ -1,4 +1,18 @@
-# Python-generated files
+# Секреты и локальные настройки
+.env
+.env.local
+.env.*.local
+.env.tutor
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+npm-debug.log*
+
+# Python (из исходной ветки tutor)
 __pycache__/
 *.py[oc]
 build/
@@ -8,3 +22,8 @@ wheels/
 
 # Virtual environments
 .venv
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
