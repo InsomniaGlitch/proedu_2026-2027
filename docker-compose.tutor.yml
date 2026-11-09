@@ -4,8 +4,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.tutor
+    # Единый .env (см. .env.example). Старый .env.tutor по-прежнему подхватывается, если есть.
     env_file:
-      - .env.tutor
+      - path: .env
+        required: false
+      - path: .env.tutor
+        required: false
     environment:
       LANGFLOW_COMPONENTS_PATH: /app/langflow/custom_components
     extra_hosts:
