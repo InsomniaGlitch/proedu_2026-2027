@@ -4,7 +4,12 @@ set -Eeuo pipefail
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 COMPOSE_FILE="${SCRIPT_DIR}/docker-compose.yml"
 TUTOR_COMPOSE_FILE="${SCRIPT_DIR}/docker-compose.tutor.yml"
-ENV_FILE="${SCRIPT_DIR}/.env.tutor"
+# Единый файл настроек: .env (общий для Docker Compose, этого скрипта и фронтенда).
+# Для обратной совместимости поддерживается старый .env.tutor.
+ENV_FILE="${SCRIPT_DIR}/.env"
+if [[ ! -f "$ENV_FILE" && -f "${SCRIPT_DIR}/.env.tutor" ]]; then
+    ENV_FILE="${SCRIPT_DIR}/.env.tutor"
+fi
 
 fail() {
     printf 'E: %s\n' "$*" >&2
@@ -25,7 +30,7 @@ read_env() {
 
 [[ -f "$COMPOSE_FILE" ]] || fail "Не найден $COMPOSE_FILE"
 [[ -f "$TUTOR_COMPOSE_FILE" ]] || fail "Не найден $TUTOR_COMPOSE_FILE"
-[[ -f "$ENV_FILE" ]] || fail "Не найден $ENV_FILE"
+[[ -f "$ENV_FILE" ]] || fail "Не найден файл настроек .env. Выполните: cp .env.example .env"
 [[ -f "${SCRIPT_DIR}/custom_components/postgres_course_search.py" ]] ||
     fail "Не найден компонент PostgreSQL Course Search."
 
@@ -53,11 +58,11 @@ COMPOSE_NETWORK="${COMPOSE_NETWORK:-${PROJECT}_default}"
 
 for key in TUTOR_DB_HOST TUTOR_DB_NAME TUTOR_DB_USER \
            TUTOR_DB_PASSWORD_B64 OLLAMA_BASE_URL OLLAMA_EMBEDDING_MODEL; do
-    [[ -n "$(read_env "$key")" ]] || fail "В .env.tutor не задан $key"
+    [[ -n "$(read_env "$key")" ]] || fail "В файле настроек ($(basename "$ENV_FILE")) не задан $key"
 done
 
 if [[ "$DB_CONTAINER" == YOUR_* ]]; then
-    fail "Замени TUTOR_DB_CONTAINER в .env.tutor на имя своего PostgreSQL-контейнера."
+    fail "Замени TUTOR_DB_CONTAINER в .env на имя своего PostgreSQL-контейнера."
 fi
 
 DOCKER=()
