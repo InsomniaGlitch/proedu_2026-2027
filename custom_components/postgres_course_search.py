@@ -1,6 +1,7 @@
 import base64
 import logging
 import os
+import re
 import time
 
 import psycopg
@@ -20,7 +21,19 @@ from lfx.base.models.unified_models import (
 logger = logging.getLogger(__name__)
 
 VECTOR_DIMENSION = 1024
-TABLE = "public.document_chunks"
+
+# Схема базы sustainability_course_db (ветка database):
+#   documents(id, text, filename)
+#   document_chunks(id, document_id -> documents.id, content, category, embedding)
+CHUNKS_TABLE = "public.document_chunks"
+DOCUMENTS_TABLE = "public.documents"
+
+# Расширения файлов, которые не нужно показывать студенту в названии.
+FILE_EXTENSION_RE = re.compile(
+    r"\.(?:txt|md|pdf|docx?|html?|rtf)$",
+    re.IGNORECASE,
+)
+MAX_TITLE_LENGTH = 200
 
 
 def required_setting(name: str) -> str:
@@ -82,6 +95,48 @@ def database_password() -> str:
         raise RuntimeError(
             "TUTOR_DB_PASSWORD_B64 must contain valid UTF-8 Base64 data."
         ) from exc
+
+
+def document_title(filename) -> str:
+    """
+    Build a display title from documents.filename.
+
+    The result goes into a one-line chunk header that is parsed by
+    sources_formatter.py, so control characters and square brackets
+    are removed. An empty string means "title unknown".
+    """
+    if filename is None:
+        return ""
+
+    title = str(filename)
+    title = re.sub(r"[\x00-\x1f\x7f]+", " ", title)
+    title = re.sub(r"\s+", " ", title).strip()
+    title = FILE_EXTENSION_RE.sub("", title).strip()
+    title = title.replace("[", "(").replace("]", ")")
+
+    if len(title) > MAX_TITLE_LENGTH:
+        title = title[: MAX_TITLE_LENGTH - 1].rstrip() + "…"
+
+    return title
+
+
+def chunk_header(rank, document_id, chunk_id, distance, title) -> str:
+    """
+    Header of one chunk passed to the agent.
+
+    This format is a contract with sources_formatter.py (HEADER_RE):
+    change both files together. document_title is optional there.
+    """
+    header = (
+        f"[{rank}; document_id={document_id}; "
+        f"chunk_id={chunk_id}; "
+        f"cosine_distance={distance:.4f}"
+    )
+
+    if title:
+        header += f"; document_title={title}"
+
+    return header + "]"
 
 
 class PostgresCourseSearch(Component):
@@ -197,17 +252,22 @@ class PostgresCourseSearch(Component):
             format(float(value), ".9g") for value in embedding
         ) + "]"
 
+        # LEFT JOIN: чанк не должен пропадать, даже если для него нет
+        # записи в documents. documents.text (весь документ) не выбираем.
         sql = f"""
             SELECT
-                id,
-                document_id,
-                content,
-                embedding <=> %s::vector AS distance
-            FROM {TABLE}
-            WHERE embedding IS NOT NULL
-              AND content IS NOT NULL
-              AND btrim(content) <> ''
-            ORDER BY embedding <=> %s::vector
+                c.id,
+                c.document_id,
+                d.filename,
+                c.content,
+                c.embedding <=> %s::vector AS distance
+            FROM {CHUNKS_TABLE} AS c
+            LEFT JOIN {DOCUMENTS_TABLE} AS d
+                ON d.id = c.document_id
+            WHERE c.embedding IS NOT NULL
+              AND c.content IS NOT NULL
+              AND btrim(c.content) <> ''
+            ORDER BY c.embedding <=> %s::vector
             LIMIT %s
         """
 
@@ -229,28 +289,47 @@ class PostgresCourseSearch(Component):
             application_name="TutorRAG",
         ) as conn:
             conn.execute("SET TRANSACTION READ ONLY")
-            rows = conn.execute(sql, (vector, vector, top_k)).fetchall()
+
+            try:
+                rows = conn.execute(sql, (vector, vector, top_k)).fetchall()
+            except (
+                psycopg.errors.UndefinedTable,
+                psycopg.errors.UndefinedColumn,
+            ) as exc:
+                raise RuntimeError(
+                    "Схема базы не подходит компоненту: ожидаются таблицы "
+                    f"{CHUNKS_TABLE}(id, document_id, content, embedding) и "
+                    f"{DOCUMENTS_TABLE}(id, filename). "
+                    "См. docs/DATABASE_REPLACEMENT.md. "
+                    f"Ошибка PostgreSQL: {exc}"
+                ) from exc
 
         db_ms = (time.perf_counter() - db_started) * 1000
         total_ms = (time.perf_counter() - total_started) * 1000
 
         accepted = []
 
-        for rank, (chunk_id, document_id, content, distance) in enumerate(
-            rows, 1
-        ):
+        for rank, (
+            chunk_id,
+            document_id,
+            filename,
+            content,
+            distance,
+        ) in enumerate(rows, 1):
             if distance is None:
                 continue
 
             distance = float(distance)
 
             if distance <= threshold:
-                accepted.append(
-                    f"[{rank}; document_id={document_id}; "
-                    f"chunk_id={chunk_id}; "
-                    f"cosine_distance={distance:.4f}]\n"
-                    f"{content}"
+                header = chunk_header(
+                    rank,
+                    document_id,
+                    chunk_id,
+                    distance,
+                    document_title(filename),
                 )
+                accepted.append(f"{header}\n{content}")
 
         logger.info(
             "Tutor RAG timings: embedding_ms=%.1f db_ms=%.1f "
