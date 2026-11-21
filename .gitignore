@@ -27,3 +27,6 @@ wheels/
 .DS_Store
 .idea/
 .vscode/
+
+# Дампы БД (хранятся в ветке database, не коммитить в tutor)
+*.dump
