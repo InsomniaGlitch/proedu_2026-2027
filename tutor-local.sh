@@ -233,11 +233,23 @@ try:
         row = conn.execute(
             "SELECT current_database(), current_user"
         ).fetchone()
+        # Те же таблицы и поля, что использует компонент поиска:
+        # чанки + названия документов (documents.filename).
         conn.execute(
-            "SELECT id FROM public.document_chunks LIMIT 1"
+            "SELECT c.id, c.document_id, d.filename "
+            "FROM public.document_chunks AS c "
+            "LEFT JOIN public.documents AS d ON d.id = c.document_id "
+            "LIMIT 1"
+        ).fetchone()
+        counts = conn.execute(
+            "SELECT (SELECT count(*) FROM public.documents), "
+            "(SELECT count(*) FROM public.document_chunks)"
         ).fetchone()
 
-    print(f"PostgreSQL доступен: database={row[0]}, user={row[1]}")
+    print(
+        f"PostgreSQL доступен: database={row[0]}, user={row[1]}, "
+        f"documents={counts[0]}, document_chunks={counts[1]}"
+    )
 except Exception as exc:
     print(f"Проверка PostgreSQL не прошла: {type(exc).__name__}: {exc}", file=sys.stderr)
     raise SystemExit(1)
