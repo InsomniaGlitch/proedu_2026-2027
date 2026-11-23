@@ -16,7 +16,7 @@ class DataCleaner:
         data = []
         for path in file_paths:
             with open(f'{data_absolute_path}\\{path}', 'r', encoding='utf-8') as f:
-                data.append({'file_name': path, 'text': f.read()})
+                data.append({'filename': path, 'text': f.read()})
     
         return pd.DataFrame(data)
 
@@ -34,7 +34,7 @@ class DataCleaner:
     @staticmethod
     def get_cleaned_arxiv_artifacts(df: pd.DataFrame) -> pd.DataFrame:
         "Returns DataFrame cleaned of arXiv artifacts"
-        mask = df['file_name'].str.contains('arxiv', na=False)
+        mask = df['filename'].str.contains('arxiv', na=False)
         if not mask.any():
             return df
         
@@ -68,7 +68,7 @@ class DataCleaner:
                 n -= 1
             return start
 
-        mask = df['file_name'].str.contains('biblioclub', na=False)
+        mask = df['filename'].str.contains('biblioclub', na=False)
         if not mask.any():
             return df
 
