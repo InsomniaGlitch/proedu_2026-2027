@@ -78,6 +78,7 @@ create index idx_grading_user on grades(graded_by);
 
 create table documents(
 	id bigint generated always as identity primary key,
+	filename varchar(260) not null,
  	text text
 );
 create index doc_hash on documents (md5(text));
