@@ -250,7 +250,7 @@ class SourcesFormatter(Component):
 
         sources_block = (
             "---\n"
-            "#### Материалы курса\n"
+            "## ✏️ Материалы курса\n"
             f"Ответ составлен на основе учебного пособия: "
             f"[{TEXTBOOK_CITATION}]({TEXTBOOK_CARD_URL})\n\n"
             f"**Разделы для изучения:**\n{sources_lines}"
