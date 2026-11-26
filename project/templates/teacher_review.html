@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Проверка работы №{{ work_id }}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="logo-area">
+        <svg viewBox="0 0 24 24" width="42" height="42" fill="#1d4ed8">
+          <path d="M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3ZM18.82 9L12 12.72L5.18 9L12 5.28L18.82 9ZM17 15.99L12 18.72L7 15.99V12.27L12 15L17 12.27V15.99Z"/>
+        </svg>
+      </div>
+      <nav class="nav-menu">
+        <a href="/teacher/dashboard" class="nav-item">
+          <span class="icon">🏠</span> Главная
+        </a>
+        <a href="/teacher/queue" class="nav-item active" aria-current="page">
+          <span class="icon">📋</span> Очередь проверки
+        </a>
+        <a href="/teacher/students" class="nav-item">
+          <span class="icon">👥</span> Студенты
+        </a>
+      </nav>
+      <div class="nav-bottom">
+        <a href="/login" onclick="logout(event)" class="nav-item">
+          <span class="icon">🚪</span> Выйти
+        </a>
+      </div>
+    </aside>
+
+    <main class="main-content review-main">
+      <header class="content-header">
+        <h1>Проверка работы №{{ work_id }}</h1>
+        <p class="role-label">Здравствуйте, {{ username }}! Студент: {{ student }} · Статус: {{ status }}</p>
+      </header>
+
+      <div class="review-workspace">
+        <section class="review-document" aria-labelledby="document-heading">
+          <h2 id="document-heading">Текст работы студента</h2>
+          <article class="document-text">
+            <h3>{{ submission.filename }}</h3>
+            {% if submission.content %}
+              <pre>{{ submission.content }}</pre>
+            {% else %}
+              <p>Текст работы недоступен. Возможно, это запись, созданная до сохранения содержимого.</p>
+            {% endif %}
+          </article>
+        </section>
+
+        <section class="review-verdicts" aria-labelledby="verdicts-heading">
+          <h2 id="verdicts-heading">Вердикты ИИ</h2>
+          <p>Автоматический анализ для этой работы пока не выполнен.</p>
+        </section>
+      </div>
+
+      <form id="review-decision-form" class="review-decision" data-submission-id="{{ work_id }}">
+        <label for="review-comment">Комментарий преподавателя</label>
+        <textarea id="review-comment" name="comment" rows="3" placeholder="Напишите комментарий студенту..."></textarea>
+        <div class="review-actions">
+          <button class="btn btn-green" type="submit" data-decision="approved">Допустить</button>
+          <button class="btn btn-revision" type="submit" data-decision="revision">На доработку</button>
+        </div>
+        <p id="review-message" class="submission-message" role="status" aria-live="polite"></p>
+      </form>
+    </main>
+  </div>
+  <script>
+    function logout(event) {
+      event.preventDefault();
+      fetch("/api/logout").then(() => window.location.href = "/login");
+    }
+  </script>
+  <script src="/static/teacher_review.js"></script>
+</body>
+</html>

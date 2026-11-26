@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Регистрация</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="login-page">
+    <section class="card">
+      <h1>Регистрация</h1>
+      <p class="subtitle">Создайте аккаунт студента</p>
+
+      <form id="register-form">
+        <div class="field">
+          <input id="username" name="username" type="text" placeholder="Придумайте логин" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <input id="password" name="password" type="password" placeholder="Придумайте пароль" autocomplete="new-password" required>
+        </div>
+        <div class="field">
+          <input id="password-confirm" name="password-confirm" type="password" placeholder="Повторите пароль" autocomplete="new-password" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+        <button type="button" class="btn btn-outline" onclick="window.location.href='/login'">У меня уже есть аккаунт</button>
+      </form>
+    </section>
+  </main>
+  <script src="/static/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Чат с Tutor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="logo-area">
+        <svg viewBox="0 0 24 24" width="42" height="42" fill="#1d4ed8">
+          <path d="M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3ZM18.82 9L12 12.72L5.18 9L12 5.28L18.82 9ZM17 15.99L12 18.72L7 15.99V12.27L12 15L17 12.27V15.99Z"/>
+        </svg>
+      </div>
+      <nav class="nav-menu">
+        <a href="/dashboard" class="nav-item">
+          <span class="icon">🏠</span> Главная
+        </a>
+        <a href="/chat" class="nav-item active" aria-current="page">
+          <span class="icon">💬</span> Чат с Tutor
+        </a>
+        <a href="/submissions" class="nav-item">
+          <span class="icon">📄</span> Загрузка работы
+        </a>
+      </nav>
+      <div class="nav-bottom">
+        <a href="/login" onclick="logout(event)" class="nav-item">
+          <span class="icon">🚪</span> Выйти
+        </a>
+      </div>
+    </aside>
+
+    <main class="main-content chat-main">
+      <header class="content-header">
+        <h1>Чат с Tutor</h1>
+        <p class="role-label">Здравствуйте, {{ username }}! Задайте вопрос помощнику.</p>
+      </header>
+
+      <section class="chat-panel" aria-label="Чат с демо-помощником">
+        <div id="chat-messages" class="chat-messages" role="log" aria-live="polite" aria-relevant="additions">
+          {% if history %}
+            {% for message in history %}
+            <div class="chat-message {{ message.sender }}-message">
+              <p>{{ message.text }}</p>
+            </div>
+            {% endfor %}
+          {% else %}
+            <div class="chat-message bot-message">
+              <p>Здравствуйте! Я ваш ИИ-помощник по курсу «Устойчивое развитие». Могу объяснить сложные термины, помочь с планом кейса или подсказать, где искать информацию. Чем я могу вам помочь?</p>
+            </div>
+          {% endif %}
+        </div>
+        <form id="chat-form" class="chat-form">
+          <label class="visually-hidden" for="chat-input">Ваше сообщение</label>
+          <textarea id="chat-input" name="message" rows="1" placeholder="Напишите сообщение..." required></textarea>
+          <button class="btn btn-blue" type="submit">Отправить</button>
+        </form>
+        <p id="chat-status" class="chat-status" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+  </div>
+  <script>
+    function logout(event) {
+      event.preventDefault();
+      fetch("/api/logout").then(() => window.location.href = "/login");
+    }
+  </script>
+  <script src="/static/chat.js"></script>
+</body>
+</html>

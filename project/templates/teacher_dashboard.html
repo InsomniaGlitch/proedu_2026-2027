@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная - Преподаватель</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="logo-area">
+        <svg viewBox="0 0 24 24" width="42" height="42" fill="#1d4ed8">
+          <path d="M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3ZM18.82 9L12 12.72L5.18 9L12 5.28L18.82 9ZM17 15.99L12 18.72L7 15.99V12.27L12 15L17 12.27V15.99Z"/>
+        </svg>
+      </div>
+      <nav class="nav-menu">
+        <a href="/teacher/dashboard" class="nav-item active">
+          <span class="icon">🏠</span> Главная
+        </a>
+        <a href="/teacher/queue" class="nav-item">
+          <span class="icon">📋</span> Очередь проверки
+        </a>
+        <a href="/teacher/students" class="nav-item">
+          <span class="icon">👥</span> Студенты
+        </a>
+      </nav>
+      <div class="nav-bottom">
+        <a href="/login" onclick="logout(event)" class="nav-item">
+          <span class="icon">🚪</span> Выйти
+        </a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="content-header">
+        <h1>Панель преподавателя</h1>
+        <p class="role-label">Добро пожаловать, {{ username }}!</p>
+      </header>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value" style="color: #f59e0b;">{{ on_review|default(0) }}</div>
+          <div class="stat-label">На проверке</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" style="color: #ef4444;">{{ need_revision|default(0) }}</div>
+          <div class="stat-label">На доработке</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" style="color: #22c55e;">{{ reviewed|default(0) }}</div>
+          <div class="stat-label">Проверено</div>
+        </div>
+      </div>
+
+      <div class="cards-grid" style="margin-top: 2rem;">
+        <div class="action-card">
+          <div class="card-icon" style="font-size: 4rem;">📋</div>
+          <h2>Очередь проверки</h2>
+          <p>Перейдите к списку работ студентов, ожидающих вашей проверки</p>
+          <a href="/teacher/queue" class="btn btn-blue">Открыть очередь</a>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script>
+    function logout(e) {
+      e.preventDefault();
+      fetch('/api/logout').then(() => window.location.href = '/login');
+    }
+  </script>
+</body>
+</html>
