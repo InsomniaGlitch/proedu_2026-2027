@@ -2,7 +2,7 @@
 
 Веб-интерфейс чата с ИИ-помощником Tutor на **Next.js 16 (App Router) + React 19 + Tailwind CSS 4**. Работает с реальным Langflow-потоком `flow/tutor-flow.json`.
 
-> Общее описание проекта, настройка Langflow, Ollama, базы данных и gpt2giga — в [корневом `README.md`](../README.md). Здесь — только то, что относится к фронтенду.
+> Общее описание проекта, настройка Langflow, эмбеддингов, базы данных и gpt2giga — в [корневом `README.md`](../README.md). Здесь — только то, что относится к фронтенду.
 
 ## Содержание
 
@@ -27,6 +27,7 @@ sequenceDiagram
     participant B as Браузер (/tutor)
     participant N as Next.js (сервер)
     participant L as Langflow
+
     B->>N: POST /api/tutor/chat (message, sessionId, userId)
     Note over N: валидация, ключ API<br/>берётся из .env
     N->>L: POST /api/v1/run/FLOW_ID<br/>x-api-key, input_value, session_id
@@ -43,12 +44,13 @@ sequenceDiagram
 
 ## Быстрый старт
 
-Нужно: **Node.js 20.9+**, Docker, запущенные Ollama и языковая модель (gpt2giga) — см. [README](../README.md#требования).
+Нужно: **Node.js 20.9+**, Docker, настроенные эмбеддинги (API или Ollama) и языковая модель (gpt2giga) — см. [README](../README.md#требования).
 
 ```bash
 # 1. Единый файл настроек (общий для фронтенда, Docker Compose и tutor-local.sh)
 cp .env.example .env                 # Windows PowerShell: Copy-Item .env.example .env
-#    заполните LANGFLOW_SUPERUSER_PASSWORD и TUTOR_DB_* / OLLAMA_* (см. README)
+#    заполните LANGFLOW_SUPERUSER_PASSWORD, TUTOR_DB_*
+#    и эмбеддинги: TUTOR_EMBEDDINGS_* (режим api) или OLLAMA_* (режим ollama) — см. README
 #    LANGFLOW_API_KEY и TUTOR_FLOW_ID заполните на шаге 3
 
 # 2. Запуск Langflow
@@ -217,6 +219,7 @@ npm run build && npm start           # порт по умолчанию 3000; д
 ```
 POST <LANGFLOW_URL>/api/v1/run/<TUTOR_FLOW_ID>
 x-api-key: <LANGFLOW_API_KEY>
+
 { "input_value": "<текст>", "input_type": "chat", "output_type": "chat", "session_id": "<sessionId>" }
 ```
 
@@ -233,7 +236,7 @@ x-api-key: <LANGFLOW_API_KEY>
 | `unauthorized`   | 502  | Langflow ответил 401/403 — неверный `LANGFLOW_API_KEY`                |
 | `not_found`      | 502  | Langflow ответил 404 — неверный `TUTOR_FLOW_ID`                       |
 | `rate_limited`   | 429  | Langflow ответил 429                                                  |
-| `upstream`       | 502  | другая ошибка Langflow/модели/БД или ответ не JSON                    |
+| `upstream`       | 502  | другая ошибка Langflow/модели/эмбеддингов/БД или ответ не JSON        |
 | `empty_response` | 502  | Langflow ответил, но текста нет                                       |
 | `aborted`        | 499  | запрос отменён пользователем                                          |
 | `network`        |  —   | только на клиенте: нет связи браузера с Next.js                       |
@@ -341,7 +344,7 @@ src/
 | «Требуется настройка»                              | не заполнен `TUTOR_FLOW_ID` (или в нём осталась заглушка `YOUR_...`)                                                                                                                           |
 | «Нет доступа к сервису Tutor»                      | неверный или пустой `LANGFLOW_API_KEY`                                                                                                                                                         |
 | «Сценарий Tutor не найден»                         | неверный `TUTOR_FLOW_ID` — после повторного импорта Flow ID меняется                                                                                                                           |
-| «Tutor не смог обработать запрос»                  | смотрите `docker compose logs -f langflow`: чаще всего недоступны gpt2giga, Ollama или БД; в логах Next.js — строка `[tutor] Langflow responded …`                                             |
+| «Tutor не смог обработать запрос»                  | смотрите `docker compose logs -f langflow`: чаще всего недоступны gpt2giga, сервер эмбеддингов (или Ollama) или БД; в логах Next.js — строка `[tutor] Langflow responded …`                    |
 | «Tutor вернул пустой ответ»                        | ни один Chat Output не вернул текст — проверьте выполнение Flow в Playground                                                                                                                   |
 | Ответ не приходит долго                            | первый запрос к модели медленный; лимит — `TUTOR_REQUEST_TIMEOUT_MS`                                                                                                                           |
 | Правка `.env` не применилась                       | перезапустите `npm run dev` / `npm start`; для `NEXT_PUBLIC_COURSE_NAME` в production — ещё и `npm run build`                                                                                  |
