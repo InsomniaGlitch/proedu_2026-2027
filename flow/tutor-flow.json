@@ -7,7 +7,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "Prompt Template",
-            "id": "Prompt Template-wpMtf",
+            "id": "Prompt Template-aBLUj",
             "name": "prompt",
             "output_types": [
               "Message"
@@ -15,19 +15,19 @@
           },
           "targetHandle": {
             "fieldName": "input_value",
-            "id": "Agent-G9S6E",
+            "id": "Agent-kDf29",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__Prompt Template-wpMtf{œdataTypeœ:œPrompt Templateœ,œidœ:œPrompt Template-wpMtfœ,œnameœ:œpromptœ,œoutput_typesœ:[œMessageœ]}-Agent-G9S6E{œfieldNameœ:œinput_valueœ,œidœ:œAgent-G9S6Eœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-Prompt Template-aBLUj{œdataTypeœ:œPrompt Templateœ,œidœ:œPrompt Template-aBLUjœ,œnameœ:œpromptœ,œoutput_typesœ:[œMessageœ]}-Agent-kDf29{œfieldNameœ:œinput_valueœ,œidœ:œAgent-kDf29œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "Prompt Template-wpMtf",
-        "sourceHandle": "{œdataTypeœ:œPrompt Templateœ,œidœ:œPrompt Template-wpMtfœ,œnameœ:œpromptœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "Agent-G9S6E",
-        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œAgent-G9S6Eœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "Prompt Template-aBLUj",
+        "sourceHandle": "{œdataTypeœ:œPrompt Templateœ,œidœ:œPrompt Template-aBLUjœ,œnameœ:œpromptœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "Agent-kDf29",
+        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œAgent-kDf29œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -35,7 +35,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "Prompt Template",
-            "id": "Prompt Template-C4wK8",
+            "id": "Prompt Template-mBFgU",
             "name": "prompt",
             "output_types": [
               "Message"
@@ -43,19 +43,19 @@
           },
           "targetHandle": {
             "fieldName": "input_value",
-            "id": "LanguageModelComponent-ocfaR",
+            "id": "LanguageModelComponent-PvTNC",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__Prompt Template-C4wK8{œdataTypeœ:œPrompt Templateœ,œidœ:œPrompt Template-C4wK8œ,œnameœ:œpromptœ,œoutput_typesœ:[œMessageœ]}-LanguageModelComponent-ocfaR{œfieldNameœ:œinput_valueœ,œidœ:œLanguageModelComponent-ocfaRœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-Prompt Template-mBFgU{œdataTypeœ:œPrompt Templateœ,œidœ:œPrompt Template-mBFgUœ,œnameœ:œpromptœ,œoutput_typesœ:[œMessageœ]}-LanguageModelComponent-PvTNC{œfieldNameœ:œinput_valueœ,œidœ:œLanguageModelComponent-PvTNCœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "Prompt Template-C4wK8",
-        "sourceHandle": "{œdataTypeœ:œPrompt Templateœ,œidœ:œPrompt Template-C4wK8œ,œnameœ:œpromptœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "LanguageModelComponent-ocfaR",
-        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œLanguageModelComponent-ocfaRœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "Prompt Template-mBFgU",
+        "sourceHandle": "{œdataTypeœ:œPrompt Templateœ,œidœ:œPrompt Template-mBFgUœ,œnameœ:œpromptœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "LanguageModelComponent-PvTNC",
+        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œLanguageModelComponent-PvTNCœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -63,7 +63,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "PostgresCourseSearch",
-            "id": "PostgresCourseSearch-is23N",
+            "id": "PostgresCourseSearch-GyHXt",
             "name": "sufficient_context",
             "output_types": [
               "Message"
@@ -71,19 +71,19 @@
           },
           "targetHandle": {
             "fieldName": "context",
-            "id": "Prompt Template-wpMtf",
+            "id": "Prompt Template-aBLUj",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__PostgresCourseSearch-is23N{œdataTypeœ:œPostgresCourseSearchœ,œidœ:œPostgresCourseSearch-is23Nœ,œnameœ:œsufficient_contextœ,œoutput_typesœ:[œMessageœ]}-Prompt Template-wpMtf{œfieldNameœ:œcontextœ,œidœ:œPrompt Template-wpMtfœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-PostgresCourseSearch-GyHXt{œdataTypeœ:œPostgresCourseSearchœ,œidœ:œPostgresCourseSearch-GyHXtœ,œnameœ:œsufficient_contextœ,œoutput_typesœ:[œMessageœ]}-Prompt Template-aBLUj{œfieldNameœ:œcontextœ,œidœ:œPrompt Template-aBLUjœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "PostgresCourseSearch-is23N",
-        "sourceHandle": "{œdataTypeœ:œPostgresCourseSearchœ,œidœ:œPostgresCourseSearch-is23Nœ,œnameœ:œsufficient_contextœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "Prompt Template-wpMtf",
-        "targetHandle": "{œfieldNameœ:œcontextœ,œidœ:œPrompt Template-wpMtfœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "PostgresCourseSearch-GyHXt",
+        "sourceHandle": "{œdataTypeœ:œPostgresCourseSearchœ,œidœ:œPostgresCourseSearch-GyHXtœ,œnameœ:œsufficient_contextœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "Prompt Template-aBLUj",
+        "targetHandle": "{œfieldNameœ:œcontextœ,œidœ:œPrompt Template-aBLUjœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -91,7 +91,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "PostgresCourseSearch",
-            "id": "PostgresCourseSearch-is23N",
+            "id": "PostgresCourseSearch-GyHXt",
             "name": "insufficient_context",
             "output_types": [
               "Message"
@@ -99,7 +99,7 @@
           },
           "targetHandle": {
             "fieldName": "input_value",
-            "id": "ChatOutput-GS5pG",
+            "id": "ChatOutput-lurny",
             "inputTypes": [
               "Data",
               "JSON",
@@ -110,12 +110,12 @@
             "type": "other"
           }
         },
-        "id": "xy-edge__PostgresCourseSearch-is23N{œdataTypeœ:œPostgresCourseSearchœ,œidœ:œPostgresCourseSearch-is23Nœ,œnameœ:œinsufficient_contextœ,œoutput_typesœ:[œMessageœ]}-ChatOutput-GS5pG{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-GS5pGœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}",
+        "id": "reactflow__edge-PostgresCourseSearch-GyHXt{œdataTypeœ:œPostgresCourseSearchœ,œidœ:œPostgresCourseSearch-GyHXtœ,œnameœ:œinsufficient_contextœ,œoutput_typesœ:[œMessageœ]}-ChatOutput-lurny{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-lurnyœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}",
         "selected": false,
-        "source": "PostgresCourseSearch-is23N",
-        "sourceHandle": "{œdataTypeœ:œPostgresCourseSearchœ,œidœ:œPostgresCourseSearch-is23Nœ,œnameœ:œinsufficient_contextœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "ChatOutput-GS5pG",
-        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-GS5pGœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}"
+        "source": "PostgresCourseSearch-GyHXt",
+        "sourceHandle": "{œdataTypeœ:œPostgresCourseSearchœ,œidœ:œPostgresCourseSearch-GyHXtœ,œnameœ:œinsufficient_contextœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "ChatOutput-lurny",
+        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-lurnyœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}"
       },
       {
         "animated": false,
@@ -123,7 +123,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "LanguageModelComponent",
-            "id": "LanguageModelComponent-ocfaR",
+            "id": "LanguageModelComponent-PvTNC",
             "name": "text_output",
             "output_types": [
               "Message"
@@ -131,19 +131,19 @@
           },
           "targetHandle": {
             "fieldName": "query",
-            "id": "PostgresCourseSearch-is23N",
+            "id": "PostgresCourseSearch-GyHXt",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__LanguageModelComponent-ocfaR{œdataTypeœ:œLanguageModelComponentœ,œidœ:œLanguageModelComponent-ocfaRœ,œnameœ:œtext_outputœ,œoutput_typesœ:[œMessageœ]}-PostgresCourseSearch-is23N{œfieldNameœ:œqueryœ,œidœ:œPostgresCourseSearch-is23Nœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-LanguageModelComponent-PvTNC{œdataTypeœ:œLanguageModelComponentœ,œidœ:œLanguageModelComponent-PvTNCœ,œnameœ:œtext_outputœ,œoutput_typesœ:[œMessageœ]}-PostgresCourseSearch-GyHXt{œfieldNameœ:œqueryœ,œidœ:œPostgresCourseSearch-GyHXtœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "LanguageModelComponent-ocfaR",
-        "sourceHandle": "{œdataTypeœ:œLanguageModelComponentœ,œidœ:œLanguageModelComponent-ocfaRœ,œnameœ:œtext_outputœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "PostgresCourseSearch-is23N",
-        "targetHandle": "{œfieldNameœ:œqueryœ,œidœ:œPostgresCourseSearch-is23Nœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "LanguageModelComponent-PvTNC",
+        "sourceHandle": "{œdataTypeœ:œLanguageModelComponentœ,œidœ:œLanguageModelComponent-PvTNCœ,œnameœ:œtext_outputœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "PostgresCourseSearch-GyHXt",
+        "targetHandle": "{œfieldNameœ:œqueryœ,œidœ:œPostgresCourseSearch-GyHXtœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -151,7 +151,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "SourcesFormatter",
-            "id": "SourcesFormatter-yxRNG",
+            "id": "SourcesFormatter-JgZv2",
             "name": "response",
             "output_types": [
               "Message"
@@ -159,7 +159,7 @@
           },
           "targetHandle": {
             "fieldName": "input_value",
-            "id": "ChatOutput-kJPRR",
+            "id": "ChatOutput-9jQFv",
             "inputTypes": [
               "Data",
               "JSON",
@@ -170,12 +170,12 @@
             "type": "other"
           }
         },
-        "id": "xy-edge__SourcesFormatter-yxRNG{œdataTypeœ:œSourcesFormatterœ,œidœ:œSourcesFormatter-yxRNGœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-ChatOutput-kJPRR{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-kJPRRœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}",
+        "id": "reactflow__edge-SourcesFormatter-JgZv2{œdataTypeœ:œSourcesFormatterœ,œidœ:œSourcesFormatter-JgZv2œ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-ChatOutput-9jQFv{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-9jQFvœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}",
         "selected": false,
-        "source": "SourcesFormatter-yxRNG",
-        "sourceHandle": "{œdataTypeœ:œSourcesFormatterœ,œidœ:œSourcesFormatter-yxRNGœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "ChatOutput-kJPRR",
-        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-kJPRRœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}"
+        "source": "SourcesFormatter-JgZv2",
+        "sourceHandle": "{œdataTypeœ:œSourcesFormatterœ,œidœ:œSourcesFormatter-JgZv2œ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "ChatOutput-9jQFv",
+        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-9jQFvœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}"
       },
       {
         "animated": false,
@@ -183,7 +183,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "Agent",
-            "id": "Agent-G9S6E",
+            "id": "Agent-kDf29",
             "name": "response",
             "output_types": [
               "Message"
@@ -191,19 +191,19 @@
           },
           "targetHandle": {
             "fieldName": "answer",
-            "id": "SourcesFormatter-yxRNG",
+            "id": "SourcesFormatter-JgZv2",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__Agent-G9S6E{œdataTypeœ:œAgentœ,œidœ:œAgent-G9S6Eœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-SourcesFormatter-yxRNG{œfieldNameœ:œanswerœ,œidœ:œSourcesFormatter-yxRNGœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-Agent-kDf29{œdataTypeœ:œAgentœ,œidœ:œAgent-kDf29œ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-SourcesFormatter-JgZv2{œfieldNameœ:œanswerœ,œidœ:œSourcesFormatter-JgZv2œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "Agent-G9S6E",
-        "sourceHandle": "{œdataTypeœ:œAgentœ,œidœ:œAgent-G9S6Eœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "SourcesFormatter-yxRNG",
-        "targetHandle": "{œfieldNameœ:œanswerœ,œidœ:œSourcesFormatter-yxRNGœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "Agent-kDf29",
+        "sourceHandle": "{œdataTypeœ:œAgentœ,œidœ:œAgent-kDf29œ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "SourcesFormatter-JgZv2",
+        "targetHandle": "{œfieldNameœ:œanswerœ,œidœ:œSourcesFormatter-JgZv2œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -211,7 +211,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "PostgresCourseSearch",
-            "id": "PostgresCourseSearch-is23N",
+            "id": "PostgresCourseSearch-GyHXt",
             "name": "sufficient_context",
             "output_types": [
               "Message"
@@ -219,19 +219,19 @@
           },
           "targetHandle": {
             "fieldName": "context",
-            "id": "SourcesFormatter-yxRNG",
+            "id": "SourcesFormatter-JgZv2",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__PostgresCourseSearch-is23N{œdataTypeœ:œPostgresCourseSearchœ,œidœ:œPostgresCourseSearch-is23Nœ,œnameœ:œsufficient_contextœ,œoutput_typesœ:[œMessageœ]}-SourcesFormatter-yxRNG{œfieldNameœ:œcontextœ,œidœ:œSourcesFormatter-yxRNGœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-PostgresCourseSearch-GyHXt{œdataTypeœ:œPostgresCourseSearchœ,œidœ:œPostgresCourseSearch-GyHXtœ,œnameœ:œsufficient_contextœ,œoutput_typesœ:[œMessageœ]}-SourcesFormatter-JgZv2{œfieldNameœ:œcontextœ,œidœ:œSourcesFormatter-JgZv2œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "PostgresCourseSearch-is23N",
-        "sourceHandle": "{œdataTypeœ:œPostgresCourseSearchœ,œidœ:œPostgresCourseSearch-is23Nœ,œnameœ:œsufficient_contextœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "SourcesFormatter-yxRNG",
-        "targetHandle": "{œfieldNameœ:œcontextœ,œidœ:œSourcesFormatter-yxRNGœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "PostgresCourseSearch-GyHXt",
+        "sourceHandle": "{œdataTypeœ:œPostgresCourseSearchœ,œidœ:œPostgresCourseSearch-GyHXtœ,œnameœ:œsufficient_contextœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "SourcesFormatter-JgZv2",
+        "targetHandle": "{œfieldNameœ:œcontextœ,œidœ:œSourcesFormatter-JgZv2œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -239,7 +239,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "ChatInput",
-            "id": "ChatInput-XuhmX",
+            "id": "ChatInput-YCXyM",
             "name": "message",
             "output_types": [
               "Message"
@@ -247,19 +247,19 @@
           },
           "targetHandle": {
             "fieldName": "question",
-            "id": "Prompt Template-EF82Y",
+            "id": "Prompt Template-zXKr0",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__ChatInput-XuhmX{œdataTypeœ:œChatInputœ,œidœ:œChatInput-XuhmXœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}-Prompt Template-EF82Y{œfieldNameœ:œquestionœ,œidœ:œPrompt Template-EF82Yœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-ChatInput-YCXyM{œdataTypeœ:œChatInputœ,œidœ:œChatInput-YCXyMœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}-Prompt Template-zXKr0{œfieldNameœ:œquestionœ,œidœ:œPrompt Template-zXKr0œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "ChatInput-XuhmX",
-        "sourceHandle": "{œdataTypeœ:œChatInputœ,œidœ:œChatInput-XuhmXœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "Prompt Template-EF82Y",
-        "targetHandle": "{œfieldNameœ:œquestionœ,œidœ:œPrompt Template-EF82Yœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "ChatInput-YCXyM",
+        "sourceHandle": "{œdataTypeœ:œChatInputœ,œidœ:œChatInput-YCXyMœ,œnameœ:œmessageœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "Prompt Template-zXKr0",
+        "targetHandle": "{œfieldNameœ:œquestionœ,œidœ:œPrompt Template-zXKr0œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -267,7 +267,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "Memory",
-            "id": "Memory-2vFTS",
+            "id": "Memory-UjuAM",
             "name": "messages_text",
             "output_types": [
               "Message"
@@ -275,19 +275,19 @@
           },
           "targetHandle": {
             "fieldName": "history",
-            "id": "Prompt Template-EF82Y",
+            "id": "Prompt Template-zXKr0",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__Memory-2vFTS{œdataTypeœ:œMemoryœ,œidœ:œMemory-2vFTSœ,œnameœ:œmessages_textœ,œoutput_typesœ:[œMessageœ]}-Prompt Template-EF82Y{œfieldNameœ:œhistoryœ,œidœ:œPrompt Template-EF82Yœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-Memory-UjuAM{œdataTypeœ:œMemoryœ,œidœ:œMemory-UjuAMœ,œnameœ:œmessages_textœ,œoutput_typesœ:[œMessageœ]}-Prompt Template-zXKr0{œfieldNameœ:œhistoryœ,œidœ:œPrompt Template-zXKr0œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "Memory-2vFTS",
-        "sourceHandle": "{œdataTypeœ:œMemoryœ,œidœ:œMemory-2vFTSœ,œnameœ:œmessages_textœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "Prompt Template-EF82Y",
-        "targetHandle": "{œfieldNameœ:œhistoryœ,œidœ:œPrompt Template-EF82Yœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "Memory-UjuAM",
+        "sourceHandle": "{œdataTypeœ:œMemoryœ,œidœ:œMemory-UjuAMœ,œnameœ:œmessages_textœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "Prompt Template-zXKr0",
+        "targetHandle": "{œfieldNameœ:œhistoryœ,œidœ:œPrompt Template-zXKr0œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -295,7 +295,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "Prompt Template",
-            "id": "Prompt Template-EF82Y",
+            "id": "Prompt Template-zXKr0",
             "name": "prompt",
             "output_types": [
               "Message"
@@ -303,19 +303,19 @@
           },
           "targetHandle": {
             "fieldName": "input_text",
-            "id": "SmartRouter-yIPmF",
+            "id": "SmartRouter-nelFQ",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__Prompt Template-EF82Y{œdataTypeœ:œPrompt Templateœ,œidœ:œPrompt Template-EF82Yœ,œnameœ:œpromptœ,œoutput_typesœ:[œMessageœ]}-SmartRouter-yIPmF{œfieldNameœ:œinput_textœ,œidœ:œSmartRouter-yIPmFœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-Prompt Template-zXKr0{œdataTypeœ:œPrompt Templateœ,œidœ:œPrompt Template-zXKr0œ,œnameœ:œpromptœ,œoutput_typesœ:[œMessageœ]}-SmartRouter-nelFQ{œfieldNameœ:œinput_textœ,œidœ:œSmartRouter-nelFQœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "Prompt Template-EF82Y",
-        "sourceHandle": "{œdataTypeœ:œPrompt Templateœ,œidœ:œPrompt Template-EF82Yœ,œnameœ:œpromptœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "SmartRouter-yIPmF",
-        "targetHandle": "{œfieldNameœ:œinput_textœ,œidœ:œSmartRouter-yIPmFœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "Prompt Template-zXKr0",
+        "sourceHandle": "{œdataTypeœ:œPrompt Templateœ,œidœ:œPrompt Template-zXKr0œ,œnameœ:œpromptœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "SmartRouter-nelFQ",
+        "targetHandle": "{œfieldNameœ:œinput_textœ,œidœ:œSmartRouter-nelFQœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -323,7 +323,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "SmartRouter",
-            "id": "SmartRouter-yIPmF",
+            "id": "SmartRouter-nelFQ",
             "name": "category_3_result",
             "output_types": [
               "Message"
@@ -331,7 +331,7 @@
           },
           "targetHandle": {
             "fieldName": "input_value",
-            "id": "ChatOutput-KygWm",
+            "id": "ChatOutput-0U4yh",
             "inputTypes": [
               "Data",
               "JSON",
@@ -342,12 +342,12 @@
             "type": "other"
           }
         },
-        "id": "xy-edge__SmartRouter-yIPmF{œdataTypeœ:œSmartRouterœ,œidœ:œSmartRouter-yIPmFœ,œnameœ:œcategory_3_resultœ,œoutput_typesœ:[œMessageœ]}-ChatOutput-KygWm{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-KygWmœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}",
+        "id": "reactflow__edge-SmartRouter-nelFQ{œdataTypeœ:œSmartRouterœ,œidœ:œSmartRouter-nelFQœ,œnameœ:œcategory_3_resultœ,œoutput_typesœ:[œMessageœ]}-ChatOutput-0U4yh{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-0U4yhœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}",
         "selected": false,
-        "source": "SmartRouter-yIPmF",
-        "sourceHandle": "{œdataTypeœ:œSmartRouterœ,œidœ:œSmartRouter-yIPmFœ,œnameœ:œcategory_3_resultœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "ChatOutput-KygWm",
-        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-KygWmœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}"
+        "source": "SmartRouter-nelFQ",
+        "sourceHandle": "{œdataTypeœ:œSmartRouterœ,œidœ:œSmartRouter-nelFQœ,œnameœ:œcategory_3_resultœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "ChatOutput-0U4yh",
+        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-0U4yhœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}"
       },
       {
         "animated": false,
@@ -355,7 +355,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "SmartRouter",
-            "id": "SmartRouter-yIPmF",
+            "id": "SmartRouter-nelFQ",
             "name": "category_1_result",
             "output_types": [
               "Message"
@@ -363,19 +363,19 @@
           },
           "targetHandle": {
             "fieldName": "input",
-            "id": "Prompt Template-C4wK8",
+            "id": "Prompt Template-mBFgU",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__SmartRouter-yIPmF{œdataTypeœ:œSmartRouterœ,œidœ:œSmartRouter-yIPmFœ,œnameœ:œcategory_1_resultœ,œoutput_typesœ:[œMessageœ]}-Prompt Template-C4wK8{œfieldNameœ:œinputœ,œidœ:œPrompt Template-C4wK8œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-SmartRouter-nelFQ{œdataTypeœ:œSmartRouterœ,œidœ:œSmartRouter-nelFQœ,œnameœ:œcategory_1_resultœ,œoutput_typesœ:[œMessageœ]}-Prompt Template-mBFgU{œfieldNameœ:œinputœ,œidœ:œPrompt Template-mBFgUœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "SmartRouter-yIPmF",
-        "sourceHandle": "{œdataTypeœ:œSmartRouterœ,œidœ:œSmartRouter-yIPmFœ,œnameœ:œcategory_1_resultœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "Prompt Template-C4wK8",
-        "targetHandle": "{œfieldNameœ:œinputœ,œidœ:œPrompt Template-C4wK8œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "SmartRouter-nelFQ",
+        "sourceHandle": "{œdataTypeœ:œSmartRouterœ,œidœ:œSmartRouter-nelFQœ,œnameœ:œcategory_1_resultœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "Prompt Template-mBFgU",
+        "targetHandle": "{œfieldNameœ:œinputœ,œidœ:œPrompt Template-mBFgUœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -383,7 +383,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "SmartRouter",
-            "id": "SmartRouter-yIPmF",
+            "id": "SmartRouter-nelFQ",
             "name": "category_1_result",
             "output_types": [
               "Message"
@@ -391,19 +391,19 @@
           },
           "targetHandle": {
             "fieldName": "student_input",
-            "id": "Prompt Template-wpMtf",
+            "id": "Prompt Template-aBLUj",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__SmartRouter-yIPmF{œdataTypeœ:œSmartRouterœ,œidœ:œSmartRouter-yIPmFœ,œnameœ:œcategory_1_resultœ,œoutput_typesœ:[œMessageœ]}-Prompt Template-wpMtf{œfieldNameœ:œstudent_inputœ,œidœ:œPrompt Template-wpMtfœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-SmartRouter-nelFQ{œdataTypeœ:œSmartRouterœ,œidœ:œSmartRouter-nelFQœ,œnameœ:œcategory_1_resultœ,œoutput_typesœ:[œMessageœ]}-Prompt Template-aBLUj{œfieldNameœ:œstudent_inputœ,œidœ:œPrompt Template-aBLUjœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "SmartRouter-yIPmF",
-        "sourceHandle": "{œdataTypeœ:œSmartRouterœ,œidœ:œSmartRouter-yIPmFœ,œnameœ:œcategory_1_resultœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "Prompt Template-wpMtf",
-        "targetHandle": "{œfieldNameœ:œstudent_inputœ,œidœ:œPrompt Template-wpMtfœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "SmartRouter-nelFQ",
+        "sourceHandle": "{œdataTypeœ:œSmartRouterœ,œidœ:œSmartRouter-nelFQœ,œnameœ:œcategory_1_resultœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "Prompt Template-aBLUj",
+        "targetHandle": "{œfieldNameœ:œstudent_inputœ,œidœ:œPrompt Template-aBLUjœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -411,7 +411,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "SmartRouter",
-            "id": "SmartRouter-yIPmF",
+            "id": "SmartRouter-nelFQ",
             "name": "category_2_result",
             "output_types": [
               "Message"
@@ -419,19 +419,19 @@
           },
           "targetHandle": {
             "fieldName": "input_value",
-            "id": "Agent-4CS9c",
+            "id": "Agent-93unh",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__SmartRouter-yIPmF{œdataTypeœ:œSmartRouterœ,œidœ:œSmartRouter-yIPmFœ,œnameœ:œcategory_2_resultœ,œoutput_typesœ:[œMessageœ]}-Agent-4CS9c{œfieldNameœ:œinput_valueœ,œidœ:œAgent-4CS9cœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-SmartRouter-nelFQ{œdataTypeœ:œSmartRouterœ,œidœ:œSmartRouter-nelFQœ,œnameœ:œcategory_2_resultœ,œoutput_typesœ:[œMessageœ]}-Agent-93unh{œfieldNameœ:œinput_valueœ,œidœ:œAgent-93unhœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "SmartRouter-yIPmF",
-        "sourceHandle": "{œdataTypeœ:œSmartRouterœ,œidœ:œSmartRouter-yIPmFœ,œnameœ:œcategory_2_resultœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "Agent-4CS9c",
-        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œAgent-4CS9cœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "SmartRouter-nelFQ",
+        "sourceHandle": "{œdataTypeœ:œSmartRouterœ,œidœ:œSmartRouter-nelFQœ,œnameœ:œcategory_2_resultœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "Agent-93unh",
+        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œAgent-93unhœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -439,7 +439,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "SmartRouter",
-            "id": "SmartRouter-yIPmF",
+            "id": "SmartRouter-nelFQ",
             "name": "default_result",
             "output_types": [
               "Message"
@@ -447,19 +447,19 @@
           },
           "targetHandle": {
             "fieldName": "input_value",
-            "id": "Agent-b3Rc0",
+            "id": "Agent-XssMW",
             "inputTypes": [
               "Message"
             ],
             "type": "str"
           }
         },
-        "id": "xy-edge__SmartRouter-yIPmF{œdataTypeœ:œSmartRouterœ,œidœ:œSmartRouter-yIPmFœ,œnameœ:œdefault_resultœ,œoutput_typesœ:[œMessageœ]}-Agent-b3Rc0{œfieldNameœ:œinput_valueœ,œidœ:œAgent-b3Rc0œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
+        "id": "reactflow__edge-SmartRouter-nelFQ{œdataTypeœ:œSmartRouterœ,œidœ:œSmartRouter-nelFQœ,œnameœ:œdefault_resultœ,œoutput_typesœ:[œMessageœ]}-Agent-XssMW{œfieldNameœ:œinput_valueœ,œidœ:œAgent-XssMWœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}",
         "selected": false,
-        "source": "SmartRouter-yIPmF",
-        "sourceHandle": "{œdataTypeœ:œSmartRouterœ,œidœ:œSmartRouter-yIPmFœ,œnameœ:œdefault_resultœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "Agent-b3Rc0",
-        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œAgent-b3Rc0œ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
+        "source": "SmartRouter-nelFQ",
+        "sourceHandle": "{œdataTypeœ:œSmartRouterœ,œidœ:œSmartRouter-nelFQœ,œnameœ:œdefault_resultœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "Agent-XssMW",
+        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œAgent-XssMWœ,œinputTypesœ:[œMessageœ],œtypeœ:œstrœ}"
       },
       {
         "animated": false,
@@ -467,7 +467,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "Agent",
-            "id": "Agent-4CS9c",
+            "id": "Agent-93unh",
             "name": "response",
             "output_types": [
               "Message"
@@ -475,7 +475,7 @@
           },
           "targetHandle": {
             "fieldName": "input_value",
-            "id": "ChatOutput-p5MtJ",
+            "id": "ChatOutput-Kr8QM",
             "inputTypes": [
               "Data",
               "JSON",
@@ -486,12 +486,12 @@
             "type": "other"
           }
         },
-        "id": "xy-edge__Agent-4CS9c{œdataTypeœ:œAgentœ,œidœ:œAgent-4CS9cœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-ChatOutput-p5MtJ{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-p5MtJœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}",
+        "id": "reactflow__edge-Agent-93unh{œdataTypeœ:œAgentœ,œidœ:œAgent-93unhœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-ChatOutput-Kr8QM{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-Kr8QMœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}",
         "selected": false,
-        "source": "Agent-4CS9c",
-        "sourceHandle": "{œdataTypeœ:œAgentœ,œidœ:œAgent-4CS9cœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "ChatOutput-p5MtJ",
-        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-p5MtJœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}"
+        "source": "Agent-93unh",
+        "sourceHandle": "{œdataTypeœ:œAgentœ,œidœ:œAgent-93unhœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "ChatOutput-Kr8QM",
+        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-Kr8QMœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}"
       },
       {
         "animated": false,
@@ -499,7 +499,7 @@
         "data": {
           "sourceHandle": {
             "dataType": "Agent",
-            "id": "Agent-b3Rc0",
+            "id": "Agent-XssMW",
             "name": "response",
             "output_types": [
               "Message"
@@ -507,7 +507,7 @@
           },
           "targetHandle": {
             "fieldName": "input_value",
-            "id": "ChatOutput-CbWIc",
+            "id": "ChatOutput-lqn0u",
             "inputTypes": [
               "Data",
               "JSON",
@@ -518,18 +518,18 @@
             "type": "other"
           }
         },
-        "id": "xy-edge__Agent-b3Rc0{œdataTypeœ:œAgentœ,œidœ:œAgent-b3Rc0œ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-ChatOutput-CbWIc{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-CbWIcœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}",
+        "id": "reactflow__edge-Agent-XssMW{œdataTypeœ:œAgentœ,œidœ:œAgent-XssMWœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}-ChatOutput-lqn0u{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-lqn0uœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}",
         "selected": false,
-        "source": "Agent-b3Rc0",
-        "sourceHandle": "{œdataTypeœ:œAgentœ,œidœ:œAgent-b3Rc0œ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
-        "target": "ChatOutput-CbWIc",
-        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-CbWIcœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}"
+        "source": "Agent-XssMW",
+        "sourceHandle": "{œdataTypeœ:œAgentœ,œidœ:œAgent-XssMWœ,œnameœ:œresponseœ,œoutput_typesœ:[œMessageœ]}",
+        "target": "ChatOutput-lqn0u",
+        "targetHandle": "{œfieldNameœ:œinput_valueœ,œidœ:œChatOutput-lqn0uœ,œinputTypesœ:[œDataœ,œJSONœ,œDataFrameœ,œTableœ,œMessageœ],œtypeœ:œotherœ}"
       }
     ],
     "nodes": [
       {
         "data": {
-          "id": "ChatInput-XuhmX",
+          "id": "ChatInput-YCXyM",
           "node": {
             "base_classes": [
               "Message"
@@ -818,7 +818,7 @@
           "type": "ChatInput"
         },
         "dragging": false,
-        "id": "ChatInput-XuhmX",
+        "id": "ChatInput-YCXyM",
         "measured": {
           "height": 46,
           "width": 168
@@ -832,7 +832,7 @@
       },
       {
         "data": {
-          "id": "Prompt Template-wpMtf",
+          "id": "Prompt Template-aBLUj",
           "node": {
             "add_tool_output": null,
             "base_classes": [
@@ -1047,7 +1047,7 @@
           "type": "Prompt Template"
         },
         "dragging": false,
-        "id": "Prompt Template-wpMtf",
+        "id": "Prompt Template-aBLUj",
         "measured": {
           "height": 387,
           "width": 280
@@ -1062,7 +1062,7 @@
       {
         "data": {
           "_connectionMode": false,
-          "id": "Agent-G9S6E",
+          "id": "Agent-kDf29",
           "node": {
             "base_classes": [
               "Data",
@@ -1097,7 +1097,7 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-11-04T08:57:14.901Z",
+            "last_updated": "2026-11-27T13:07:11.729Z",
             "legacy": false,
             "lf_version": "1.13.0",
             "metadata": {
@@ -1171,11 +1171,11 @@
             "template": {
               "_frontend_node_flow_id": {
                 "input_types": [],
-                "value": "1084952c-c642-4638-96d9-a5c5e5dc6726"
+                "value": "13184e9f-a699-45b9-8df5-128933dff93d"
               },
               "_frontend_node_folder_id": {
                 "input_types": [],
-                "value": "d44e42fc-a5f0-4d72-b0f7-9aa072ccebbc"
+                "value": "5add1a14-594b-4954-b6b3-73a78ce2f659"
               },
               "_type": "Component",
               "add_calculator_tool": {
@@ -1401,7 +1401,7 @@
                 "type": "str",
                 "value": ""
               },
-              "is_refresh": true,
+              "is_refresh": false,
               "max_iterations": {
                 "_input_type": "IntInput",
                 "advanced": true,
@@ -1503,34 +1503,6 @@
                     "provider": "Ollama"
                   },
                   {
-                    "category": "Ollama",
-                    "icon": "Ollama",
-                    "metadata": {
-                      "api_key_param": "api_key",
-                      "base_url_param": "base_url",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_tokens",
-                      "model_class": "ChatOllama",
-                      "model_name_param": "model"
-                    },
-                    "name": "qwen2.5:7b",
-                    "provider": "Ollama"
-                  },
-                  {
-                    "category": "Ollama",
-                    "icon": "Ollama",
-                    "metadata": {
-                      "api_key_param": "api_key",
-                      "base_url_param": "base_url",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_tokens",
-                      "model_class": "ChatOllama",
-                      "model_name_param": "model"
-                    },
-                    "name": "qwen3:4b",
-                    "provider": "Ollama"
-                  },
-                  {
                     "category": "OpenAI Compatible",
                     "icon": "Plug",
                     "metadata": {
@@ -1541,7 +1513,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "Embeddings",
+                    "name": "alibaba/wan3",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -1555,7 +1527,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "Embeddings-2",
+                    "name": "alibaba/wan3_prime",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -1569,7 +1541,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "EmbeddingsGigaR",
+                    "name": "anthropic/claude-fable-5",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -1583,7 +1555,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "GigaChat-2",
+                    "name": "anthropic/claude-fable-5-1",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -1597,7 +1569,35 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "GigaChat-2-Max",
+                    "name": "anthropic/claude-fable-5-2",
+                    "provider": "OpenAI Compatible"
+                  },
+                  {
+                    "category": "OpenAI Compatible",
+                    "icon": "Plug",
+                    "metadata": {
+                      "api_key_param": "api_key",
+                      "base_url_param": "base_url",
+                      "context_length": 128000,
+                      "max_tokens_field_name": "max_tokens",
+                      "model_class": "ChatOpenAI",
+                      "model_name_param": "model"
+                    },
+                    "name": "anthropic/claude-haiku-5-5",
+                    "provider": "OpenAI Compatible"
+                  },
+                  {
+                    "category": "OpenAI Compatible",
+                    "icon": "Plug",
+                    "metadata": {
+                      "api_key_param": "api_key",
+                      "base_url_param": "base_url",
+                      "context_length": 128000,
+                      "max_tokens_field_name": "max_tokens",
+                      "model_class": "ChatOpenAI",
+                      "model_name_param": "model"
+                    },
+                    "name": "openai/gpt-6-luna",
                     "provider": "OpenAI Compatible"
                   }
                 ],
@@ -1617,7 +1617,7 @@
                     "icon": "Plug",
                     "metadata": {
                       "created": 0,
-                      "default": true,
+                      "default": false,
                       "deprecated": false,
                       "icon": "Plug",
                       "model_type": "llm",
@@ -1627,7 +1627,7 @@
                       "search": false,
                       "tool_calling": true
                     },
-                    "name": "GigaChat-2-Max",
+                    "name": "anthropic/claude-haiku-5-5",
                     "provider": "OpenAI Compatible"
                   }
                 ]
@@ -1829,7 +1829,7 @@
           "type": "Agent"
         },
         "dragging": false,
-        "id": "Agent-G9S6E",
+        "id": "Agent-kDf29",
         "measured": {
           "height": 451,
           "width": 280
@@ -1844,7 +1844,7 @@
       {
         "data": {
           "_connectionMode": false,
-          "id": "SmartRouter-yIPmF",
+          "id": "SmartRouter-nelFQ",
           "node": {
             "base_classes": [],
             "beta": false,
@@ -1865,7 +1865,7 @@
             ],
             "frozen": false,
             "icon": "route",
-            "last_updated": "2026-11-04T10:39:02.944Z",
+            "last_updated": "2026-11-27T13:07:32.060Z",
             "legacy": false,
             "lf_version": "1.13.0",
             "metadata": {
@@ -1961,10 +1961,10 @@
             "pinned": false,
             "template": {
               "_frontend_node_flow_id": {
-                "value": "1084952c-c642-4638-96d9-a5c5e5dc6726"
+                "value": "13184e9f-a699-45b9-8df5-128933dff93d"
               },
               "_frontend_node_folder_id": {
-                "value": "d44e42fc-a5f0-4d72-b0f7-9aa072ccebbc"
+                "value": "5add1a14-594b-4954-b6b3-73a78ce2f659"
               },
               "_type": "Component",
               "api_key": {
@@ -1973,7 +1973,7 @@
                 "api_editable": false,
                 "display_name": "API Key",
                 "dynamic": false,
-                "info": "Overrides global provider settings. Leave blank to use your pre-configured API Key.",
+                "info": "Falls back to the OPENAI_COMPATIBLE_API_KEY environment variable (optional for local servers)",
                 "input_types": [],
                 "load_from_db": false,
                 "name": "api_key",
@@ -2153,34 +2153,6 @@
                     "provider": "Ollama"
                   },
                   {
-                    "category": "Ollama",
-                    "icon": "Ollama",
-                    "metadata": {
-                      "api_key_param": "api_key",
-                      "base_url_param": "base_url",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_tokens",
-                      "model_class": "ChatOllama",
-                      "model_name_param": "model"
-                    },
-                    "name": "qwen2.5:7b",
-                    "provider": "Ollama"
-                  },
-                  {
-                    "category": "Ollama",
-                    "icon": "Ollama",
-                    "metadata": {
-                      "api_key_param": "api_key",
-                      "base_url_param": "base_url",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_tokens",
-                      "model_class": "ChatOllama",
-                      "model_name_param": "model"
-                    },
-                    "name": "qwen3:4b",
-                    "provider": "Ollama"
-                  },
-                  {
                     "category": "OpenAI Compatible",
                     "icon": "Plug",
                     "metadata": {
@@ -2191,7 +2163,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "Embeddings",
+                    "name": "alibaba/wan3",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -2205,7 +2177,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "Embeddings-2",
+                    "name": "alibaba/wan3_prime",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -2219,7 +2191,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "EmbeddingsGigaR",
+                    "name": "anthropic/claude-fable-5",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -2233,7 +2205,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "GigaChat-2",
+                    "name": "anthropic/claude-fable-5-1",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -2247,7 +2219,35 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "GigaChat-2-Max",
+                    "name": "anthropic/claude-fable-5-2",
+                    "provider": "OpenAI Compatible"
+                  },
+                  {
+                    "category": "OpenAI Compatible",
+                    "icon": "Plug",
+                    "metadata": {
+                      "api_key_param": "api_key",
+                      "base_url_param": "base_url",
+                      "context_length": 128000,
+                      "max_tokens_field_name": "max_tokens",
+                      "model_class": "ChatOpenAI",
+                      "model_name_param": "model"
+                    },
+                    "name": "anthropic/claude-haiku-5-5",
+                    "provider": "OpenAI Compatible"
+                  },
+                  {
+                    "category": "OpenAI Compatible",
+                    "icon": "Plug",
+                    "metadata": {
+                      "api_key_param": "api_key",
+                      "base_url_param": "base_url",
+                      "context_length": 128000,
+                      "max_tokens_field_name": "max_tokens",
+                      "model_class": "ChatOpenAI",
+                      "model_name_param": "model"
+                    },
+                    "name": "openai/gpt-6-luna",
                     "provider": "OpenAI Compatible"
                   }
                 ],
@@ -2273,7 +2273,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "GigaChat-2-Max",
+                    "name": "anthropic/claude-haiku-5-5",
                     "provider": "OpenAI Compatible"
                   }
                 ]
@@ -2358,7 +2358,7 @@
           "type": "SmartRouter"
         },
         "dragging": false,
-        "id": "SmartRouter-yIPmF",
+        "id": "SmartRouter-nelFQ",
         "measured": {
           "height": 493,
           "width": 280
@@ -2372,7 +2372,7 @@
       },
       {
         "data": {
-          "id": "ChatOutput-kJPRR",
+          "id": "ChatOutput-9jQFv",
           "node": {
             "base_classes": [
               "Message"
@@ -2668,7 +2668,7 @@
           "type": "ChatOutput"
         },
         "dragging": false,
-        "id": "ChatOutput-kJPRR",
+        "id": "ChatOutput-9jQFv",
         "measured": {
           "height": 46,
           "width": 168
@@ -2682,7 +2682,7 @@
       },
       {
         "data": {
-          "id": "Memory-2vFTS",
+          "id": "Memory-UjuAM",
           "node": {
             "base_classes": [
               "Message",
@@ -3072,7 +3072,7 @@
           "type": "Memory"
         },
         "dragging": false,
-        "id": "Memory-2vFTS",
+        "id": "Memory-UjuAM",
         "measured": {
           "height": 265,
           "width": 280
@@ -3086,7 +3086,7 @@
       },
       {
         "data": {
-          "id": "Prompt Template-C4wK8",
+          "id": "Prompt Template-mBFgU",
           "node": {
             "add_tool_output": null,
             "base_classes": [
@@ -3277,7 +3277,7 @@
           "type": "Prompt Template"
         },
         "dragging": false,
-        "id": "Prompt Template-C4wK8",
+        "id": "Prompt Template-mBFgU",
         "measured": {
           "height": 316,
           "width": 280
@@ -3292,7 +3292,7 @@
       {
         "data": {
           "_connectionMode": false,
-          "id": "LanguageModelComponent-ocfaR",
+          "id": "LanguageModelComponent-PvTNC",
           "node": {
             "base_classes": [
               "LanguageModel",
@@ -3321,7 +3321,7 @@
             ],
             "frozen": false,
             "icon": "brain-circuit",
-            "last_updated": "2026-11-04T08:57:43.950Z",
+            "last_updated": "2026-11-27T13:07:19.118Z",
             "legacy": false,
             "lf_version": "1.13.0",
             "metadata": {
@@ -3388,10 +3388,10 @@
             "pinned": false,
             "template": {
               "_frontend_node_flow_id": {
-                "value": "1084952c-c642-4638-96d9-a5c5e5dc6726"
+                "value": "13184e9f-a699-45b9-8df5-128933dff93d"
               },
               "_frontend_node_folder_id": {
-                "value": "d44e42fc-a5f0-4d72-b0f7-9aa072ccebbc"
+                "value": "5add1a14-594b-4954-b6b3-73a78ce2f659"
               },
               "_type": "Component",
               "api_key": {
@@ -3400,7 +3400,7 @@
                 "api_editable": false,
                 "display_name": "API Key",
                 "dynamic": false,
-                "info": "Overrides global provider settings. Leave blank to use your pre-configured API Key.",
+                "info": "Falls back to the OPENAI_COMPATIBLE_API_KEY environment variable (optional for local servers)",
                 "input_types": [],
                 "load_from_db": false,
                 "name": "api_key",
@@ -3562,34 +3562,6 @@
                     "provider": "Ollama"
                   },
                   {
-                    "category": "Ollama",
-                    "icon": "Ollama",
-                    "metadata": {
-                      "api_key_param": "api_key",
-                      "base_url_param": "base_url",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_tokens",
-                      "model_class": "ChatOllama",
-                      "model_name_param": "model"
-                    },
-                    "name": "qwen2.5:7b",
-                    "provider": "Ollama"
-                  },
-                  {
-                    "category": "Ollama",
-                    "icon": "Ollama",
-                    "metadata": {
-                      "api_key_param": "api_key",
-                      "base_url_param": "base_url",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_tokens",
-                      "model_class": "ChatOllama",
-                      "model_name_param": "model"
-                    },
-                    "name": "qwen3:4b",
-                    "provider": "Ollama"
-                  },
-                  {
                     "category": "OpenAI Compatible",
                     "icon": "Plug",
                     "metadata": {
@@ -3600,7 +3572,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "Embeddings",
+                    "name": "alibaba/wan3",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -3614,7 +3586,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "Embeddings-2",
+                    "name": "alibaba/wan3_prime",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -3628,7 +3600,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "EmbeddingsGigaR",
+                    "name": "anthropic/claude-fable-5",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -3642,7 +3614,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "GigaChat-2",
+                    "name": "anthropic/claude-fable-5-1",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -3656,7 +3628,35 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "GigaChat-2-Max",
+                    "name": "anthropic/claude-fable-5-2",
+                    "provider": "OpenAI Compatible"
+                  },
+                  {
+                    "category": "OpenAI Compatible",
+                    "icon": "Plug",
+                    "metadata": {
+                      "api_key_param": "api_key",
+                      "base_url_param": "base_url",
+                      "context_length": 128000,
+                      "max_tokens_field_name": "max_tokens",
+                      "model_class": "ChatOpenAI",
+                      "model_name_param": "model"
+                    },
+                    "name": "anthropic/claude-haiku-5-5",
+                    "provider": "OpenAI Compatible"
+                  },
+                  {
+                    "category": "OpenAI Compatible",
+                    "icon": "Plug",
+                    "metadata": {
+                      "api_key_param": "api_key",
+                      "base_url_param": "base_url",
+                      "context_length": 128000,
+                      "max_tokens_field_name": "max_tokens",
+                      "model_class": "ChatOpenAI",
+                      "model_name_param": "model"
+                    },
+                    "name": "openai/gpt-6-luna",
                     "provider": "OpenAI Compatible"
                   }
                 ],
@@ -3682,7 +3682,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "GigaChat-2-Max",
+                    "name": "anthropic/claude-haiku-5-5",
                     "provider": "OpenAI Compatible"
                   }
                 ]
@@ -3868,7 +3868,7 @@
           "type": "LanguageModelComponent"
         },
         "dragging": false,
-        "id": "LanguageModelComponent-ocfaR",
+        "id": "LanguageModelComponent-PvTNC",
         "measured": {
           "height": 325,
           "width": 280
@@ -3882,7 +3882,7 @@
       },
       {
         "data": {
-          "id": "ChatOutput-GS5pG",
+          "id": "ChatOutput-lurny",
           "node": {
             "base_classes": [
               "Message"
@@ -4178,7 +4178,7 @@
           "type": "ChatOutput"
         },
         "dragging": false,
-        "id": "ChatOutput-GS5pG",
+        "id": "ChatOutput-lurny",
         "measured": {
           "height": 46,
           "width": 168
@@ -4193,7 +4193,7 @@
       {
         "data": {
           "_connectionMode": false,
-          "id": "PostgresCourseSearch-is23N",
+          "id": "PostgresCourseSearch-GyHXt",
           "node": {
             "base_classes": [
               "Message"
@@ -4213,7 +4213,7 @@
             ],
             "frozen": false,
             "icon": "Database",
-            "last_updated": "2026-11-04T07:27:04.644Z",
+            "last_updated": "2026-11-27T13:07:16.378Z",
             "legacy": false,
             "lf_version": "1.13.0",
             "metadata": {
@@ -4281,10 +4281,10 @@
             "pinned": false,
             "template": {
               "_frontend_node_flow_id": {
-                "value": "1084952c-c642-4638-96d9-a5c5e5dc6726"
+                "value": "13184e9f-a699-45b9-8df5-128933dff93d"
               },
               "_frontend_node_folder_id": {
-                "value": "d44e42fc-a5f0-4d72-b0f7-9aa072ccebbc"
+                "value": "5add1a14-594b-4954-b6b3-73a78ce2f659"
               },
               "_type": "Component",
               "code": {
@@ -4306,7 +4306,7 @@
                 "type": "code",
                 "value": "import base64\nimport logging\nimport os\nimport re\nimport time\n\nimport psycopg\n\nfrom langflow.custom import Component\nfrom langflow.io import FloatInput, IntInput, MessageTextInput, Output\nfrom langflow.schema import Message\n\nfrom lfx.io import ModelInput\nfrom lfx.base.models.unified_models import (\n    get_embedding_model_options,\n    get_embeddings,\n    handle_model_input_update,\n)\n\n\nlogger = logging.getLogger(__name__)\n\nVECTOR_DIMENSION = 1024\n\n# Схема базы sustainability_course_db (ветка database):\n#   documents(id, text, filename)\n#   document_chunks(id, document_id -> documents.id, content, category, embedding)\nCHUNKS_TABLE = \"public.document_chunks\"\nDOCUMENTS_TABLE = \"public.documents\"\n\n# Расширения файлов, которые не нужно показывать студенту в названии.\nFILE_EXTENSION_RE = re.compile(\n    r\"\\.(?:txt|md|pdf|docx?|html?|rtf)$\",\n    re.IGNORECASE,\n)\nMAX_TITLE_LENGTH = 200\n\n\ndef required_setting(name: str) -> str:\n    \"\"\"Read a required setting from the container environment.\"\"\"\n    value = os.getenv(name, \"\").strip()\n    if not value:\n        raise RuntimeError(f\"Required environment setting {name} is missing.\")\n    return value\n\n\ndef int_setting(name: str, default: int, minimum: int = 1) -> int:\n    \"\"\"Read and validate an integer environment setting.\"\"\"\n    value = os.getenv(name, str(default))\n\n    try:\n        result = int(value)\n    except ValueError as exc:\n        raise RuntimeError(f\"{name} must be an integer.\") from exc\n\n    if result < minimum:\n        raise RuntimeError(f\"{name} must be at least {minimum}.\")\n\n    return result\n\n\ndef extract_text(value) -> str:\n    \"\"\"Extract plain text from a Langflow input.\"\"\"\n    if isinstance(value, (list, tuple)):\n        value = value[-1] if value else \"\"\n\n    if hasattr(value, \"text\"):\n        value = value.text\n    elif hasattr(value, \"data\") and isinstance(value.data, dict):\n        data = value.data\n        value = (\n            data.get(\"text\")\n            or data.get(\"content\")\n            or data.get(\"message\")\n            or str(data)\n        )\n    elif isinstance(value, dict):\n        value = (\n            value.get(\"text\")\n            or value.get(\"content\")\n            or value.get(\"message\")\n            or str(value)\n        )\n\n    return str(value or \"\").strip()\n\n\ndef database_password() -> str:\n    \"\"\"Decode the locally configured database password.\"\"\"\n    encoded = required_setting(\"TUTOR_DB_PASSWORD_B64\")\n\n    try:\n        return base64.b64decode(encoded, validate=True).decode(\"utf-8\")\n    except (ValueError, UnicodeDecodeError) as exc:\n        raise RuntimeError(\n            \"TUTOR_DB_PASSWORD_B64 must contain valid UTF-8 Base64 data.\"\n        ) from exc\n\n\ndef document_title(filename) -> str:\n    \"\"\"\n    Build a display title from documents.filename.\n\n    The result goes into a one-line chunk header that is parsed by\n    sources_formatter.py, so control characters and square brackets\n    are removed. An empty string means \"title unknown\".\n    \"\"\"\n    if filename is None:\n        return \"\"\n\n    title = str(filename)\n    title = re.sub(r\"[\\x00-\\x1f\\x7f]+\", \" \", title)\n    title = re.sub(r\"\\s+\", \" \", title).strip()\n    title = FILE_EXTENSION_RE.sub(\"\", title).strip()\n    title = title.replace(\"[\", \"(\").replace(\"]\", \")\")\n\n    if len(title) > MAX_TITLE_LENGTH:\n        title = title[: MAX_TITLE_LENGTH - 1].rstrip() + \"…\"\n\n    return title\n\n\ndef chunk_header(rank, document_id, chunk_id, distance, title) -> str:\n    \"\"\"\n    Header of one chunk passed to the agent.\n\n    This format is a contract with sources_formatter.py (HEADER_RE):\n    change both files together. document_title is optional there.\n    \"\"\"\n    header = (\n        f\"[{rank}; document_id={document_id}; \"\n        f\"chunk_id={chunk_id}; \"\n        f\"cosine_distance={distance:.4f}\"\n    )\n\n    if title:\n        header += f\"; document_title={title}\"\n\n    return header + \"]\"\n\n\nclass PostgresCourseSearch(Component):\n    display_name = \"PostgreSQL Course Search\"\n    description = (\n        \"Search PostgreSQL chunks and route results by cosine distance.\"\n    )\n    icon = \"Database\"\n    name = \"PostgresCourseSearch\"\n\n    def update_build_config(self, build_config, field_value, field_name=None):\n        \"\"\"Populate the standard Langflow embedding-model selector.\"\"\"\n        return handle_model_input_update(\n            self,\n            dict(build_config),\n            field_value,\n            field_name,\n            cache_key_prefix=\"embedding_model_options\",\n            get_options_func=get_embedding_model_options,\n        )\n\n    inputs = [\n        ModelInput(\n            name=\"model\",\n            display_name=\"Embedding Model\",\n            info=(\n                \"Select an embedding model compatible with the vectors \"\n                \"stored in PostgreSQL. For the current database, use \"\n                \"bge-m3:latest.\"\n            ),\n            model_type=\"embedding\",\n            required=True,\n            real_time_refresh=True,\n        ),\n        MessageTextInput(\n            name=\"query\",\n            display_name=\"Search Query\",\n            info=\"Standalone search query for the course materials.\",\n            required=True,\n        ),\n        IntInput(\n            name=\"top_k\",\n            display_name=\"Top K\",\n            value=10,\n            info=\"Maximum number of nearest chunks to inspect, from 1 to 10.\",\n        ),\n        FloatInput(\n            name=\"max_distance\",\n            display_name=\"Maximum Cosine Distance\",\n            info=(\n                \"Maximum accepted cosine distance. This preliminary \"\n                \"threshold must be calibrated for the course corpus.\"\n            ),\n            value=0.5,\n            required=True,\n        ),\n    ]\n\n    outputs = [\n        Output(\n            name=\"sufficient_context\",\n            display_name=\"Sufficient Context\",\n            method=\"build_sufficient_context\",\n            types=[\"Message\"],\n            selected=\"Message\",\n            group_outputs=True,\n        ),\n        Output(\n            name=\"insufficient_context\",\n            display_name=\"No Sufficient Context\",\n            method=\"build_insufficient_context\",\n            types=[\"Message\"],\n            selected=\"Message\",\n            group_outputs=True,\n        ),\n    ]\n\n    def _search(self):\n        \"\"\"Retrieve chunks and filter them by cosine distance.\"\"\"\n        query = extract_text(self.query)\n\n        if not query:\n            raise ValueError(\"The search query is empty.\")\n\n        threshold = float(self.max_distance)\n\n        if not 0.0 <= threshold <= 2.0:\n            raise ValueError(\n                \"Maximum Cosine Distance must be between 0 and 2.\"\n            )\n\n        top_k = max(1, min(int(self.top_k or 6), 10))\n\n        total_started = time.perf_counter()\n        embedding_started = time.perf_counter()\n\n        embedding_model = get_embeddings(\n            model=self.model,\n            user_id=self.user_id,\n            ollama_base_url=required_setting(\"OLLAMA_BASE_URL\"),\n        )\n        embedding = embedding_model.embed_query(query)\n\n        if len(embedding) != VECTOR_DIMENSION:\n            raise ValueError(\n                f\"Embedding dimension is {len(embedding)}; \"\n                f\"expected {VECTOR_DIMENSION}.\"\n            )\n\n        embedding_ms = (time.perf_counter() - embedding_started) * 1000\n\n        vector = \"[\" + \",\".join(\n            format(float(value), \".9g\") for value in embedding\n        ) + \"]\"\n\n        # LEFT JOIN: чанк не должен пропадать, даже если для него нет\n        # записи в documents. documents.text (весь документ) не выбираем.\n        sql = f\"\"\"\n            SELECT\n                c.id,\n                c.document_id,\n                d.filename,\n                c.content,\n                c.embedding <=> %s::vector AS distance\n            FROM {CHUNKS_TABLE} AS c\n            LEFT JOIN {DOCUMENTS_TABLE} AS d\n                ON d.id = c.document_id\n            WHERE c.embedding IS NOT NULL\n              AND c.content IS NOT NULL\n              AND btrim(c.content) <> ''\n            ORDER BY c.embedding <=> %s::vector\n            LIMIT %s\n        \"\"\"\n\n        db_started = time.perf_counter()\n\n        with psycopg.connect(\n            host=required_setting(\"TUTOR_DB_HOST\"),\n            port=int_setting(\"TUTOR_DB_PORT\", 5432),\n            dbname=required_setting(\"TUTOR_DB_NAME\"),\n            user=required_setting(\"TUTOR_DB_USER\"),\n            password=database_password(),\n            connect_timeout=int_setting(\n                \"TUTOR_DB_CONNECT_TIMEOUT_SECONDS\", 10\n            ),\n            options=(\n                \"-c statement_timeout=\"\n                f\"{int_setting('TUTOR_DB_STATEMENT_TIMEOUT_MS', 30000)}\"\n            ),\n            application_name=\"TutorRAG\",\n        ) as conn:\n            conn.execute(\"SET TRANSACTION READ ONLY\")\n\n            try:\n                rows = conn.execute(sql, (vector, vector, top_k)).fetchall()\n            except (\n                psycopg.errors.UndefinedTable,\n                psycopg.errors.UndefinedColumn,\n            ) as exc:\n                raise RuntimeError(\n                    \"Схема базы не подходит компоненту: ожидаются таблицы \"\n                    f\"{CHUNKS_TABLE}(id, document_id, content, embedding) и \"\n                    f\"{DOCUMENTS_TABLE}(id, filename). \"\n                    \"См. docs/DATABASE_REPLACEMENT.md. \"\n                    f\"Ошибка PostgreSQL: {exc}\"\n                ) from exc\n\n        db_ms = (time.perf_counter() - db_started) * 1000\n        total_ms = (time.perf_counter() - total_started) * 1000\n\n        accepted = []\n\n        for rank, (\n            chunk_id,\n            document_id,\n            filename,\n            content,\n            distance,\n        ) in enumerate(rows, 1):\n            if distance is None:\n                continue\n\n            distance = float(distance)\n\n            if distance <= threshold:\n                header = chunk_header(\n                    rank,\n                    document_id,\n                    chunk_id,\n                    distance,\n                    document_title(filename),\n                )\n                accepted.append(f\"{header}\\n{content}\")\n\n        logger.info(\n            \"Tutor RAG timings: embedding_ms=%.1f db_ms=%.1f \"\n            \"total_ms=%.1f rows=%d accepted=%d\",\n            embedding_ms,\n            db_ms,\n            total_ms,\n            len(rows),\n            len(accepted),\n        )\n\n        if accepted:\n            return \"CONTEXT_FOUND\", \"\\n\\n---\\n\\n\".join(accepted)\n\n        if rows:\n            return \"CONTEXT_INSUFFICIENT\", \"\"\n\n        return \"CONTEXT_NOT_FOUND\", \"\"\n\n    def _route(self):\n        \"\"\"Run the search and exclude the unselected branch.\"\"\"\n        # Reuse the result if Langflow evaluates both output methods\n        # on the same component instance.\n        if not hasattr(self, \"_course_search_result\"):\n            self._course_search_result = self._search()\n\n        status, context = self._course_search_result\n        self.status = status\n\n        selected = (\n            \"sufficient_context\"\n            if status == \"CONTEXT_FOUND\"\n            else \"insufficient_context\"\n        )\n\n        excluded = [\n            name\n            for name in (\"sufficient_context\", \"insufficient_context\")\n            if name != selected\n        ]\n\n        for name in excluded:\n            self.stop(name)\n\n        self.graph.exclude_branches_conditionally(\n            self._id,\n            output_names=excluded,\n        )\n\n        return selected, context\n\n    def build_sufficient_context(self) -> Message:\n        selected, context = self._route()\n\n        if selected != \"sufficient_context\":\n            return Message(text=\"\")\n\n        return Message(text=context)\n\n    def build_insufficient_context(self) -> Message:\n        selected, _ = self._route()\n\n        if selected != \"insufficient_context\":\n            return Message(text=\"\")\n\n        return Message(\n            text=(\n                \"В найденных материалах не обнаружено достаточно релевантной \"\n                \"информации для ответа. Пришлите формулировку задания или \"\n                \"уточните, о какой теме курса вы спрашиваете.\"\n            )\n        )\n"
               },
-              "is_refresh": true,
+              "is_refresh": false,
               "max_distance": {
                 "_input_type": "FloatInput",
                 "advanced": false,
@@ -4345,7 +4345,7 @@
                     }
                   }
                 },
-                "info": "Select an embedding model compatible with the vectors stored in PostgreSQL. For the current database, use bge-m3:latest.",
+                "info": "Default embedding model for the search query. The provider and model from .env (TUTOR_EMBEDDINGS_PROVIDER, TUTOR_EMBEDDINGS_MODEL, TUTOR_EMBEDDINGS_PROVIDER_NAME) take priority over this selection. The resulting vector must be 1024-dimensional to match PostgreSQL.",
                 "input_types": [
                   "Embeddings"
                 ],
@@ -4388,7 +4388,7 @@
                         "show_progress_bar": "show_progress_bar"
                       }
                     },
-                    "name": "Embeddings",
+                    "name": "alibaba/wan3",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -4408,7 +4408,7 @@
                         "show_progress_bar": "show_progress_bar"
                       }
                     },
-                    "name": "Embeddings-2",
+                    "name": "alibaba/wan3_prime",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -4428,7 +4428,7 @@
                         "show_progress_bar": "show_progress_bar"
                       }
                     },
-                    "name": "EmbeddingsGigaR",
+                    "name": "anthropic/claude-fable-5",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -4448,7 +4448,7 @@
                         "show_progress_bar": "show_progress_bar"
                       }
                     },
-                    "name": "GigaChat-2",
+                    "name": "anthropic/claude-fable-5-1",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -4468,7 +4468,27 @@
                         "show_progress_bar": "show_progress_bar"
                       }
                     },
-                    "name": "GigaChat-2-Max",
+                    "name": "anthropic/claude-fable-5-2",
+                    "provider": "OpenAI Compatible"
+                  },
+                  {
+                    "category": "OpenAI Compatible",
+                    "icon": "Plug",
+                    "metadata": {
+                      "embedding_class": "OpenAIEmbeddings",
+                      "model_type": "embeddings",
+                      "param_mapping": {
+                        "api_base": "base_url",
+                        "chunk_size": "chunk_size",
+                        "dimensions": "dimensions",
+                        "max_retries": "max_retries",
+                        "model": "model",
+                        "model_kwargs": "model_kwargs",
+                        "request_timeout": "timeout",
+                        "show_progress_bar": "show_progress_bar"
+                      }
+                    },
+                    "name": "timeweb/bge-m3",
                     "provider": "OpenAI Compatible"
                   }
                 ],
@@ -4485,21 +4505,23 @@
                 "type": "model",
                 "value": [
                   {
-                    "icon": "Ollama",
+                    "icon": "Plug",
                     "metadata": {
-                      "created": 0,
-                      "default": true,
-                      "deprecated": false,
-                      "icon": "Ollama",
+                      "embedding_class": "OpenAIEmbeddings",
                       "model_type": "embeddings",
-                      "not_supported": false,
-                      "preview": false,
-                      "reasoning": false,
-                      "search": false,
-                      "tool_calling": false
+                      "param_mapping": {
+                        "api_base": "base_url",
+                        "chunk_size": "chunk_size",
+                        "dimensions": "dimensions",
+                        "max_retries": "max_retries",
+                        "model": "model",
+                        "model_kwargs": "model_kwargs",
+                        "request_timeout": "timeout",
+                        "show_progress_bar": "show_progress_bar"
+                      }
                     },
-                    "name": "bge-m3:latest",
-                    "provider": "Ollama"
+                    "name": "timeweb/bge-m3",
+                    "provider": "OpenAI Compatible"
                   }
                 ]
               },
@@ -4557,7 +4579,7 @@
           "type": "PostgresCourseSearch"
         },
         "dragging": false,
-        "id": "PostgresCourseSearch-is23N",
+        "id": "PostgresCourseSearch-GyHXt",
         "measured": {
           "height": 449,
           "width": 280
@@ -4571,7 +4593,9 @@
       },
       {
         "data": {
-          "id": "SourcesFormatter-yxRNG",
+          "description": "Validate the agent's cited chunk IDs against retrieved context and list the real titles of the cited documents.",
+          "display_name": "Sources Formatter",
+          "id": "SourcesFormatter-JgZv2",
           "node": {
             "base_classes": [
               "Message"
@@ -4590,9 +4614,8 @@
             "frozen": false,
             "icon": "prompts",
             "legacy": false,
-            "lf_version": "1.13.0",
             "metadata": {
-              "code_hash": "cafe8d1eaf66",
+              "code_hash": "c9161b3c3328",
               "component_class_name": "SourcesFormatter",
               "dependencies": {
                 "dependencies": [
@@ -4613,6 +4636,7 @@
                 "cache": true,
                 "display_name": "Response",
                 "group_outputs": false,
+                "hidden": null,
                 "loop_types": null,
                 "method": "build_response",
                 "name": "response",
@@ -4672,7 +4696,7 @@
                 "show": true,
                 "title_case": false,
                 "type": "code",
-                "value": "import re\n\nfrom langflow.custom import Component\nfrom langflow.io import MessageTextInput, Output\nfrom langflow.schema import Message\n\n\n# Headers generated by PostgreSQL Course Search:\n#   [1; document_id=12; chunk_id=345; cosine_distance=0.2871;\n#    document_title=1.1. Название документа]\n# document_title is optional: headers from an older search component\n# (without it) are still accepted, and the source is shown as\n# \"Документ №N\". Keep in sync with chunk_header() in\n# postgres_course_search.py.\nHEADER_RE = re.compile(\n    r\"(?m)^\\[\\d+;\\s*document_id=(\\d+);\"\n    r\"\\s*chunk_id=(\\d+);\"\n    r\"\\s*cosine_distance=[^\\];\\r\\n]+\"\n    r\"(?:;\\s*document_title=([^\\]\\r\\n]*))?\\]\"\n)\n\n# The marker must be a separate line at the end of the answer.\nMARKER_RE = re.compile(\n    r\"(?im)^USED_SOURCES\\s*:\\s*([^\\r\\n]*)\\s*$\"\n)\n\nPAIR_RE = re.compile(r\"^(\\d+)\\s*:\\s*(\\d+)$\")\n\n# ---------------------------------------------------------------------------\n# Ссылки на учебник\n#\n# Учебное пособие «Устойчивое развитие: системный подход» (УрФУ, 2026),\n# по которому построена база. В PDF первые две страницы - обложка, поэтому\n# печатная страница N = страница N + 2 в PDF.\n#\n# Ссылка строится только для тех документов, для которых страница известна\n# (TEXTBOOK_PAGES). Остальные (например, \"0.1. О курсе\") выводятся без\n# ссылки - так студент не получит ссылку \"в никуда\".\n#\n# Блок между маркерами генерируется скриптом scripts/build_textbook_toc.py\n# по PDF учебника - вручную его лучше не править.\n# ---------------------------------------------------------------------------\nTEXTBOOK_URL = (\n    \"https://elar.urfu.ru/bitstream/10995/150343/1/\"\n    \"978-5-7996-4169-6_2026.pdf\"\n)\nTEXTBOOK_NAME = \"учебник\"\nPDF_PAGE_OFFSET = 2  # печатная страница + 2 = страница в PDF\n\n# BEGIN TEXTBOOK_PAGES\nTEXTBOOK_PAGES = {\n    \"0.2\": 8,  # 0.2. Введение\n    \"1.1\": 12,  # 1.1. Экологическая устойчивость и экологические кризисы\n    \"1.2\": 30,  # 1.2. Осознание глобальных проблем\n    \"1.3\": 40,  # 1.3. Вызовы антропоцена\n    \"2.1\": 70,  # 2.1. Социальные системы\n    \"2.2\": 85,  # 2.2. Стратегическое планирование\n    \"3.1\": 110,  # 3.1. Алгоритм решения задач управления\n    \"3.2\": 137,  # 3.2. Концепция Run — Change — Disrupt Model\n    \"4.1\": 145,  # 4.1. Стратегии устойчивого развития\n    \"4.2\": 167,  # 4.2. Проекты устойчивого развития\n    \"4.3\": 180,  # 4.3. Отчетность об устойчивом развитии\n    \"прил.1\": 206,  # Приложение 1\n    \"прил.2\": 207,  # Приложение 2\n    \"прил.3\": 213,  # Приложение 3\n}\n# END TEXTBOOK_PAGES\n\nSECTION_RE = re.compile(r\"^\\s*(\\d+\\.\\d+)\\.?(?:\\s|$)\")\nAPPENDIX_RE = re.compile(r\"^\\s*приложение\\s+(\\d+)\\b\", re.IGNORECASE)\n\n\ndef extract_text(value) -> str:\n    \"\"\"Extract plain text from a Langflow input.\"\"\"\n    if isinstance(value, (list, tuple)):\n        value = value[-1] if value else \"\"\n\n    if hasattr(value, \"text\"):\n        value = value.text\n    elif hasattr(value, \"data\") and isinstance(value.data, dict):\n        data = value.data\n        value = data.get(\"text\") or data.get(\"content\") or \"\"\n    elif isinstance(value, dict):\n        value = value.get(\"text\") or value.get(\"content\") or \"\"\n\n    return str(value or \"\").strip()\n\n\ndef collect_headers(context: str):\n    \"\"\"\n    Parse chunk headers from the retrieved context.\n\n    Returns the set of allowed (document_id, chunk_id) pairs and\n    a {document_id: title} map. Titles come from the database\n    (documents.filename via the search component), never from the model.\n    \"\"\"\n    allowed_pairs = set()\n    titles = {}\n\n    for match in HEADER_RE.finditer(context):\n        document_id, chunk_id, title = match.groups()\n        allowed_pairs.add((document_id, chunk_id))\n\n        title = (title or \"\").strip()\n\n        if title and document_id not in titles:\n            titles[document_id] = title\n\n    return allowed_pairs, titles\n\n\ndef section_key(title: str) -> str:\n    \"\"\"\n    Stable key of a document inside TEXTBOOK_PAGES.\n\n    \"1.1. Название\" -> \"1.1\", \"Приложение 2\" -> \"прил.2\". Anything else\n    falls back to the lower-cased title. The number is used (not the whole\n    title) so that a corrected typo in documents.filename does not break\n    the link.\n    \"\"\"\n    title = (title or \"\").strip()\n\n    match = SECTION_RE.match(title)\n    if match:\n        return match.group(1)\n\n    match = APPENDIX_RE.match(title)\n    if match:\n        return f\"прил.{match.group(1)}\"\n\n    return re.sub(r\"\\s+\", \" \", title).lower()\n\n\ndef textbook_link(title: str):\n    \"\"\"\n    Return (url, printed_page) for a document, or None if the page of\n    this document in the textbook is unknown.\n    \"\"\"\n    printed_page = TEXTBOOK_PAGES.get(section_key(title))\n\n    if not isinstance(printed_page, int) or printed_page < 1:\n        return None\n\n    pdf_page = printed_page + PDF_PAGE_OFFSET\n    return f\"{TEXTBOOK_URL}#page={pdf_page}\", printed_page\n\n\ndef format_document(document_id: str, title: str = \"\") -> str:\n    \"\"\"\n    Format one document for the student (one Markdown list line).\n\n    With a known page:\n        [1.1. Название](https://...pdf#page=14) — учебник, с. 12\n    Without it, just the real title from the database; without a title,\n    the document number.\n    \"\"\"\n    title = (title or \"\").strip()\n\n    if not title:\n        return f\"Документ №{document_id}\"\n\n    link = textbook_link(title)\n\n    if link is None:\n        return title\n\n    url, printed_page = link\n    label = title.replace(\"[\", \"(\").replace(\"]\", \")\")\n\n    return (\n        f\"[{label}]({url}) — {TEXTBOOK_NAME}, \"\n        f\"с. {printed_page}\"\n    )\n\n\nclass SourcesFormatter(Component):\n    display_name = \"Sources Formatter\"\n    description = (\n        \"Validate the agent's cited chunk IDs against retrieved context \"\n        \"and list the real titles of the cited documents.\"\n    )\n    icon = \"prompts\"\n    name = \"SourcesFormatter\"\n\n    inputs = [\n        MessageTextInput(\n            name=\"answer\",\n            display_name=\"Agent Answer\",\n            info=\"Agent response ending with a USED_SOURCES line.\",\n            required=True,\n        ),\n        MessageTextInput(\n            name=\"context\",\n            display_name=\"Retrieved Context\",\n            info=\"Accepted chunks passed to the agent.\",\n            required=True,\n        ),\n    ]\n\n    outputs = [\n        Output(\n            name=\"response\",\n            display_name=\"Response\",\n            method=\"build_response\",\n            types=[\"Message\"],\n            selected=\"Message\",\n        ),\n    ]\n\n    def build_response(self) -> Message:\n        answer = extract_text(self.answer)\n        context = extract_text(self.context)\n\n        if not answer:\n            raise ValueError(\"The agent response is empty.\")\n\n        allowed_pairs, titles = collect_headers(context)\n\n        markers = list(MARKER_RE.finditer(answer))\n\n        # Remove marker lines even if the model placed them incorrectly.\n        clean_answer = MARKER_RE.sub(\"\", answer).strip()\n\n        if not clean_answer:\n            raise ValueError(\"The agent response contains no answer text.\")\n\n        if len(markers) != 1:\n            self.status = \"MISSING_OR_MULTIPLE_SOURCE_MARKERS\"\n            return Message(\n                text=(\n                    f\"{clean_answer}\\n\\n\"\n                    \"Не удалось проверить источники этого ответа.\"\n                )\n            )\n\n        marker = markers[0]\n\n        # A valid marker must be the final non-whitespace content.\n        if answer[marker.end():].strip():\n            self.status = \"SOURCE_MARKER_NOT_LAST\"\n            return Message(\n                text=(\n                    f\"{clean_answer}\\n\\n\"\n                    \"Не удалось проверить источники этого ответа.\"\n                )\n            )\n\n        raw_sources = marker.group(1).strip()\n\n        if raw_sources.lower() == \"none\":\n            self.status = \"NO_SOURCES_DECLARED\"\n            return Message(text=clean_answer)\n\n        if not raw_sources:\n            self.status = \"EMPTY_SOURCE_MARKER\"\n            return Message(\n                text=(\n                    f\"{clean_answer}\\n\\n\"\n                    \"Не удалось проверить источники этого ответа.\"\n                )\n            )\n\n        valid_pairs = []\n        seen_pairs = set()\n        invalid_found = False\n\n        for item in raw_sources.split(\",\"):\n            match = PAIR_RE.fullmatch(item.strip())\n\n            if not match:\n                invalid_found = True\n                continue\n\n            pair = (match.group(1), match.group(2))\n\n            if pair not in allowed_pairs:\n                invalid_found = True\n                continue\n\n            if pair not in seen_pairs:\n                seen_pairs.add(pair)\n                valid_pairs.append(pair)\n\n        if not valid_pairs:\n            self.status = \"NO_VALID_SOURCE_IDS\"\n            return Message(\n                text=(\n                    f\"{clean_answer}\\n\\n\"\n                    \"Не удалось проверить источники этого ответа.\"\n                )\n            )\n\n        document_ids = []\n        seen_documents = set()\n\n        for document_id, _chunk_id in valid_pairs:\n            if document_id not in seen_documents:\n                seen_documents.add(document_id)\n                document_ids.append(document_id)\n\n        sources = \"\\n\".join(\n            \"- \" + format_document(document_id, titles.get(document_id, \"\"))\n            for document_id in document_ids\n        )\n\n        result = f\"{clean_answer}\\n\\nИсточники:\\n{sources}\"\n\n        if invalid_found:\n            result += (\n                \"\\n\\nНекоторые указанные моделью ссылки \"\n                \"не удалось проверить.\"\n            )\n            self.status = \"PARTIALLY_VALID_SOURCES\"\n        else:\n            self.status = \"VALID_SOURCE_IDS\"\n\n        return Message(text=result)\n"
+                "value": "import re\nfrom langflow.custom import Component\nfrom langflow.io import MessageTextInput, Output\nfrom langflow.schema import Message\n\n# Headers generated by PostgreSQL Course Search:\n#   [1; document_id=12; chunk_id=345; cosine_distance=0.2871;\n#    document_title=1.1. Название документа]\n# document_title is optional: headers from an older search component\n# (without it) are still accepted, and the source is shown as\n# \"Документ №N\". Keep in sync with chunk_header() in\n# postgres_course_search.py.\nHEADER_RE = re.compile(\n    r\"(?m)^\\[\\d+;\\s*document_id=(\\d+);\"\n    r\"\\s*chunk_id=(\\d+);\"\n    r\"\\s*cosine_distance=[^\\];\\r\\n]+\"\n    r\"(?:;\\s*document_title=([^\\]\\r\\n]*))?\\]\"\n)\n\n# The marker must be a separate line at the end of the answer.\nMARKER_RE = re.compile(r\"(?im)^USED_SOURCES\\s*:\\s*([^\\r\\n]*)\\s*$\")\nPAIR_RE = re.compile(r\"^(\\d+)\\s*:\\s*(\\d+)$\")\n\n# ---------------------------------------------------------------------------\n# Ссылки на учебник\n#\n# Учебное пособие «Устойчивое развитие: системный подход» (УрФУ, 2026),\n# по которому построена база. В PDF первые две страницы - обложка, поэтому\n# печатная страница N = страница N + 2 в PDF.\n# ---------------------------------------------------------------------------\nTEXTBOOK_CARD_URL = \"https://elar.urfu.ru/handle/10995/150343\"\nTEXTBOOK_URL = (\n    \"https://elar.urfu.ru/bitstream/10995/150343/1/978-5-7996-4169-6_2026.pdf\"\n)\nTEXTBOOK_CITATION = (\n    \"Орешкина Т. А. и др. «Устойчивое развитие: системный подход» \"\n    \"(Екатеринбург: Изд-во Урал. ун-та, 2026)\"\n)\nPDF_PAGE_OFFSET = 2  # печатная страница + 2 = страница в PDF\n\n# BEGIN TEXTBOOK_PAGES\nTEXTBOOK_PAGES = {\n    \"0.2\": 8,  # 0.2. Введение\n    \"1.1\": 12,  # 1.1. Экологическая устойчивость и экологические кризисы\n    \"1.2\": 30,  # 1.2. Осознание глобальных проблем\n    \"1.3\": 40,  # 1.3. Вызовы антропоцена\n    \"2.1\": 70,  # 2.1. Социальные системы\n    \"2.2\": 85,  # 2.2. Стратегическое планирование\n    \"3.1\": 110,  # 3.1. Алгоритм решения задач управления\n    \"3.2\": 137,  # 3.2. Концепция Run — Change — Disrupt Model\n    \"4.1\": 145,  # 4.1. Стратегии устойчивого развития\n    \"4.2\": 167,  # 4.2. Проекты устойчивого развития\n    \"4.3\": 180,  # 4.3. Отчетность об устойчивом развитии\n    \"прил.1\": 206,  # Приложение 1\n    \"прил.2\": 207,  # Приложение 2\n    \"прил.3\": 213,  # Приложение 3\n}\n# END TEXTBOOK_PAGES\n\nSECTION_RE = re.compile(r\"^\\s*(\\d+\\.\\d+)\\.?(?:\\s|$)\")\nAPPENDIX_RE = re.compile(r\"^\\s*приложение\\s+(\\d+)\\b\", re.IGNORECASE)\n\n\ndef extract_text(value) -> str:\n    \"\"\"Extract plain text from a Langflow input.\"\"\"\n    if isinstance(value, (list, tuple)):\n        value = value[-1] if value else \"\"\n    if hasattr(value, \"text\"):\n        value = value.text\n    elif hasattr(value, \"data\") and isinstance(value.data, dict):\n        data = value.data\n        value = data.get(\"text\") or data.get(\"content\") or \"\"\n    elif isinstance(value, dict):\n        value = value.get(\"text\") or value.get(\"content\") or \"\"\n    return str(value or \"\").strip()\n\n\ndef collect_headers(context: str):\n    \"\"\"\n    Parse chunk headers from the retrieved context.\n    Returns the set of allowed (document_id, chunk_id) pairs and\n    a {document_id: title} map. Titles come from the database\n    (documents.filename via the search component), never from the model.\n    \"\"\"\n    allowed_pairs = set()\n    titles = {}\n    for match in HEADER_RE.finditer(context):\n        document_id, chunk_id, title = match.groups()\n        allowed_pairs.add((document_id, chunk_id))\n        title = (title or \"\").strip()\n        if title and document_id not in titles:\n            titles[document_id] = title\n    return allowed_pairs, titles\n\n\ndef section_key(title: str) -> str:\n    \"\"\"\n    Stable key of a document inside TEXTBOOK_PAGES.\n    \"1.1. Название\" -> \"1.1\", \"Приложение 2\" -> \"прил.2\". Anything else\n    falls back to the lower-cased title.\n    \"\"\"\n    title = (title or \"\").strip()\n    match = SECTION_RE.match(title)\n    if match:\n        return match.group(1)\n    match = APPENDIX_RE.match(title)\n    if match:\n        return f\"прил.{match.group(1)}\"\n    return re.sub(r\"\\s+\", \" \", title).lower()\n\n\ndef textbook_link(title: str):\n    \"\"\"\n    Return (url, printed_page) for a document, or None if the page of\n    this document in the textbook is unknown.\n    \"\"\"\n    printed_page = TEXTBOOK_PAGES.get(section_key(title))\n    if not isinstance(printed_page, int) or printed_page < 1:\n        return None\n    pdf_page = printed_page + PDF_PAGE_OFFSET\n    return f\"{TEXTBOOK_URL}#page={pdf_page}\", printed_page\n\n\ndef format_document(document_id: str, title: str = \"\") -> str:\n    \"\"\"\n    Format one document for the student (one Markdown list line).\n    With a known page:\n        [1.1. Название](https://...pdf#page=14) — с. 12\n    Without it, just the real title from the database; without a title,\n    the document number.\n    \"\"\"\n    title = (title or \"\").strip()\n    if not title:\n        return f\"Документ №{document_id}\"\n    link = textbook_link(title)\n    if link is None:\n        return title\n    url, printed_page = link\n    label = title.replace(\"[\", \"(\").replace(\"]\", \")\")\n    return f\"[{label}]({url}) — с. {printed_page}\"\n\n\nclass SourcesFormatter(Component):\n    display_name = \"Sources Formatter\"\n    description = (\n        \"Validate the agent's cited chunk IDs against retrieved context \"\n        \"and list the real titles of the cited documents.\"\n    )\n    icon = \"prompts\"\n    name = \"SourcesFormatter\"\n\n    inputs = [\n        MessageTextInput(\n            name=\"answer\",\n            display_name=\"Agent Answer\",\n            info=\"Agent response ending with a USED_SOURCES line.\",\n            required=True,\n        ),\n        MessageTextInput(\n            name=\"context\",\n            display_name=\"Retrieved Context\",\n            info=\"Accepted chunks passed to the agent.\",\n            required=True,\n        ),\n    ]\n\n    outputs = [\n        Output(\n            name=\"response\",\n            display_name=\"Response\",\n            method=\"build_response\",\n            types=[\"Message\"],\n            selected=\"Message\",\n        ),\n    ]\n\n    def build_response(self) -> Message:\n        answer = extract_text(self.answer)\n        context = extract_text(self.context)\n        if not answer:\n            raise ValueError(\"The agent response is empty.\")\n\n        allowed_pairs, titles = collect_headers(context)\n        markers = list(MARKER_RE.finditer(answer))\n\n        # Remove marker lines even if the model placed them incorrectly.\n        clean_answer = MARKER_RE.sub(\"\", answer).strip()\n        if not clean_answer:\n            raise ValueError(\"The agent response contains no answer text.\")\n\n        if len(markers) != 1:\n            self.status = \"MISSING_OR_MULTIPLE_SOURCE_MARKERS\"\n            return Message(\n                text=(f\"{clean_answer}\\n\\nНе удалось проверить источники этого ответа.\")\n            )\n\n        marker = markers[0]\n        # A valid marker must be the final non-whitespace content.\n        if answer[marker.end() :].strip():\n            self.status = \"SOURCE_MARKER_NOT_LAST\"\n            return Message(\n                text=(f\"{clean_answer}\\n\\nНе удалось проверить источники этого ответа.\")\n            )\n\n        raw_sources = marker.group(1).strip()\n        if raw_sources.lower() == \"none\":\n            self.status = \"NO_SOURCES_DECLARED\"\n            return Message(text=clean_answer)\n\n        if not raw_sources:\n            self.status = \"EMPTY_SOURCE_MARKER\"\n            return Message(\n                text=(f\"{clean_answer}\\n\\nНе удалось проверить источники этого ответа.\")\n            )\n\n        valid_pairs = []\n        seen_pairs = set()\n        invalid_found = False\n\n        for item in raw_sources.split(\",\"):\n            match = PAIR_RE.fullmatch(item.strip())\n            if not match:\n                invalid_found = True\n                continue\n            pair = (match.group(1), match.group(2))\n            if pair not in allowed_pairs:\n                invalid_found = True\n                continue\n            if pair not in seen_pairs:\n                seen_pairs.add(pair)\n                valid_pairs.append(pair)\n\n        if not valid_pairs:\n            self.status = \"NO_VALID_SOURCE_IDS\"\n            return Message(\n                text=(f\"{clean_answer}\\n\\nНе удалось проверить источники этого ответа.\")\n            )\n\n        document_ids = []\n        seen_documents = set()\n        for document_id, _chunk_id in valid_pairs:\n            if document_id not in seen_documents:\n                seen_documents.add(document_id)\n                document_ids.append(document_id)\n\n        sources_lines = \"\\n\".join(\n            \"- \" + format_document(document_id, titles.get(document_id, \"\"))\n            for document_id in document_ids\n        )\n\n        sources_block = (\n            \"---\\n\"\n            \"## ✏️ Материалы курса\\n\"\n            f\"Ответ составлен на основе учебного пособия: \"\n            f\"[{TEXTBOOK_CITATION}]({TEXTBOOK_CARD_URL})\\n\\n\"\n            f\"**Разделы для изучения:**\\n{sources_lines}\"\n        )\n\n        result = f\"{clean_answer}\\n\\n{sources_block}\"\n        if invalid_found:\n            result += (\n                \"\\n\\n*Примечание: некоторые указанные моделью ссылки \"\n                \"не удалось верифицировать.*\"\n            )\n            self.status = \"PARTIALLY_VALID_SOURCES\"\n        else:\n            self.status = \"VALID_SOURCE_IDS\"\n\n        return Message(text=result)\n"
               },
               "context": {
                 "_input_type": "MessageTextInput",
@@ -4707,7 +4731,7 @@
           "type": "SourcesFormatter"
         },
         "dragging": false,
-        "id": "SourcesFormatter-yxRNG",
+        "id": "SourcesFormatter-JgZv2",
         "measured": {
           "height": 281,
           "width": 280
@@ -4721,7 +4745,7 @@
       },
       {
         "data": {
-          "id": "Prompt Template-EF82Y",
+          "id": "Prompt Template-zXKr0",
           "node": {
             "add_tool_output": null,
             "base_classes": [
@@ -4936,7 +4960,7 @@
           "type": "Prompt Template"
         },
         "dragging": false,
-        "id": "Prompt Template-EF82Y",
+        "id": "Prompt Template-zXKr0",
         "measured": {
           "height": 387,
           "width": 280
@@ -4950,7 +4974,7 @@
       },
       {
         "data": {
-          "id": "ChatOutput-KygWm",
+          "id": "ChatOutput-0U4yh",
           "node": {
             "base_classes": [
               "Message"
@@ -5246,7 +5270,7 @@
           "type": "ChatOutput"
         },
         "dragging": false,
-        "id": "ChatOutput-KygWm",
+        "id": "ChatOutput-0U4yh",
         "measured": {
           "height": 46,
           "width": 168
@@ -5261,7 +5285,7 @@
       {
         "data": {
           "_connectionMode": false,
-          "id": "Agent-4CS9c",
+          "id": "Agent-93unh",
           "node": {
             "base_classes": [
               "Data",
@@ -5296,7 +5320,7 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-11-04T09:49:46.185Z",
+            "last_updated": "2026-11-27T13:07:24.899Z",
             "legacy": false,
             "lf_version": "1.13.0",
             "metadata": {
@@ -5370,11 +5394,11 @@
             "template": {
               "_frontend_node_flow_id": {
                 "input_types": [],
-                "value": "1084952c-c642-4638-96d9-a5c5e5dc6726"
+                "value": "13184e9f-a699-45b9-8df5-128933dff93d"
               },
               "_frontend_node_folder_id": {
                 "input_types": [],
-                "value": "d44e42fc-a5f0-4d72-b0f7-9aa072ccebbc"
+                "value": "5add1a14-594b-4954-b6b3-73a78ce2f659"
               },
               "_type": "Component",
               "add_calculator_tool": {
@@ -5702,34 +5726,6 @@
                     "provider": "Ollama"
                   },
                   {
-                    "category": "Ollama",
-                    "icon": "Ollama",
-                    "metadata": {
-                      "api_key_param": "api_key",
-                      "base_url_param": "base_url",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_tokens",
-                      "model_class": "ChatOllama",
-                      "model_name_param": "model"
-                    },
-                    "name": "qwen2.5:7b",
-                    "provider": "Ollama"
-                  },
-                  {
-                    "category": "Ollama",
-                    "icon": "Ollama",
-                    "metadata": {
-                      "api_key_param": "api_key",
-                      "base_url_param": "base_url",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_tokens",
-                      "model_class": "ChatOllama",
-                      "model_name_param": "model"
-                    },
-                    "name": "qwen3:4b",
-                    "provider": "Ollama"
-                  },
-                  {
                     "category": "OpenAI Compatible",
                     "icon": "Plug",
                     "metadata": {
@@ -5740,7 +5736,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "Embeddings",
+                    "name": "alibaba/wan3",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -5754,7 +5750,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "Embeddings-2",
+                    "name": "alibaba/wan3_prime",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -5768,7 +5764,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "EmbeddingsGigaR",
+                    "name": "anthropic/claude-fable-5",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -5782,7 +5778,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "GigaChat-2",
+                    "name": "anthropic/claude-fable-5-1",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -5796,7 +5792,35 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "GigaChat-2-Max",
+                    "name": "anthropic/claude-fable-5-2",
+                    "provider": "OpenAI Compatible"
+                  },
+                  {
+                    "category": "OpenAI Compatible",
+                    "icon": "Plug",
+                    "metadata": {
+                      "api_key_param": "api_key",
+                      "base_url_param": "base_url",
+                      "context_length": 128000,
+                      "max_tokens_field_name": "max_tokens",
+                      "model_class": "ChatOpenAI",
+                      "model_name_param": "model"
+                    },
+                    "name": "anthropic/claude-haiku-5-5",
+                    "provider": "OpenAI Compatible"
+                  },
+                  {
+                    "category": "OpenAI Compatible",
+                    "icon": "Plug",
+                    "metadata": {
+                      "api_key_param": "api_key",
+                      "base_url_param": "base_url",
+                      "context_length": 128000,
+                      "max_tokens_field_name": "max_tokens",
+                      "model_class": "ChatOpenAI",
+                      "model_name_param": "model"
+                    },
+                    "name": "openai/gpt-6-luna",
                     "provider": "OpenAI Compatible"
                   }
                 ],
@@ -5816,7 +5840,7 @@
                     "icon": "Plug",
                     "metadata": {
                       "created": 0,
-                      "default": true,
+                      "default": false,
                       "deprecated": false,
                       "icon": "Plug",
                       "model_type": "llm",
@@ -5826,7 +5850,7 @@
                       "search": false,
                       "tool_calling": true
                     },
-                    "name": "GigaChat-2-Max",
+                    "name": "anthropic/claude-haiku-5-5",
                     "provider": "OpenAI Compatible"
                   }
                 ]
@@ -6028,7 +6052,7 @@
           "type": "Agent"
         },
         "dragging": false,
-        "id": "Agent-4CS9c",
+        "id": "Agent-93unh",
         "measured": {
           "height": 451,
           "width": 280
@@ -6043,7 +6067,7 @@
       {
         "data": {
           "_connectionMode": false,
-          "id": "Agent-b3Rc0",
+          "id": "Agent-XssMW",
           "node": {
             "base_classes": [
               "Data",
@@ -6078,7 +6102,7 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-11-04T09:52:51.904Z",
+            "last_updated": "2026-11-27T13:07:22.199Z",
             "legacy": false,
             "lf_version": "1.13.0",
             "metadata": {
@@ -6152,11 +6176,11 @@
             "template": {
               "_frontend_node_flow_id": {
                 "input_types": [],
-                "value": "1084952c-c642-4638-96d9-a5c5e5dc6726"
+                "value": "13184e9f-a699-45b9-8df5-128933dff93d"
               },
               "_frontend_node_folder_id": {
                 "input_types": [],
-                "value": "d44e42fc-a5f0-4d72-b0f7-9aa072ccebbc"
+                "value": "5add1a14-594b-4954-b6b3-73a78ce2f659"
               },
               "_type": "Component",
               "add_calculator_tool": {
@@ -6484,34 +6508,6 @@
                     "provider": "Ollama"
                   },
                   {
-                    "category": "Ollama",
-                    "icon": "Ollama",
-                    "metadata": {
-                      "api_key_param": "api_key",
-                      "base_url_param": "base_url",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_tokens",
-                      "model_class": "ChatOllama",
-                      "model_name_param": "model"
-                    },
-                    "name": "qwen2.5:7b",
-                    "provider": "Ollama"
-                  },
-                  {
-                    "category": "Ollama",
-                    "icon": "Ollama",
-                    "metadata": {
-                      "api_key_param": "api_key",
-                      "base_url_param": "base_url",
-                      "context_length": 128000,
-                      "max_tokens_field_name": "max_tokens",
-                      "model_class": "ChatOllama",
-                      "model_name_param": "model"
-                    },
-                    "name": "qwen3:4b",
-                    "provider": "Ollama"
-                  },
-                  {
                     "category": "OpenAI Compatible",
                     "icon": "Plug",
                     "metadata": {
@@ -6522,7 +6518,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "Embeddings",
+                    "name": "alibaba/wan3",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -6536,7 +6532,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "Embeddings-2",
+                    "name": "alibaba/wan3_prime",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -6550,7 +6546,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "EmbeddingsGigaR",
+                    "name": "anthropic/claude-fable-5",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -6564,7 +6560,7 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "GigaChat-2",
+                    "name": "anthropic/claude-fable-5-1",
                     "provider": "OpenAI Compatible"
                   },
                   {
@@ -6578,7 +6574,35 @@
                       "model_class": "ChatOpenAI",
                       "model_name_param": "model"
                     },
-                    "name": "GigaChat-2-Max",
+                    "name": "anthropic/claude-fable-5-2",
+                    "provider": "OpenAI Compatible"
+                  },
+                  {
+                    "category": "OpenAI Compatible",
+                    "icon": "Plug",
+                    "metadata": {
+                      "api_key_param": "api_key",
+                      "base_url_param": "base_url",
+                      "context_length": 128000,
+                      "max_tokens_field_name": "max_tokens",
+                      "model_class": "ChatOpenAI",
+                      "model_name_param": "model"
+                    },
+                    "name": "anthropic/claude-haiku-5-5",
+                    "provider": "OpenAI Compatible"
+                  },
+                  {
+                    "category": "OpenAI Compatible",
+                    "icon": "Plug",
+                    "metadata": {
+                      "api_key_param": "api_key",
+                      "base_url_param": "base_url",
+                      "context_length": 128000,
+                      "max_tokens_field_name": "max_tokens",
+                      "model_class": "ChatOpenAI",
+                      "model_name_param": "model"
+                    },
+                    "name": "openai/gpt-6-luna",
                     "provider": "OpenAI Compatible"
                   }
                 ],
@@ -6598,7 +6622,7 @@
                     "icon": "Plug",
                     "metadata": {
                       "created": 0,
-                      "default": true,
+                      "default": false,
                       "deprecated": false,
                       "icon": "Plug",
                       "model_type": "llm",
@@ -6608,7 +6632,7 @@
                       "search": false,
                       "tool_calling": true
                     },
-                    "name": "GigaChat-2-Max",
+                    "name": "anthropic/claude-haiku-5-5",
                     "provider": "OpenAI Compatible"
                   }
                 ]
@@ -6810,7 +6834,7 @@
           "type": "Agent"
         },
         "dragging": false,
-        "id": "Agent-b3Rc0",
+        "id": "Agent-XssMW",
         "measured": {
           "height": 451,
           "width": 280
@@ -6824,7 +6848,7 @@
       },
       {
         "data": {
-          "id": "ChatOutput-p5MtJ",
+          "id": "ChatOutput-Kr8QM",
           "node": {
             "base_classes": [
               "Message"
@@ -7120,7 +7144,7 @@
           "type": "ChatOutput"
         },
         "dragging": false,
-        "id": "ChatOutput-p5MtJ",
+        "id": "ChatOutput-Kr8QM",
         "measured": {
           "height": 46,
           "width": 168
@@ -7134,7 +7158,7 @@
       },
       {
         "data": {
-          "id": "ChatOutput-CbWIc",
+          "id": "ChatOutput-lqn0u",
           "node": {
             "base_classes": [
               "Message"
@@ -7430,7 +7454,7 @@
           "type": "ChatOutput"
         },
         "dragging": false,
-        "id": "ChatOutput-CbWIc",
+        "id": "ChatOutput-lqn0u",
         "measured": {
           "height": 46,
           "width": 168
@@ -7444,14 +7468,14 @@
       }
     ],
     "viewport": {
-      "x": -1247.6290932874444,
-      "y": 788.7595300095628,
-      "zoom": 0.8456568233772016
+      "x": -212.49171946416402,
+      "y": 584.2433216071543,
+      "zoom": 0.4910527227838262
     }
   },
   "description": "tutor-rag-v2",
   "endpoint_name": null,
-  "id": "1084952c-c642-4638-96d9-a5c5e5dc6726",
+  "id": "13184e9f-a699-45b9-8df5-128933dff93d",
   "is_component": false,
   "last_tested_version": "1.13.0",
   "locked": false,
