@@ -56,7 +56,7 @@
             </thead>
             <tbody>
               {% for submission in submissions %}
-              <tr>
+              <tr data-submission-id="{{ submission.id }}">
                 <td>{{ submission.date }}</td>
                 <td>{{ submission.filename }}</td>
                 <td>{{ submission.status }}</td>
@@ -85,6 +85,6 @@
       fetch("/api/logout").then(() => window.location.href = "/login");
     }
   </script>
-  <script src="/static/submissions.js"></script>
+  <script src="/static/submissions.js?v=2"></script>
 </body>
 </html>
