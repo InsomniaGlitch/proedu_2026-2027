@@ -33,11 +33,15 @@ FILE_EXTENSION_RE = re.compile(
 MAX_TITLE_LENGTH = 200
 
 # --- Режим эмбеддингов -------------------------------------------------------
-# 'api'    — OpenAI-совместимый /embeddings по ключу (gpt2giga, OpenAI, vLLM).
-# 'ollama' — локальная Ollama.
+# 'api'    — OpenAI-совместимый /embeddings. Сервер и модель задаются
+#            в полях узла Langflow (или, как запасной вариант, в .env).
+# 'ollama' — локальная Ollama (модель выбирается в селекторе узла).
 EMBEDDINGS_PROVIDER_API = "api"
 EMBEDDINGS_PROVIDER_OLLAMA = "ollama"
 OLLAMA_PROVIDER_NAME = "Ollama"
+
+# Ключ по умолчанию для локальных серверов, которые его не проверяют.
+DEFAULT_API_KEY = "pass"
 
 
 def required_setting(name: str) -> str:
@@ -76,139 +80,6 @@ def int_setting(name: str, default: int, minimum: int = 1) -> int:
     return result
 
 
-def embeddings_provider() -> str:
-    """
-    Embedding mode: 'api' or 'ollama'.
-
-    An explicit TUTOR_EMBEDDINGS_PROVIDER wins. If it is empty, the mode is
-    inferred from TUTOR_EMBEDDINGS_BASE_URL: set -> 'api', otherwise 'ollama'
-    (backward compatibility with older .env files).
-    """
-    value = env_setting("TUTOR_EMBEDDINGS_PROVIDER").lower()
-    if not value:
-        value = (
-            EMBEDDINGS_PROVIDER_API
-            if env_setting("TUTOR_EMBEDDINGS_BASE_URL")
-            else EMBEDDINGS_PROVIDER_OLLAMA
-        )
-    if value not in (EMBEDDINGS_PROVIDER_API, EMBEDDINGS_PROVIDER_OLLAMA):
-        raise RuntimeError("TUTOR_EMBEDDINGS_PROVIDER must be 'ollama' or 'api'.")
-    return value
-
-
-def selected_embedding_model(model) -> dict:
-    """
-    Final embedding-model selection.
-
-    Priority: .env variables > the selection made in the Flow node.
-    In 'api' mode TUTOR_EMBEDDINGS_MODEL is mandatory, so the configuration
-    lives in .env and not in the Flow JSON.
-    """
-    if isinstance(model, list):
-        if not model:
-            raise RuntimeError("Embedding model is not selected in the node.")
-        selection = dict(model[0])
-    elif isinstance(model, dict):
-        selection = dict(model)
-    else:
-        raise RuntimeError("Cannot read the embedding model selection.")
-
-    provider_override = env_setting("TUTOR_EMBEDDINGS_PROVIDER_NAME")
-    name_override = env_setting("TUTOR_EMBEDDINGS_MODEL")
-
-    if embeddings_provider() == EMBEDDINGS_PROVIDER_API:
-        if not name_override:
-            raise RuntimeError(
-                "TUTOR_EMBEDDINGS_PROVIDER=api, but TUTOR_EMBEDDINGS_MODEL "
-                "is not set. Set it in .env to the embedding model of your "
-                "OpenAI-compatible /embeddings endpoint "
-                "(e.g. EmbeddingsGigaR for gpt2giga)."
-            )
-        selection["name"] = name_override
-        selection["provider"] = provider_override or "OpenAI"
-    else:
-        if name_override:
-            selection["name"] = name_override
-        if provider_override:
-            selection["provider"] = provider_override
-        if selection.get("provider") != OLLAMA_PROVIDER_NAME:
-            raise RuntimeError(
-                "TUTOR_EMBEDDINGS_PROVIDER=ollama, but the selected provider "
-                "is not Ollama. Pick an Ollama embedding model in the node "
-                "or set TUTOR_EMBEDDINGS_PROVIDER_NAME."
-            )
-
-    if not selection.get("name") or not selection.get("provider"):
-        raise RuntimeError("The embedding model selection is incomplete.")
-    return selection
-
-
-def build_embedding_model(model, user_id):
-    """
-    Create the embedding model for the search query.
-
-    Overrides are passed only in the mode they belong to: api_key and
-    api_base are for the OpenAI-compatible server, ollama_base_url is for
-    Ollama. Empty variables are not passed, so Langflow Global Variables
-    and the container environment still apply.
-    """
-    selection = selected_embedding_model(model)
-
-    if embeddings_provider() == EMBEDDINGS_PROVIDER_OLLAMA:
-        ollama_base_url = env_setting("OLLAMA_BASE_URL")
-        if not ollama_base_url:
-            raise RuntimeError(
-                "Embeddings are configured for Ollama, but OLLAMA_BASE_URL "
-                "is not set. Set it in .env, or switch to the API mode: "
-                "TUTOR_EMBEDDINGS_PROVIDER=api with "
-                "TUTOR_EMBEDDINGS_BASE_URL and TUTOR_EMBEDDINGS_MODEL."
-            )
-        return get_embeddings(
-            model=[selection],
-            user_id=user_id,
-            ollama_base_url=ollama_base_url,
-        )
-
-    api_base = env_setting("TUTOR_EMBEDDINGS_BASE_URL")
-    if not api_base:
-        raise RuntimeError(
-            "TUTOR_EMBEDDINGS_PROVIDER=api, but TUTOR_EMBEDDINGS_BASE_URL "
-            "is not set. Set it in .env to the base URL of the "
-            "OpenAI-compatible server without /embeddings."
-        )
-
-    overrides: dict = {"api_base": api_base}
-
-    api_key = env_setting("TUTOR_EMBEDDINGS_API_KEY")
-    if api_key:
-        overrides["api_key"] = api_key
-
-    dimensions = env_int_setting("TUTOR_EMBEDDINGS_DIMENSIONS")
-    if dimensions is not None:
-        if dimensions < 1:
-            raise RuntimeError(
-                "TUTOR_EMBEDDINGS_DIMENSIONS must be a positive integer."
-            )
-        overrides["dimensions"] = dimensions
-
-    return get_embeddings(
-        model=[selection],
-        user_id=user_id,
-        **overrides,
-    )
-
-
-def database_password() -> str:
-    """Decode the locally configured database password."""
-    encoded = required_setting("TUTOR_DB_PASSWORD_B64")
-    try:
-        return base64.b64decode(encoded, validate=True).decode("utf-8")
-    except (ValueError, UnicodeDecodeError) as exc:
-        raise RuntimeError(
-            "TUTOR_DB_PASSWORD_B64 must contain valid UTF-8 Base64 data."
-        ) from exc
-
-
 def extract_text(value) -> str:
     """Extract plain text from a Langflow input."""
     if isinstance(value, (list, tuple)):
@@ -230,9 +101,175 @@ def extract_text(value) -> str:
     return str(value or "").strip()
 
 
+def embeddings_provider(node_base_url: str = "") -> str:
+    """
+    Embedding mode: 'api' or 'ollama'.
+
+    Priority:
+      1. 'Embeddings Server URL' is filled in the node -> 'api'.
+      2. Explicit TUTOR_EMBEDDINGS_PROVIDER from .env.
+      3. TUTOR_EMBEDDINGS_BASE_URL is set in .env -> 'api', otherwise 'ollama'
+         (backward compatibility with older .env files).
+    """
+    value = env_setting("TUTOR_EMBEDDINGS_PROVIDER").lower()
+    if value and value not in (EMBEDDINGS_PROVIDER_API, EMBEDDINGS_PROVIDER_OLLAMA):
+        raise RuntimeError("TUTOR_EMBEDDINGS_PROVIDER must be 'ollama' or 'api'.")
+    if node_base_url:
+        return EMBEDDINGS_PROVIDER_API
+    if value:
+        return value
+    return (
+        EMBEDDINGS_PROVIDER_API
+        if env_setting("TUTOR_EMBEDDINGS_BASE_URL")
+        else EMBEDDINGS_PROVIDER_OLLAMA
+    )
+
+
+def normalize_api_base(url: str) -> str:
+    """Strip trailing slash and an accidental '/embeddings' suffix."""
+    url = url.strip().rstrip("/")
+    return re.sub(r"/embeddings$", "", url, flags=re.IGNORECASE)
+
+
+def selected_ollama_model(model) -> dict:
+    """
+    Ollama mode: the model is chosen in the node selector.
+    TUTOR_EMBEDDINGS_MODEL / TUTOR_EMBEDDINGS_PROVIDER_NAME from .env
+    can still override it (backward compatibility).
+    """
+    if isinstance(model, list):
+        if not model:
+            raise RuntimeError("Embedding model is not selected in the node.")
+        selection = dict(model[0])
+    elif isinstance(model, dict):
+        selection = dict(model)
+    else:
+        raise RuntimeError(
+            "Embedding model is not selected in the node. Pick an Ollama "
+            "embedding model, or fill 'Embeddings Server URL' and "
+            "'Embeddings Model Name' to use an OpenAI-compatible server."
+        )
+
+    name_override = env_setting("TUTOR_EMBEDDINGS_MODEL")
+    provider_override = env_setting("TUTOR_EMBEDDINGS_PROVIDER_NAME")
+    if name_override:
+        selection["name"] = name_override
+    if provider_override:
+        selection["provider"] = provider_override
+
+    if selection.get("provider") != OLLAMA_PROVIDER_NAME:
+        raise RuntimeError(
+            "Ollama mode is active, but the selected provider is not Ollama. "
+            "Pick an Ollama embedding model in the node, or fill 'Embeddings "
+            "Server URL' and 'Embeddings Model Name' for an OpenAI-compatible "
+            "server."
+        )
+    if not selection.get("name"):
+        raise RuntimeError("The embedding model selection is incomplete.")
+    return selection
+
+
+def build_api_embeddings(api_base: str, model_name: str, dimensions: int | None):
+    """OpenAI-compatible /embeddings client (OpenAI, vLLM, LM Studio, gpt2giga...)."""
+    from langchain_openai import OpenAIEmbeddings
+
+    kwargs: dict = {
+        "model": model_name,
+        "base_url": api_base,
+        "api_key": env_setting("TUTOR_EMBEDDINGS_API_KEY") or DEFAULT_API_KEY,
+        # Не-OpenAI серверы не понимают токенизированный ввод.
+        "check_embedding_ctx_length": False,
+    }
+    if dimensions:
+        kwargs["dimensions"] = dimensions
+    return OpenAIEmbeddings(**kwargs)
+
+
+def build_embedding_model(
+    model,
+    user_id,
+    node_base_url="",
+    node_model_name="",
+    node_dimensions=None,
+):
+    """
+    Create the embedding model for the search query.
+
+    API mode: server URL, model name and dimensions come from the node
+    fields; .env values (TUTOR_EMBEDDINGS_BASE_URL / _MODEL / _DIMENSIONS)
+    are only a fallback. The API key comes from TUTOR_EMBEDDINGS_API_KEY
+    ('pass' by default; local servers ignore it).
+
+    Ollama mode: unchanged — the model comes from the node selector and
+    the server from OLLAMA_BASE_URL.
+    """
+    base_url = extract_text(node_base_url)
+    provider = embeddings_provider(base_url)
+
+    if provider == EMBEDDINGS_PROVIDER_OLLAMA:
+        ollama_base_url = env_setting("OLLAMA_BASE_URL")
+        if not ollama_base_url:
+            raise RuntimeError(
+                "Embeddings are configured for Ollama, but OLLAMA_BASE_URL "
+                "is not set. Set it in .env, or fill 'Embeddings Server URL' "
+                "and 'Embeddings Model Name' in the node."
+            )
+        selection = selected_ollama_model(model)
+        logger.info("Tutor embeddings: ollama, model=%s", selection["name"])
+        return get_embeddings(
+            model=[selection],
+            user_id=user_id,
+            ollama_base_url=ollama_base_url,
+        )
+
+    api_base = normalize_api_base(base_url or env_setting("TUTOR_EMBEDDINGS_BASE_URL"))
+    if not api_base:
+        raise RuntimeError(
+            "Embeddings Server URL is empty. Fill it in the node, e.g. "
+            "http://host.docker.internal:1234/v1 (without /embeddings)."
+        )
+
+    model_name = extract_text(node_model_name) or env_setting("TUTOR_EMBEDDINGS_MODEL")
+    if not model_name:
+        raise RuntimeError("Embeddings Model Name is empty. Fill it in the node.")
+
+    try:
+        dimensions = int(node_dimensions or 0)
+    except (TypeError, ValueError) as exc:
+        raise RuntimeError("Embeddings Dimensions must be an integer.") from exc
+    if dimensions < 0:
+        raise RuntimeError("Embeddings Dimensions must be a positive integer.")
+    if dimensions == 0:
+        dimensions = env_int_setting("TUTOR_EMBEDDINGS_DIMENSIONS") or 0
+        if dimensions < 0:
+            raise RuntimeError(
+                "TUTOR_EMBEDDINGS_DIMENSIONS must be a positive integer."
+            )
+
+    logger.info(
+        "Tutor embeddings: api, server=%s, model=%s, dimensions=%s",
+        api_base,
+        model_name,
+        dimensions or "default",
+    )
+    return build_api_embeddings(api_base, model_name, dimensions or None)
+
+
+def database_password() -> str:
+    """Decode the locally configured database password."""
+    encoded = required_setting("TUTOR_DB_PASSWORD_B64")
+    try:
+        return base64.b64decode(encoded, validate=True).decode("utf-8")
+    except (ValueError, UnicodeDecodeError) as exc:
+        raise RuntimeError(
+            "TUTOR_DB_PASSWORD_B64 must contain valid UTF-8 Base64 data."
+        ) from exc
+
+
 def document_title(filename) -> str:
     """
     Build a display title from documents.filename.
+
     The result goes into a one-line chunk header that is parsed by
     sources_formatter.py, so control characters and square brackets
     are removed. An empty string means "title unknown".
@@ -252,6 +289,7 @@ def document_title(filename) -> str:
 def chunk_header(rank, document_id, chunk_id, distance, title) -> str:
     """
     Header of one chunk passed to the agent.
+
     This format is a contract with sources_formatter.py (HEADER_RE):
     change both files together. document_title is optional there.
     """
@@ -283,18 +321,48 @@ class PostgresCourseSearch(Component):
         )
 
     inputs = [
+        MessageTextInput(
+            name="embeddings_base_url",
+            display_name="Embeddings Server URL",
+            info=(
+                "Base URL of an OpenAI-compatible server WITHOUT /embeddings, "
+                "e.g. http://host.docker.internal:1234/v1. It must be "
+                "reachable from the Langflow container. If empty, "
+                "TUTOR_EMBEDDINGS_BASE_URL from .env is used; if that is "
+                "empty too, the Ollama selector below is used."
+            ),
+            value="",
+        ),
+        MessageTextInput(
+            name="embeddings_model",
+            display_name="Embeddings Model Name",
+            info=(
+                "Model name on that server, e.g. EmbeddingsGigaR or "
+                "text-embedding-3-large. If empty, TUTOR_EMBEDDINGS_MODEL "
+                "from .env is used."
+            ),
+            value="",
+        ),
+        IntInput(
+            name="embeddings_dimensions",
+            display_name="Embeddings Dimensions",
+            info=(
+                "Optional. Passed to the server as 'dimensions'. 0 or empty = "
+                "do not send. The resulting vector must have 1024 dimensions "
+                "to match PostgreSQL."
+            ),
+            value=0,
+            advanced=True,
+        ),
         ModelInput(
             name="model",
-            display_name="Embedding Model",
+            display_name="Embedding Model (Ollama only)",
             info=(
-                "Default embedding model for the search query. The provider "
-                "and model from .env (TUTOR_EMBEDDINGS_PROVIDER, "
-                "TUTOR_EMBEDDINGS_MODEL, TUTOR_EMBEDDINGS_PROVIDER_NAME) take "
-                "priority over this selection. The resulting vector must be "
-                "1024-dimensional to match PostgreSQL."
+                "Used only in Ollama mode, i.e. when 'Embeddings Server URL' "
+                "is empty. In API mode this selector is ignored."
             ),
             model_type="embedding",
-            required=True,
+            required=False,
             real_time_refresh=True,
         ),
         MessageTextInput(
@@ -353,13 +421,19 @@ class PostgresCourseSearch(Component):
         top_k = max(1, min(int(self.top_k or 6), 10))
 
         total_started = time.perf_counter()
-
         embedding_started = time.perf_counter()
-        embedding_model = build_embedding_model(self.model, self.user_id)
+        embedding_model = build_embedding_model(
+            getattr(self, "model", None),
+            self.user_id,
+            node_base_url=getattr(self, "embeddings_base_url", ""),
+            node_model_name=getattr(self, "embeddings_model", ""),
+            node_dimensions=getattr(self, "embeddings_dimensions", 0),
+        )
         embedding = embedding_model.embed_query(query)
         if len(embedding) != VECTOR_DIMENSION:
             raise ValueError(
-                f"Embedding dimension is {len(embedding)}; expected {VECTOR_DIMENSION}."
+                f"Embedding dimension is {len(embedding)}; expected {VECTOR_DIMENSION}. "
+                "Check the embedding model or set 'Embeddings Dimensions'."
             )
         embedding_ms = (time.perf_counter() - embedding_started) * 1000
 
@@ -460,6 +534,7 @@ class PostgresCourseSearch(Component):
         # on the same component instance.
         if not hasattr(self, "_course_search_result"):
             self._course_search_result = self._search()
+
         status, context = self._course_search_result
         self.status = status
 
