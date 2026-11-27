@@ -30,6 +30,13 @@ read_env() {
     ' "$ENV_FILE"
 }
 
+# Значение задано и не является заглушкой YOUR_...
+env_is_set() {
+    local value
+    value="$(read_env "$1")"
+    [[ -n "$value" && "$value" != YOUR_* ]]
+}
+
 [[ -f "$COMPOSE_FILE" ]] || fail "Не найден $COMPOSE_FILE"
 [[ -f "$TUTOR_COMPOSE_FILE" ]] || fail "Не найден $TUTOR_COMPOSE_FILE"
 [[ -f "$ENV_FILE" ]] || fail "Не найден файл настроек .env. Выполните: cp .env.example .env"
@@ -51,7 +58,6 @@ OLLAMA_SERVICE="$(read_env TUTOR_OLLAMA_SERVICE)"
 STOP_DB="$(read_env TUTOR_STOP_DB_ON_STOP)"
 STOP_OLLAMA="$(read_env TUTOR_STOP_OLLAMA_SERVICE_ON_STOP)"
 COMPOSE_NETWORK="$(read_env TUTOR_COMPOSE_NETWORK)"
-
 STOP_DB="${STOP_DB:-0}"
 STOP_OLLAMA="${STOP_OLLAMA:-0}"
 COMPOSE_NETWORK="${COMPOSE_NETWORK:-${PROJECT}_default}"
@@ -60,6 +66,8 @@ COMPOSE_NETWORK="${COMPOSE_NETWORK:-${PROJECT}_default}"
 # Логика совпадает с embeddings_provider() в postgres_course_search.py:
 # явное TUTOR_EMBEDDINGS_PROVIDER важнее; иначе 'api', если задан
 # TUTOR_EMBEDDINGS_BASE_URL, иначе 'ollama' (обратная совместимость).
+# В режиме api сервер и модель эмбеддингов можно задавать прямо в узле
+# Langflow, поэтому в .env они необязательны.
 EMBEDDINGS_PROVIDER="$(read_env TUTOR_EMBEDDINGS_PROVIDER | tr '[:upper:]' '[:lower:]')"
 if [[ -z "$EMBEDDINGS_PROVIDER" ]]; then
     if [[ -n "$(read_env TUTOR_EMBEDDINGS_BASE_URL)" ]]; then
@@ -69,12 +77,15 @@ if [[ -z "$EMBEDDINGS_PROVIDER" ]]; then
     fi
 fi
 
+EMBEDDINGS_HINT=""
 case "$EMBEDDINGS_PROVIDER" in
     api)
-        EMBEDDINGS_REQUIRED=(TUTOR_EMBEDDINGS_BASE_URL TUTOR_EMBEDDINGS_MODEL)
+        # Сервер и модель вводятся в Langflow; в .env ничего обязательного нет.
+        EMBEDDINGS_REQUIRED=()
         ;;
     ollama)
         EMBEDDINGS_REQUIRED=(OLLAMA_BASE_URL OLLAMA_EMBEDDING_MODEL)
+        EMBEDDINGS_HINT=" Чтобы задавать сервер и модель эмбеддингов в Langflow, укажите TUTOR_EMBEDDINGS_PROVIDER=api."
         ;;
     *)
         fail "В файле настроек ($(basename "$ENV_FILE")) задан неизвестный TUTOR_EMBEDDINGS_PROVIDER: '$EMBEDDINGS_PROVIDER' (ожидается ollama или api)."
@@ -82,10 +93,11 @@ case "$EMBEDDINGS_PROVIDER" in
 esac
 
 for key in TUTOR_DB_HOST TUTOR_DB_NAME TUTOR_DB_USER \
-           TUTOR_DB_PASSWORD_B64 "${EMBEDDINGS_REQUIRED[@]}"; do
+           TUTOR_DB_PASSWORD_B64 \
+           ${EMBEDDINGS_REQUIRED[@]+"${EMBEDDINGS_REQUIRED[@]}"}; do
     value="$(read_env "$key")"
     [[ -n "$value" && "$value" != YOUR_* ]] ||
-        fail "В файле настроек ($(basename "$ENV_FILE")) не задан $key (или стоит заглушка YOUR_...)"
+        fail "В файле настроек ($(basename "$ENV_FILE")) не задан $key (или стоит заглушка YOUR_...).${EMBEDDINGS_HINT}"
 done
 
 if [[ "$DB_CONTAINER" == YOUR_* ]]; then
@@ -278,7 +290,6 @@ request = Request(
     data=json.dumps(payload).encode("utf-8"),
     headers=headers,
 )
-
 try:
     with urlopen(request, timeout=20) as response:
         data = json.loads(response.read().decode("utf-8"))
@@ -320,6 +331,13 @@ check_embeddings_api() {
     local output=""
     local attempt
 
+    # Сервер и модель могут быть заданы только в узле Langflow — их лаунчер
+    # не видит. Проверяем, только если оба значения указаны в .env.
+    if ! env_is_set TUTOR_EMBEDDINGS_BASE_URL || ! env_is_set TUTOR_EMBEDDINGS_MODEL; then
+        printf 'I: Сервер и модель эмбеддингов не заданы в .env: их нужно указать в узле Langflow. Проверка из лаунчера пропущена.\n'
+        return 0
+    fi
+
     for ((attempt = 1; attempt <= 5; attempt++)); do
         if output="$(embeddings_probe "$container_id" 2>&1)"; then
             printf '%s\n' "$output"
@@ -354,7 +372,6 @@ try:
         os.environ["TUTOR_DB_PASSWORD_B64"],
         validate=True,
     ).decode("utf-8")
-
     with psycopg.connect(
         host=os.environ["TUTOR_DB_HOST"],
         port=int(os.getenv("TUTOR_DB_PORT", "5432")),
@@ -380,7 +397,6 @@ try:
             "SELECT (SELECT count(*) FROM public.documents), "
             "(SELECT count(*) FROM public.document_chunks)"
         ).fetchone()
-
     print(
         f"PostgreSQL доступен: database={row[0]}, user={row[1]}, "
         f"documents={counts[0]}, document_chunks={counts[1]}"
@@ -456,15 +472,16 @@ case "${1:-}" in
 
         printf 'I: Tutor запущен: http://127.0.0.1:7860\n'
         ;;
+
     stop)
         select_docker
 
         if [[ -n "$DB_CONTAINER" ]] &&
            docker_run container inspect "$DB_CONTAINER" >/dev/null 2>&1; then
             NETWORK="$COMPOSE_NETWORK"
-
             LANGFLOW_ID="$(compose ps -a -q langflow 2>/dev/null || true)"
             LANGFLOW_ID="${LANGFLOW_ID%%$'\n'*}"
+
             if [[ -n "$LANGFLOW_ID" ]]; then
                 ACTUAL_NETWORK="$(first_container_network "$LANGFLOW_ID" 2>/dev/null || true)"
                 NETWORK="${ACTUAL_NETWORK:-$NETWORK}"
@@ -498,6 +515,7 @@ case "${1:-}" in
             printf 'I: Tutor остановлен. Docker и БД не удалены.\n'
         fi
         ;;
+
     *)
         printf 'Использование: %s {start|stop}\n' "$0" >&2
         exit 2
