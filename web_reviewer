@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мои работы</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="logo-area">
+        <svg viewBox="0 0 24 24" width="42" height="42" fill="#1d4ed8" aria-hidden="true">
+          <path d="M12 3L1 9L5 11.18V17.18L12 21L19 17.18V11.18L21 10.09V17H23V9L12 3ZM18.82 9L12 12.72L5.18 9L12 5.28L18.82 9ZM17 15.99L12 18.72L7 15.99V12.27L12 15L17 12.27V15.99Z"/>
+        </svg>
+      </div>
+      <nav class="nav-menu" aria-label="Разделы сайта">
+        <a href="/dashboard" class="nav-item"><span class="icon" aria-hidden="true">🏠</span> Главная</a>
+        <a href="/chat" class="nav-item"><span class="icon" aria-hidden="true">💬</span> Чат с Tutor</a>
+        <a href="/submissions" class="nav-item active" aria-current="page"><span class="icon" aria-hidden="true">📄</span> Загрузка работы</a>
+      </nav>
+      <div class="nav-bottom">
+        <a href="/login" onclick="logout(event)" class="nav-item"><span class="icon" aria-hidden="true">🚪</span> Выйти</a>
+      </div>
+    </aside>
+    <main class="main-content">
+      <header class="content-header">
+        <h1>Мои работы</h1>
+        <p class="role-label">Здравствуйте, {{ username }}!</p>
+      </header>
+      <section class="submissions-panel" aria-label="Мои работы">
+        <div class="submissions-heading">
+          <h2 id="history-heading">История работ</h2>
+        </div>
+        {% if submissions %}
+          <table class="submissions-table">
+            <thead>
+              <tr><th scope="col">Дата</th><th scope="col">Название файла</th><th scope="col">Статус</th></tr>
+            </thead>
+            <tbody>
+              {% for submission in submissions %}
+              <tr data-submission-id="{{ submission.id }}">
+                <td>{{ submission.date }}</td>
+                <td>{{ submission.filename }}</td>
+                <td>{{ submission.status }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p class="empty-state">Работ пока нет.</p>
+        {% endif %}
+
+        <h2 id="upload-heading" class="submission-upload-heading" tabindex="-1">Загрузить новую работу</h2>
+        <form id="submission-form" class="submission-form" enctype="multipart/form-data">
+          <label for="submission-file">Выберите файл (PDF или DOCX)</label>
+          <input id="submission-file" name="file" type="file" accept=".pdf,.docx" required>
+          <button class="btn btn-green" type="submit">Загрузить</button>
+          <p id="submission-message" class="submission-message" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+  </div>
+  <script>
+    async function logout(event) {
+      event.preventDefault();
+      try {
+        const response = await fetch("/api/logout");
+        if (response.ok) {
+          window.location.href = "/login";
+          return;
+        }
+      } catch (error) {
+        console.error("Ошибка выхода", error);
+      }
+      window.alert("Не удалось выйти. Попробуйте ещё раз.");
+    }
+  </script>
+  <script src="/static/submissions.js"></script>
+</body>
+</html>
