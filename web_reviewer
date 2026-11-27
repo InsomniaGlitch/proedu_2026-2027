@@ -30,17 +30,9 @@
         <p class="role-label">Здравствуйте, {{ username }}!</p>
       </header>
       <section class="submissions-panel" aria-label="Мои работы">
-        <h2 id="upload-heading" class="submission-upload-heading" tabindex="-1">Загрузить новую работу</h2>
-        <form id="submission-form" class="submission-form" enctype="multipart/form-data">
-          <label for="submission-file">Выберите файл (PDF или DOCX)</label>
-          <p id="file-hint">Выберите файл с текстовым слоем, чтобы Reviewer мог прочитать работу.</p>
-          <input id="submission-file" name="file" type="file" accept=".pdf,.docx" required aria-describedby="file-hint">
-          <button class="btn btn-green" type="submit">Загрузить</button>
-          <p id="submission-message" class="submission-message" role="status" aria-live="polite"></p>
-        </form>
-
         <div class="submissions-heading">
           <h2 id="history-heading">История работ</h2>
+          <a class="btn btn-green submissions-upload-link" href="#upload-heading">Загрузить новую работу</a>
         </div>
         {% if submissions %}
           <div style="overflow-x: auto" tabindex="0" role="region" aria-labelledby="history-heading">
@@ -62,6 +54,15 @@
         {% else %}
           <p class="empty-state">Работ пока нет. Загрузите PDF или DOCX, чтобы начать.</p>
         {% endif %}
+
+        <h2 id="upload-heading" class="submission-upload-heading" tabindex="-1">Загрузить новую работу</h2>
+        <form id="submission-form" class="submission-form" enctype="multipart/form-data">
+          <label for="submission-file">Выберите файл (PDF или DOCX)</label>
+          <p id="file-hint">Выберите файл с текстовым слоем, чтобы Reviewer мог прочитать работу.</p>
+          <input id="submission-file" name="file" type="file" accept=".pdf,.docx" required aria-describedby="file-hint">
+          <button class="btn btn-green" type="submit">Загрузить</button>
+          <p id="submission-message" class="submission-message" role="status" aria-live="polite"></p>
+        </form>
       </section>
     </main>
   </div>
@@ -83,4 +84,3 @@
   <script src="/static/submissions.js"></script>
 </body>
 </html>
-
