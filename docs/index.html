@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GitHub — Commit Activity</title>
+<style>
+body {
+  font: 14px system-ui, sans-serif;
+  background: #f6f8fa;
+  color: #24292f;
+  margin: 0;
+  padding: 24px;
+}
+main { max-width: 1100px; margin: auto; }
+h1 { font-size: 25px; }
+.toolbar {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin: 20px 0;
+}
+input, select, button {
+  padding: 10px; border: 1px solid #d0d7de;
+  border-radius: 6px; background: white;
+}
+input { flex: 1; min-width: 180px; }
+button { cursor: pointer; }
+.day {
+  background: white; border: 1px solid #d8dee4;
+  border-radius: 8px; margin: 12px 0;
+}
+.day summary {
+  padding: 14px; cursor: pointer;
+  font-weight: 600; background: #f6f8fa;
+}
+table { width: 100%; border-collapse: collapse; }
+th, td {
+  text-align: left; padding: 10px;
+  border-top: 1px solid #eee;
+  vertical-align: top;
+}
+th { color: #57606a; }
+a { color: #0969da; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.sha { font-family: monospace; }
+.muted { color: #57606a; }
+#status { margin: 12px 0; color: #57606a; }
+@media(max-width:650px) {
+  body { padding: 12px; }
+  table { font-size: 12px; }
+  th, td { padding: 7px 4px; }
+}
+</style>
+</head>
+<body>
+<main>
+<h1>📊 Commit Activity</h1>
+<div id="repo"></div>
+
+<div class="toolbar">
+  <input id="search" placeholder="Поиск по автору или сообщению">
+  <select id="branch">
+    <option value="">Все ветки</option>
+  </select>
+  <button onclick="loadData()">Обновить</button>
+</div>
+
+<div id="status">Загрузка коммитов...</div>
+<div id="result"></div>
+</main>
+
+<script>
+const OWNER = "InsomniaGlitch";
+const REPO = "proedu_2026-2027";
+const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
+
+let commits = [];
+
+async function getPages(url) {
+  let result = [];
+  while (url) {
+    const response = await fetch(url, {
+      headers: { Accept: "application/vnd.github+json" }
+    });
+
+    if (!response.ok) {
+      if (response.status === 403 || response.status === 429) {
+        throw new Error("Превышен лимит GitHub API. Попробуйте позже.");
+      }
+      throw new Error(`GitHub API: ${response.status}`);
+    }
+
+    const data = await response.json();
+    result.push(...data);
+
+    const link = response.headers.get("Link");
+    const next = link?.match(/<([^>]+)>;\s*rel="next"/);
+    url = next ? next[1] : null;
+  }
+  return result;
+}
+
+async function loadData() {
+  const status = document.getElementById("status");
+  const result = document.getElementById("result");
+  const branchSelect = document.getElementById("branch");
+
+  status.textContent = "Получение списка веток...";
+  result.innerHTML = "";
+  commits = [];
+
+  try {
+    const branches = await getPages(
+      `${API}/branches?per_page=100`
+    );
+
+    branchSelect.innerHTML =
+      '<option value="">Все ветки</option>';
+
+    branches.forEach(b => {
+      const option = document.createElement("option");
+      option.value = b.name;
+      option.textContent = b.name;
+      branchSelect.appendChild(option);
+    });
+
+    const unique = new Map();
+
+    for (let i = 0; i < branches.length; i++) {
+      const branch = branches[i];
+      status.textContent =
+        `Загрузка ветки ${i + 1} из ${branches.length}: ${branch.name}`;
+
+      const url = `${API}/commits?sha=${encodeURIComponent(branch.name)}&per_page=100`;
+      const items = await getPages(url);
+
+      for (const c of items) {
+        if (!unique.has(c.sha)) {
+          unique.set(c.sha, {
+            sha: c.sha,
+            message: c.commit.message.split("\n")[0],
+            date: c.commit.author?.date ||
+                  c.commit.committer?.date,
+            author: c.author?.login ||
+                    c.commit.author?.name || "Unknown",
+            url: c.html_url,
+            branches: []
+          });
+        }
+
+        const entry = unique.get(c.sha);
+        if (!entry.branches.includes(branch.name)) {
+          entry.branches.push(branch.name);
+        }
+      }
+    }
+
+    commits = [...unique.values()].sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    );
+
+    document.getElementById("repo").textContent =
+      `${OWNER}/${REPO} · ${branches.length} веток`;
+
+    status.textContent =
+      `Загружено ${commits.length} уникальных коммитов из ${branches.length} веток`;
+
+    render();
+  } catch (error) {
+    status.textContent = "Ошибка: " + error.message;
+  }
+}
+
+function render() {
+  const search = document.getElementById("search")
+    .value.toLowerCase();
+  const branch = document.getElementById("branch").value;
+
+  const filtered = commits.filter(c =>
+    (!branch || c.branches.includes(branch)) &&
+    (c.message + " " + c.author + " " +
+     c.branches.join(" ")).toLowerCase().includes(search)
+  );
+
+  const groups = {};
+
+  filtered.forEach(c => {
+    const day = new Date(c.date).toLocaleDateString("ru-RU", {
+      year: "numeric", month: "long", day: "numeric"
+    });
+    (groups[day] ||= []).push(c);
+  });
+
+  const root = document.getElementById("result");
+  root.innerHTML = "";
+
+  for (const [day, items] of Object.entries(groups)) {
+    const details = document.createElement("details");
+    details.className = "day";
+    details.open = true;
+
+    const summary = document.createElement("summary");
+    summary.textContent =
+      `${day} — ${items.length} коммитов`;
+    details.appendChild(summary);
+
+    const table = document.createElement("table");
+    table.innerHTML = `
+      <thead><tr>
+        <th>Время</th><th>Автор</th>
+        <th>Ветка</th><th>Коммит</th>
+      </tr></thead>`;
+
+    const tbody = document.createElement("tbody");
+
+    items.forEach(c => {
+      const tr = document.createElement("tr");
+      const time = new Date(c.date).toLocaleTimeString("ru-RU", {
+        hour: "2-digit", minute: "2-digit"
+      });
+
+      const td = (value, cls = "") => {
+        const cell = document.createElement("td");
+        cell.textContent = value;
+        if (cls) cell.className = cls;
+        return cell;
+      };
+
+      tr.appendChild(td(time));
+      tr.appendChild(td(c.author));
+      tr.appendChild(td(c.branches.join(", ")));
+
+      const message = document.createElement("td");
+      const link = document.createElement("a");
+      link.href = c.url;
+      link.target = "_blank";
+      link.rel = "noopener";
+      link.textContent = c.message || "(без сообщения)";
+      message.appendChild(link);
+
+      const sha = document.createElement("div");
+      sha.className = "muted sha";
+      sha.textContent = c.sha.slice(0, 7);
+      message.appendChild(sha);
+
+      tr.appendChild(message);
+      tbody.appendChild(tr);
+    });
+
+    table.appendChild(tbody);
+    details.appendChild(table);
+    root.appendChild(details);
+  }
+
+  if (!filtered.length) {
+    root.textContent = "Коммиты не найдены.";
+  }
+}
+
+document.getElementById("search")
+  .addEventListener("input", render);
+
+document.getElementById("branch")
+  .addEventListener("change", render);
+
+loadData();
+</script>
+</body>
+</html>
