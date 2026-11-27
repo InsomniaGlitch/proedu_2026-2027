@@ -494,39 +494,6 @@ def get_student_submissions(user_id: int):
     finally:
         conn.close()
 
-
-def reviewer_result_was_saved(submission_id: int, user_id: int) -> bool:
-    conn = None
-    try:
-        conn = get_db_connection()
-        with conn.cursor() as cur:
-            cur.execute(
-                """
-                SELECT s.status,
-                       EXISTS (
-                           SELECT 1
-                           FROM grades AS g
-                           WHERE g.submission_id = s.id
-                             AND g.student_id = s.student_id
-                       )
-                FROM submissions AS s
-                WHERE s.id = %s AND s.student_id = %s
-                """,
-                (submission_id, user_id),
-            )
-            row = cur.fetchone()
-        return bool(
-            row
-            and row[0] in {"На проверке", "На доработке", "Проверено"}
-            and row[1]
-        )
-    except psycopg2.Error:
-        return False
-    finally:
-        if conn is not None:
-            conn.close()
-
-
 @app.get("/api/submissions")
 def list_submissions(request: Request):
     session = get_session(request)
@@ -1152,20 +1119,6 @@ async def create_submission(request: Request, file: UploadFile = File(...)):
     )
 
     if reviewer_result.get("processing_status") == "error":
-        submission_id = reviewer_result.get("submission_id")
-        if (
-            type(submission_id) is int
-            and submission_id > 0
-            and reviewer_result_was_saved(submission_id, session["user_id"])
-        ):
-            return JSONResponse(
-                content={
-                    "status": "ok",
-                    "submission_id": submission_id,
-                    "processing_status": "completed",
-                    "recovered": True,
-                }
-            )
         return JSONResponse(
             status_code=502,
             content={
